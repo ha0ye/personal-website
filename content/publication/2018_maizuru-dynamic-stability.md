@@ -1,16 +1,16 @@
 +++
-title = "Predicting coastal algal blooms in southern California"
-date = "2017-03-31"
+title = "Fluctuating interaction network and time-varying stability of a natural fish community"
+date = "2018-02-15"
 
 # Authors.
-authors = ["John A. McGowan", "Ethan R. Deyle", "Hao Ye", "Melissa L. Carter", "Charles T. Perretti", "Kerri D. Seger", "Alain de Verneil", "George Sugihara"]
+authors = ["Masayuki Ushio", "Chih-hao Hsieh", "Reiji Masuda", "Ethan R Deyle", "Hao Ye", "Chun-Wei Chang", "George Sugihara", "Michio Kondoh"]
 
 # Publication type.
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *Ecology*."
-publication_short = "In *Ecol*"
+publication = "In *Nature*"
+publication_short = "In *Nature*"
 
 # Abstract and optional shortened version.
 abstract = ""
@@ -28,7 +28,8 @@ selected = true
 # projects = ["example-external-project"]
 
 # Links (optional).
-url_pdf = "http://onlinelibrary.wiley.com/doi/10.1002/ecy.1804/abstract"
+url_pdf = "https://www.nature.com/articles/nature25504.pdf"
+url_source = "https://www.nature.com/articles/nature25504"
 
 # Does the content use math formatting?
 math = true
@@ -38,7 +39,7 @@ highlight = true
 
 # Featured image
 # Place your image in the `static/img/` folder and reference its filename below, e.g. `image = "example.jpg"`.
-# [header]
+[header]
 # image = "headers/bubbles-wide.jpg"
 # caption = "My caption :smile:"
 

@@ -37,7 +37,7 @@ selected = true
 # Links (optional).
 url_pdf = "http://science.sciencemag.org/content/353/6302/922.full.pdf"
 url_source = "http://science.sciencemag.org/content/353/6302/922"
-# url_preprint = "http://eprints.soton.ac.uk/352095/1/Cushen-IMV2013.pdf"
+# url_preprint = ""
 # url_code = "#"
 # url_dataset = "#"
 # url_project = "#"
@@ -59,8 +59,8 @@ highlight = true
 # Featured image
 # Place your image in the `static/img/` folder and reference its filename below, e.g. `image = "example.jpg"`.
 [header]
-image = ""
-caption = ""
+# image = ""
+# caption = ""
 
 +++
 
