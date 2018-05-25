@@ -33,7 +33,7 @@ tags = ["Stability", "Time Series"]
 
 # Links (optional).
 url_pdf = "https://www.nature.com/articles/nature25504.pdf"
-url_source = "https://www.nature.com/articles/nature25504"
+url_journal = "https://www.nature.com/articles/nature25504"
 
 # Does the content use math formatting?
 math = true

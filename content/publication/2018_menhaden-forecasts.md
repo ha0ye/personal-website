@@ -33,7 +33,7 @@ tags = ["Fisheries", "Forecasting", "Time Series"]
 
 # Links (optional).
 url_pdf = "https://onlinelibrary.wiley.com/doi/epdf/10.1111/faf.12287"
-url_source = "https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12287"
+url_journal = "https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12287"
 
 # Does the content use math formatting?
 math = true
