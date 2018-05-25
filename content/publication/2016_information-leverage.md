@@ -40,7 +40,7 @@ tags = ["Complexity"]
 
 # Links (optional).
 url_pdf = "http://science.sciencemag.org/content/353/6302/922.full.pdf"
-url_source = "http://science.sciencemag.org/content/353/6302/922"
+url_journal = "http://science.sciencemag.org/content/353/6302/922"
 # url_preprint = ""
 # url_code = "#"
 # url_dataset = "#"

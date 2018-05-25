@@ -9,7 +9,7 @@ authors = ["Laura S. Storch", "Sarah M. Glaser", "Hao Ye", "Andrew A. Rosenberg"
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *PLoS ONE*."
+publication = "In *PLoS ONE*"
 publication_short = "In *PLoS ONE*"
 
 # Abstract and optional shortened version.
@@ -33,6 +33,7 @@ tags = ["Time Series", "Dynamics", "Fisheries"]
 
 # Links (optional).
 url_pdf = "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0171644"
+url_journal = ""
 
 # Does the content use math formatting?
 math = true

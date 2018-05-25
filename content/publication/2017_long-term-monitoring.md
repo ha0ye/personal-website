@@ -33,6 +33,7 @@ tags = ["Time Series", "Dynamics"]
 
 # Links (optional).
 url_pdf = "http://www.int-res.com/articles/meps_oa/m572p269.pdf"
+url_journal = ""
 
 # Does the content use math formatting?
 math = true

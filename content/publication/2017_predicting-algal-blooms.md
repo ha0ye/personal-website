@@ -9,7 +9,7 @@ authors = ["John A. McGowan", "Ethan R. Deyle", "Hao Ye", "Melissa L. Carter", "
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *Ecology*."
+publication = "In *Ecology*"
 publication_short = "In *Ecol*"
 
 # Abstract and optional shortened version.
@@ -33,6 +33,7 @@ tags = ["Forecasting"]
 
 # Links (optional).
 url_pdf = "http://onlinelibrary.wiley.com/doi/10.1002/ecy.1804/abstract"
+url_journal = ""
 
 # Does the content use math formatting?
 math = true
