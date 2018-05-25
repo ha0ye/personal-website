@@ -27,6 +27,10 @@ selected = true
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
 # projects = ["example-external-project"]
 
+# Tags (optional).
+#   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
+tags = ["Stability", "Time Series"]
+
 # Links (optional).
 url_pdf = "https://www.nature.com/articles/nature25504.pdf"
 url_source = "https://www.nature.com/articles/nature25504"
@@ -45,4 +49,3 @@ highlight = true
 
 +++
 
-More detail can easily be written here using *Markdown* and $\rm \LaTeX$ math code.

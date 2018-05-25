@@ -27,6 +27,10 @@ selected = true
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
 # projects = ["example-external-project"]
 
+# Tags (optional).
+#   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
+tags = ["Time Series", "Dynamics", "Fisheries"]
+
 # Links (optional).
 url_pdf = "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0171644"
 
@@ -43,5 +47,3 @@ highlight = true
 # caption = "My caption :smile:"
 
 +++
-
-More detail can easily be written here using *Markdown* and $\rm \LaTeX$ math code.

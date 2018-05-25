@@ -27,6 +27,10 @@ selected = true
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
 # projects = ["example-external-project"]
 
+# Tags (optional).
+#   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
+tags = ["Forecasting"]
+
 # Links (optional).
 url_pdf = "http://onlinelibrary.wiley.com/doi/10.1002/ecy.1804/abstract"
 
@@ -43,5 +47,3 @@ highlight = true
 # caption = "My caption :smile:"
 
 +++
-
-More detail can easily be written here using *Markdown* and $\rm \LaTeX$ math code.
