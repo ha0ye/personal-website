@@ -1,14 +1,14 @@
 +++
 date = "2018-01-01 00:00:00"  # Schedule page publish date.
 
-title = "Data-driven modeling of biological systems"
-time_start = "2017-12-05 14:00:00"
-time_end = "2017-12-05 15:00:00"
+title = "Addressing nonlinearity in biological systems"
+time_start = "2016-06-14 10:00:00"
+time_end = "2016-06-14 11:00:00"
 abstract = ""
 abstract_short = ""
-event = "University of Florida Biocomplexity Engineering Group Seminar"
-event_url = "https://abe.ufl.edu/faculty/carpena/seminars/seminarsF2017.shtml"
-location = "Gainesville, Florida, USA"
+event = "University of California Santa Cruz / Southwest Fisheries Science Center Ecology Seminar"
+event_url = ""
+location = "Santa Cruz, California, USA"
 
 # Is this a selected talk? (true/false)
 selected = false

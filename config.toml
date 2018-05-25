@@ -55,7 +55,8 @@ enableGitInfo = false
 
   # Your details.
   name = "Hao Ye"
-  role = "Postdoc, Quantitative Ecology"
+  role = "Postdoctoral Associate and Moore Data Fellow"
+  field = "Quantitative Ecology"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
@@ -63,7 +64,7 @@ enableGitInfo = false
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
-  email = "test@example.org"
+  email = "{first}.[[last]]@weecology.org"
   address = "110 Newins-Ziegler Hall, PO Box 110430, Gainesville, Florida, 32608, USA"
   office_hours = ""
   phone = ""
@@ -226,7 +227,7 @@ enableGitInfo = false
   [[params.social]]
     icon = "envelope"
     icon_pack = "fa"
-    link = "mailto:{first}.[[list]]@weecology.org"
+    link = "mailto:{first}.[[last]]@weecology.org"
 
   [[params.social]]
     icon = "twitter"

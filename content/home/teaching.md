@@ -15,14 +15,23 @@ weight = 60
 
 +++
 
-This is an example of using the *custom* widget to create your own homepage section.
+### Training
 
-I am a teaching instructor for the following courses at University X:
+I am a certified instructor for [The Carpentries](https://carpentries.org/).
 
-- CS101: An intro to computer science
-- CS102: An intro to computer science
-- CS103: An intro to computer science
-- CS104: An intro to computer science
-- CS105: An intro to computer science
-- CS106: An intro to computer science
-- CS107: An intro to computer science
+I have also completed "Teaching + Learning at the College Level", a course on evidence-based teaching practices taught by UCSD's Teaching + Learning Commons. (The course is now called ["Introduction to College Teaching"](https://commons.ucsd.edu/educators/future-faculty-programs/introduction-to-college-teaching.html.)
+
+### Experience
+
+As part of the [Open Data Science at SIO](https://open-data-science-at-sio.github.io/), I led the following informal seminars:
+
+* [Introduction to Data Visualization and Data Wrangling in R](https://github.com/Open-Data-Science-at-SIO/Intro-Data-Viz-Winter-2017)
+* [Reproducible Research in R for Ocean Biosciences: Open-science Training Seminar](https://github.com/Open-Data-Science-at-SIO/RRROBOTS)
+
+I have also been a teaching assistant for the following courses:
+
+* [PSYC 138 (Sound and Music Perception)](http://www.psychology.ucsd.edu/undergraduate-program/courses/index.html) at [UCSD](http://www.ucsd.edu)
+* PSYC 102 (Introduction to Sensory and Perception) at [UCSD](http://www.ucsd.edu)<br />*this course has been replaced with "Sensory Neuroscience"*
+  
+* [PSYC 60 (Introduction to Statistics)](http://www.psychology.ucsd.edu/undergraduate-program/courses/index.html) at [UCSD](http://www.ucsd.edu)
+* [CS 1 (Introduction to Computer Programming)](http://www.cms.caltech.edu/academics/course_desc#cs) at [Caltech](http://www.caltech.edu) 

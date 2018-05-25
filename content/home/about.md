@@ -10,8 +10,8 @@ weight = 5
 # List your academic interests.
 [interests]
   interests = [
-    "Stability and Complexity", 
     "Time Series Analysis",
+    "Stability and Resilience", 
     "Ecological Forecasting",
     "Dynamic Systems", 
     "Causal Inference"
@@ -37,8 +37,8 @@ weight = 5
 
 # Biography
 
-I am a Postdoctoral Associate and Moore Data Fellow in the [Weecology Lab](weecology.org) at the University of Florida. My research focuses on using empirical data to understand how ecosystems persist and change over time.
+I am a Postdoctoral Associate and Moore Data Fellow in the [Weecology Lab](weecology.org) at the University of Florida. I study how natural ecosystems persist and change over time.
 
-My research consists of two main components.
-1. I work on methods to analyze time series data and infer mechanisms and dynamical behavior.
-2. I apply these methods to data, mainly from ecosystems, to test hypotheses, infer causal relationships, and forecast future behavior.
+My research consists of developing new methods for analyzing time series data, testing them on real observations, and using them to answer questions about the generality of dynamic behaviors. For example, I am interested in quantifying the speed and form of ecosystem change (i.e. stability / resilience); how changes manifest across temporal, spatial, and taxonomic scales; and ultimately, constructing causal models that can guide forecasts and management.
+
+## need some text about motivations
