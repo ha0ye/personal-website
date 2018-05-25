@@ -23,7 +23,7 @@
 html {
   font-family: '{{ .Get "body_font" }}', sans-serif;
   font-size: {{ .Get "font_size_small" }}px;
-  color: rgba(0,0,0,0.8);
+  color: rgba(0,0,0,0.9);
   line-height: 1.65;
 }
 @media screen and (min-width: 58em) {
@@ -64,6 +64,7 @@ body {
 /* Body text */
 p {
   margin-top: 0;
+  font-weight: 300;
   margin-bottom: 1rem;
 }
 
@@ -87,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   margin-bottom: .5rem;
   line-height: 1.25;
-  color: #313131;
+  color: #1f393d;
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word; /* Ensures very long heading words do not overflow into content. */
 }
@@ -194,7 +195,7 @@ hr {
 blockquote {
   padding: .5rem 1rem;
   margin: .8rem 0;
-  color: #7a7a7a;
+  color: #4a4a4a;
   border-left: .25rem solid #e5e5e5;
 }
 blockquote p:last-child {
@@ -470,7 +471,7 @@ a[data-fancybox] img {
 
 #profile .portrait-title h2 {
   font-size: 1.75em;
-  font-weight: 300;
+  font-weight: 400;
   color: #000000;
   margin: 20px 0 10px 0;
 }
@@ -478,7 +479,7 @@ a[data-fancybox] img {
 #profile .portrait-title h3 {
   font-size: 1rem;
   font-weight: 300;
-  color: rgba(0,0,0, 0.54);
+  color: rgba(0,0,0, 1.0);
   margin: 0px 0 10px 0;
 }
 

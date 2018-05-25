@@ -19,7 +19,7 @@ weight = 60
 
 I am a certified instructor for [The Carpentries](https://carpentries.org/).
 
-I have also completed "Teaching + Learning at the College Level", a course on evidence-based teaching practices taught by UCSD's Teaching + Learning Commons. (The course is now called ["Introduction to College Teaching"](https://commons.ucsd.edu/educators/future-faculty-programs/introduction-to-college-teaching.html.)
+I have also completed "Teaching + Learning at the College Level", a course on evidence-based teaching practices taught by UCSD's Teaching + Learning Commons. (The course is now called ["Introduction to College Teaching"](https://commons.ucsd.edu/educators/future-faculty-programs/introduction-to-college-teaching.html).)
 
 ### Experience
 

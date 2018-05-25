@@ -37,8 +37,20 @@ weight = 5
 
 # Biography
 
-I am a Postdoctoral Associate and Moore Data Fellow in the [Weecology Lab](weecology.org) at the University of Florida. I study how natural ecosystems persist and change over time.
+Hi, I'm currently a Postdoctoral Associate and Moore Data Fellow in the [Weecology Lab](weecology.org) at the University of Florida.
 
-My research consists of developing new methods for analyzing time series data, testing them on real observations, and using them to answer questions about the generality of dynamic behaviors. For example, I am interested in quantifying the speed and form of ecosystem change (i.e. stability / resilience); how changes manifest across temporal, spatial, and taxonomic scales; and ultimately, constructing causal models that can guide forecasts and management.
+The focus of my research is on how natural ecosystems persist and change over time. This consists of developing new methods for analyzing time series data, testing them on real observations, and using them to answer questions about the generality of dynamic behaviors. These questions include:
 
-## need some text about motivations
+* How quickly do ecosystems change and form does it take?
+* How do changes manifest across temporal, spatial, and taxonomic scales?
+* What are the best ways of constructing causal models to guide forecasts and management?
+
+I also believe that the academia needs systemic and institutional change in order to be more inclusive, accessible, and progressive. These 
+Work on promoting open and reproducible research practices, and instituting policies that actively promote change and de
+
+inneeds to be more accessible and inclusive, which requires systemic and institutional change. 
+Alignment of open science practices
+Mozilla  
+
+
+

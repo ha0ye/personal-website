@@ -1,0 +1,21 @@
+# Theme metadata
+name = "Tan"
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary = "#4e8f99"
+primary_light = "#0000ff"
+primary_dark = "#0000ff"
+
+# Menu
+menu_primary = "#5a4036"
+menu_text = "#fafafa"
+menu_text_active = "#83efff"
+menu_title = "#83efff"
+
+# Backgrounds
+background = "#FDF8EE"
+home_section_odd = "#FDF8EE"
+home_section_even = "#FDF8EE"
