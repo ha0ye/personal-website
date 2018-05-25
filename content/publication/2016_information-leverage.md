@@ -1,9 +1,9 @@
 +++
-title = "Quantitative argument for long-term ecological monitoring"
-date = "2017-05-31"
+title = "Information leverage in interconnected ecosystems: Overcoming the curse of dimensionality"
+date = "2016-08-26"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Alfredo Giron-Nava", "Chase C. James", "Andrew F. Johnson", "David Dannecker", "Bethany Kolody", "Adrienne Lee", "Maitreyi Nagarkar", "Gerald M. Pao", "Hao Ye", "David G. Johns", "George Sugihara"]
+authors = ["Hao Ye", "George Sugihara"]
 
 # Publication type.
 # Legend:
@@ -17,11 +17,11 @@ authors = ["Alfredo Giron-Nava", "Chase C. James", "Andrew F. Johnson", "David D
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *Marine Ecology Progress Series*."
-publication_short = "In *Mar Ecol Prog Ser*"
+publication = "In *Science*"
 
 # Abstract and optional shortened version.
-abstract = "Although it seems obvious that with more data, the predictive capacity of ecological models should improve, a way to demonstrate this fundamental result has not been so obvious. In particular, when the standard models themselves are inadequate (von Bertalanffy, extended Ricker etc.) no additional data will improve performance. By using time series from the Sir Alister Hardy Foundation for Ocean Science Continuous Plankton Recorder, we demonstrate that long- term observations reveal both the prevalence of nonlinear processes in species abundances and an improvement in out-of-sample predictability as the number of observations increase. The empirical results presented here quantitatively demonstrate the importance of long-term temporal data collection programs for improving ecosystem models and forecasts, and to better support environmental management actions."
+abstract = ""
+# abstract = "In ecological analysis, complexity has been regarded as an obstacle to overcome. Here we present a straightforward approach for addressing complexity in dynamic interconnected systems. We show that complexity, in the form of multiple interacting components, can actually be an asset for studying natural systems from temporal data. The central idea is that multidimensional time series enable system dynamics to be reconstructed from multiple viewpoints, and these viewpoints can be combined into a single model. We show how our approach, multiview embedding (MVE), can improve forecasts for simulated ecosystems and a mesocosm experiment. By leveraging complexity, MVE is particularly effective for overcoming the limitations of short and noisy time series and should be highly relevant for many areas of science."
 
 # Featured image thumbnail (optional)
 image_preview = ""
@@ -35,7 +35,8 @@ selected = true
 # projects = ["example-external-project"]
 
 # Links (optional).
-url_pdf = "http://www.int-res.com/articles/meps_oa/m572p269.pdf"
+url_pdf = "http://science.sciencemag.org/content/353/6302/922.full.pdf"
+url_source = "http://science.sciencemag.org/content/353/6302/922"
 # url_preprint = "http://eprints.soton.ac.uk/352095/1/Cushen-IMV2013.pdf"
 # url_code = "#"
 # url_dataset = "#"
@@ -58,8 +59,8 @@ highlight = true
 # Featured image
 # Place your image in the `static/img/` folder and reference its filename below, e.g. `image = "example.jpg"`.
 [header]
-image = "headers/bubbles-wide.jpg"
-caption = "My caption :smile:"
+image = ""
+caption = ""
 
 +++
 

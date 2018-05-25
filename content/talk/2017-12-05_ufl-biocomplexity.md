@@ -1,14 +1,14 @@
 +++
-date = 2017-01-01T00:00:00  # Schedule page publish date.
+date = "2017-11-01 00:00:00"  # Schedule page publish date.
 
-title = "Example Talk"
-time_start = 2030-06-01T13:00:00
-time_end = 2030-06-01T15:00:00
+title = "Data-driven modeling of biological systems"
+time_start = "2017-12-05 14:00:00"
+time_end = "2017-12-05 15:00:00"
 abstract = ""
 abstract_short = ""
-event = "Academic Theme Conference"
-event_url = "https://example.org"
-location = "London, United Kingdom"
+event = "University of Florida Biocomplexity Engineering Group Seminar"
+event_url = "https://abe.ufl.edu/faculty/carpena/seminars/seminarsF2017.shtml"
+location = "Gainesville, Florida, USA"
 
 # Is this a selected talk? (true/false)
 selected = false
@@ -17,7 +17,7 @@ selected = false
 #   Associate this talk with one or more of your projects.
 #   Simply enter the filename of your project file in `content/project/`.
 #   Otherwise, set `projects = []`.
-projects = ["deep-learning.md"]
+projects = []
 
 # Links (optional).
 url_pdf = ""
@@ -34,8 +34,8 @@ highlight = true
 # Featured image
 # Place your image in the `static/img/` folder and reference its filename below, e.g. `image = "example.jpg"`.
 [header]
-image = "headers/bubbles-wide.jpg"
-caption = "My caption :smile:"
+image = ""
+caption = ""
 
 +++
 

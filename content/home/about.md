@@ -10,31 +10,35 @@ weight = 5
 # List your academic interests.
 [interests]
   interests = [
-    "Artificial Intelligence",
-    "Computational Linguistics",
-    "Information Retrieval"
+    "Stability and Complexity", 
+    "Time Series Analysis",
+    "Ecological Forecasting",
+    "Dynamic Systems", 
+    "Causal Inference"
   ]
 
 # List your qualifications (such as academic degrees).
 [[education.courses]]
-  course = "PhD in Artificial Intelligence"
-  institution = "Stanford University"
-  year = 2012
+  course = "PhD in Oceanography"
+  institution = "University of California San Diego"
+  year = 2015
 
 [[education.courses]]
-  course = "MEng in Artificial Intelligence"
-  institution = "Massachusetts Institute of Technology"
-  year = 2009
+  course = "MA in Experimental Psychology"
+  institution = "University of California San Diego"
+  year = 2007
 
 [[education.courses]]
-  course = "BSc in Artificial Intelligence"
-  institution = "Massachusetts Institute of Technology"
-  year = 2008
+  course = "BSc in Computer Science"
+  institution = "California Institute of Technology"
+  year = 2006
  
 +++
 
 # Biography
 
-Lena Smith is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+I am a Postdoctoral Associate and Moore Data Fellow in the [Weecology Lab](weecology.org) at the University of Florida. My research focuses on using empirical data to understand how ecosystems persist and change over time.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate. 
+My research consists of two main components.
+1. I work on methods to analyze time series data and infer mechanisms and dynamical behavior.
+2. I apply these methods to data, mainly from ecosystems, to test hypotheses, infer causal relationships, and forecast future behavior.
