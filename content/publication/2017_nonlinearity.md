@@ -29,11 +29,11 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Time Series", "Dynamics", "Fisheries"]
+tags = ["Dynamics", "Fisheries", "Time Series"]
 
 # Links (optional).
-url_pdf = "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0171644"
-url_journal = ""
+url_pdf = "http://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0171644&type=printable"
+url_www = "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0171644"
 
 # Does the content use math formatting?
 math = true

@@ -10,7 +10,7 @@ publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
 publication = "In *Marine Ecology Progress Series*"
-publication_short = "In *Mar Ecol Prog Ser*"
+publication_short = "In *MEPS*"
 
 # Abstract and optional shortened version.
 abstract = ""
@@ -29,11 +29,11 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Time Series", "Dynamics"]
+tags = ["Dynamics", "Time Series"]
 
 # Links (optional).
 url_pdf = "http://www.int-res.com/articles/meps_oa/m572p269.pdf"
-url_journal = ""
+url_www = "https://www.int-res.com/abstracts/meps/v572/p269-274/"
 
 # Does the content use math formatting?
 math = true

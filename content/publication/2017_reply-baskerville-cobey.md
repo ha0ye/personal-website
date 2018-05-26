@@ -28,11 +28,11 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Time Series", "Causality", "Epidemiology"]
+tags = ["Causality", "Epidemiology", "Time Series"]
 
 # Links (optional).
 url_pdf = "http://www.pnas.org/content/early/2017/03/14/1700998114.full.pdf"
-url_journal = "http://www.pnas.org/content/early/2017/03/14/1700998114.short"
+url_www = "http://www.pnas.org/content/early/2017/03/14/1700998114"
 
 # Does the content use math formatting?
 math = true

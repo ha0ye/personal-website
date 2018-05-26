@@ -29,11 +29,11 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Stability", "Time Series"]
+tags = ["Dynamics", "Networks", "Time Series", "Stability"]
 
 # Links (optional).
 url_pdf = "https://www.nature.com/articles/nature25504.pdf"
-url_journal = "https://www.nature.com/articles/nature25504"
+url_www = "https://www.nature.com/articles/nature25504"
 
 # Does the content use math formatting?
 math = true

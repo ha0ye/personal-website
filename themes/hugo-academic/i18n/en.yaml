@@ -31,6 +31,9 @@
 - id: btn_pdf
   translation: PDF
 
+- id: btn_www
+  translation: WWW
+  
 - id: btn_cite
   translation: Cite
 

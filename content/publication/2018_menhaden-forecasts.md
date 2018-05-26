@@ -6,6 +6,14 @@ date = "2018-05-14"
 authors = ["Ethan Deyle", "Amy M Schueller", "Hao Ye", "Gerald M Pao", "George Sugihara"]
 
 # Publication type.
+# Legend:
+# 0 = Uncategorized
+# 1 = Conference proceedings
+# 2 = Journal
+# 3 = Work in progress
+# 4 = Technical report
+# 5 = Book
+# 6 = Book chapter
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
@@ -33,7 +41,19 @@ tags = ["Fisheries", "Forecasting", "Time Series"]
 
 # Links (optional).
 url_pdf = "https://onlinelibrary.wiley.com/doi/epdf/10.1111/faf.12287"
-url_journal = "https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12287"
+url_www = "https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12287"
+# url_preprint = ""
+# url_code = "#"
+# url_dataset = "#"
+# url_project = "#"
+# url_slides = "#"
+# url_video = "#"
+# url_poster = "#"
+# url_source = "#"
+
+# Custom links (optional).
+#   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
+# url_custom = [{name = "Custom Link", url = "http://example.org"}]
 
 # Does the content use math formatting?
 math = true

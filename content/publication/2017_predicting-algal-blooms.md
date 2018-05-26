@@ -29,11 +29,11 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Forecasting"]
+tags = ["Dynamics", "Forecasting"]
 
 # Links (optional).
 url_pdf = "http://onlinelibrary.wiley.com/doi/10.1002/ecy.1804/abstract"
-url_journal = ""
+url_www = "https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/ecy.1804"
 
 # Does the content use math formatting?
 math = true

@@ -36,23 +36,11 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Complexity"]
+tags = ["Complexity", "Dynamics", "Time Series"]
 
 # Links (optional).
 url_pdf = "http://science.sciencemag.org/content/353/6302/922.full.pdf"
-url_journal = "http://science.sciencemag.org/content/353/6302/922"
-# url_preprint = ""
-# url_code = "#"
-# url_dataset = "#"
-# url_project = "#"
-# url_slides = "#"
-# url_video = "#"
-# url_poster = "#"
-# url_source = "#"
-
-# Custom links (optional).
-#   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
-# url_custom = [{name = "Custom Link", url = "http://example.org"}]
+url_www = "http://science.sciencemag.org/content/353/6302/922"
 
 # Does the content use math formatting?
 math = true

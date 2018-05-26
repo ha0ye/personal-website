@@ -1,19 +1,19 @@
 +++
-title = "Convergent Cross Mapping: Theory and an Example"
-date = "2017-10-11"
+title = "Are exploited fish populations stable?"
+date = "2011-11-29"
 
-# Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Anastasios A. Tsonis", "Ethan R. Deyle", "Hao Ye", "George Sugihara"]
+# Authors.
+authors = ["George Sugihara", "John Beddington", "Chih-hao Hsieh", "Ethan Deyle", "Michael Fogarty", "Sarah M. Glaser", "Roger Hewitt", "Anne Hollowed", "Robert M. May", "Stephan B. Munch", "Charles Perretti", "Andrew A. Rosenberg", "Stuart Sandin", "Hao Ye"]
 
 # Publication type.
-publication_types = ["6"]
+publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *Advances in Nonlinear Geosciences*"
+publication = "In *Proceedings of the National Academy of Sciences USA*"
+publication_short = "In *PNAS*"
 
 # Abstract and optional shortened version.
 abstract = ""
-# abstract = "In this review paper we present the basic principles behind convergent cross mapping, a new causality detection method, as well as an example to demonstrate it."
 
 # Featured image thumbnail (optional)
 image_preview = ""
@@ -28,10 +28,11 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Causality", "Time Series"]
+tags = ["Fisheries", "Time Series", "Stability"]
 
 # Links (optional).
-url_www = "https://link.springer.com/chapter/10.1007/978-3-319-58895-7_27"
+url_pdf = "http://www.pnas.org/content/108/48/E1224.full.pdf"
+url_www = "http://www.pnas.org/content/108/48/E1224"
 
 # Does the content use math formatting?
 math = true
@@ -42,7 +43,8 @@ highlight = true
 # Featured image
 # Place your image in the `static/img/` folder and reference its filename below, e.g. `image = "example.jpg"`.
 [header]
-# image = ""
-# caption = ""
+# image = "headers/bubbles-wide.jpg"
+# caption = "My caption :smile:"
 
 +++
+

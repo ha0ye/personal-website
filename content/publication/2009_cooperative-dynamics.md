@@ -1,19 +1,19 @@
 +++
-title = "Convergent Cross Mapping: Theory and an Example"
-date = "2017-10-11"
+title = "Complex systems: Cooperative network dynamics"
+date = "2009-04-23"
 
-# Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Anastasios A. Tsonis", "Ethan R. Deyle", "Hao Ye", "George Sugihara"]
+# Authors.
+authors = ["George Sugihara", "Hao Ye"]
 
 # Publication type.
-publication_types = ["6"]
+publication_types = ["0"]
 
 # Publication name and optional abbreviated version.
-publication = "In *Advances in Nonlinear Geosciences*"
+publication = "In *Nature*"
+publication_short = "In *Nature*"
 
 # Abstract and optional shortened version.
 abstract = ""
-# abstract = "In this review paper we present the basic principles behind convergent cross mapping, a new causality detection method, as well as an example to demonstrate it."
 
 # Featured image thumbnail (optional)
 image_preview = ""
@@ -28,10 +28,11 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Causality", "Time Series"]
+tags = ["Complexity", "Dynamics", "Networks"]
 
 # Links (optional).
-url_www = "https://link.springer.com/chapter/10.1007/978-3-319-58895-7_27"
+url_pdf = "https://www.nature.com/articles/458979a.pdf"
+url_www = "https://www.nature.com/articles/458979a"
 
 # Does the content use math formatting?
 math = true
@@ -42,7 +43,8 @@ highlight = true
 # Featured image
 # Place your image in the `static/img/` folder and reference its filename below, e.g. `image = "example.jpg"`.
 [header]
-# image = ""
-# caption = ""
+# image = "headers/bubbles-wide.jpg"
+# caption = "My caption :smile:"
 
 +++
+

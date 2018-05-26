@@ -37,23 +37,11 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Causality", "Time Series"]
+tags = ["Causality", "Climate", "Time Series"]
 
 # Links (optional).
 url_pdf = "https://www.nature.com/articles/nclimate2568.pdf"
-url_journal = "https://www.nature.com/articles/nclimate2568"
-# url_preprint = ""
-# url_code = "#"
-# url_dataset = "#"
-# url_project = "#"
-# url_slides = "#"
-# url_video = "#"
-# url_poster = "#"
-# url_source = "#"
-
-# Custom links (optional).
-#   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
-# url_custom = [{name = "Custom Link", url = "http://example.org"}]
+url_www = "https://www.nature.com/articles/nclimate2568"
 
 # Does the content use math formatting?
 math = true
