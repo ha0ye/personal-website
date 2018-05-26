@@ -367,7 +367,7 @@ a[data-fancybox] img {
 }
 
 .section-heading p {
-  font-weight: 400;
+  font-weight: 300;
   font-size: 1.1rem;
   color: #b2b2b2;
 }
@@ -478,7 +478,7 @@ a[data-fancybox] img {
 
 #profile .portrait-title h3 {
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   color: #000000;
   margin: 0px 0 10px 0;
 }
@@ -1187,7 +1187,7 @@ nav#navbar-main li {
   display: block;
   padding: 3px 20px;
   clear: both;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.42857143;
   color: {{ .Get "menu_text" }};
   white-space: nowrap;
@@ -1289,7 +1289,7 @@ nav#navbar-main li {
     display: block;
     padding: 3px 20px;
     clear: both;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.42857143;
     color: {{ .Get "menu_text" }};
     white-space: nowrap;
