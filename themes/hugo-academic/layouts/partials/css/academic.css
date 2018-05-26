@@ -23,8 +23,8 @@
 html {
   font-family: '{{ .Get "body_font" }}', sans-serif;
   font-size: {{ .Get "font_size_small" }}px;
-  color: rgba(0,0,0,0.9);
-  line-height: 1.65;
+  color: #08040D;
+  line-height: 1.6;
 }
 @media screen and (min-width: 58em) {
   html {
@@ -85,10 +85,10 @@ ul, ol, dl {
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: '{{ .Get "heading_font" }}', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: .5rem;
   line-height: 1.25;
-  color: #1f393d;
+  color: #08040D;
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word; /* Ensures very long heading words do not overflow into content. */
 }
@@ -100,12 +100,12 @@ h2 {
   font-size: 1.5rem;
 }
 h3 {
-  font-weight: 700;
+  font-weight: 500;
   margin-top: 1.5rem;
   font-size: 1.25rem;
 }
 h4, h5, h6 {
-  font-weight: 700;
+  font-weight: 500;
   margin-top: 1rem;
   font-size: 1rem;
 }
@@ -114,12 +114,12 @@ a,
 h3.article-title a:hover {
   color: {{ .Get "primary" }};
   text-decoration: none;
-  transition: color 0.6s ease;
+  transition: color 0.2s ease;
 }
 
 a:hover,
 a:focus {
-  color: {{ .Get "primary" }};
+  color: {{ .Get "primary_light" }};
 }
 
 img,
@@ -170,13 +170,13 @@ pre,
 code {
   font-family: '{{ .Get "mono_font" }}', monospace;
   color: #c7254e;
-  background-color: #f9f2f4;
+  background-color: #f2fdff;
 }
 
 pre {
   margin: 0 0 1rem 0;
-  background-color: rgb(248, 248, 248); /* Match default highlight theme. */
-  border-color: rgb(248, 248, 248);
+  background-color: #f8f8f8; /* Match default highlight theme. */
+  border-color: #f8f8f8;
 }
 
 pre code {
@@ -471,15 +471,15 @@ a[data-fancybox] img {
 
 #profile .portrait-title h2 {
   font-size: 1.75em;
-  font-weight: 400;
+  font-weight: 500;
   color: #000000;
   margin: 20px 0 10px 0;
 }
 
 #profile .portrait-title h3 {
   font-size: 1rem;
-  font-weight: 300;
-  color: rgba(0,0,0, 1.0);
+  font-weight: 400;
+  color: #000000;
   margin: 0px 0 10px 0;
 }
 
@@ -532,7 +532,7 @@ ul.ul-edu li .description p.course {
 
 ul.ul-edu li .description p.institution {
   font-size: 0.75rem;
-  color: rgba(0,0,0,0.6);
+  color: #808080;
 }
 
 /*************************************************
@@ -723,7 +723,7 @@ article .article-metadata {
  **************************************************/
 
 .pub-icon {
-  color: rgba(0, 0, 0, 0.54);
+  color: #808080;
   font-size: 0.81em;
   padding-top: 6px;
 }
