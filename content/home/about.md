@@ -45,12 +45,4 @@ The focus of my research is on how natural ecosystems persist and change over ti
 * How do changes manifest across temporal, spatial, and taxonomic scales?
 * What are the best ways of constructing causal models to guide forecasts and management?
 
-I also believe that the academia needs systemic and institutional change in order to be more inclusive, accessible, and progressive. These 
-Work on promoting open and reproducible research practices, and instituting policies that actively promote change and de
-
-inneeds to be more accessible and inclusive, which requires systemic and institutional change. 
-Alignment of open science practices
-Mozilla  
-
-
-
+I also believe that academia needs systemic, institutional change to be more inclusive and accessible. I aim to achieve this through changing institutional policies, promoting open and reproducible science practices, improving student training and support, and deconstructing existing biases and prejudices.
