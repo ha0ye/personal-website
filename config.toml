@@ -3,7 +3,7 @@
 
 # The URL of your website.
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
-baseurl = "https://haoye.netlify.com/"
+baseurl = "https://haoye.us/"
 
 # Title of your site
 title = "Hao Ye"
@@ -31,7 +31,7 @@ hasCJKLanguage = false  # Set `true` for Chinese/Japanese/Korean languages.
 defaultContentLanguageInSubdir = false
 
 # Get last modified date for content from Git?
-enableGitInfo = false
+enableGitInfo = true
 
 [outputs]
   home = [ "HTML", "CSS", "RSS" ]
@@ -56,7 +56,7 @@ enableGitInfo = false
   # Your details.
   name = "Hao Ye"
   role = "Postdoctoral Associate and Moore Data Fellow"
-  field = "Quantitative Ecology"
+  field = "Computational Ecology"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
