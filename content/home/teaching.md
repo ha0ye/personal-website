@@ -15,11 +15,15 @@ weight = 60
 
 +++
 
-### Training
+### The Carpentries
 
-I am a certified instructor for [The Carpentries](https://carpentries.org/).
+I am a certified instructor for [The Carpentries](https://carpentries.org/) and have taught at and assisted with several workshops at both the University of Florida and the University of California San Diego.
 
-I have also completed "Teaching + Learning at the College Level", a course on evidence-based teaching practices taught by UCSD's Teaching + Learning Commons. (The course is now called ["Introduction to College Teaching"](https://commons.ucsd.edu/educators/future-faculty-programs/introduction-to-college-teaching.html).)
+In addition to teaching, I am also a board member for the [UF Carpentry Club](https://uf-carpentry.org/), which organizes workshops and other events at UF. In August 2018, we organized a series of talks, career panel, and mini-tutorials as part of [Research Bazaar at UF](https://uf-carpentry.github.io/resbaz2018/gainesville/).
+
+### Formal Training
+
+I have formal training in pedagogy from completing "Teaching + Learning at the College Level", a course on evidence-based teaching practices taught by UCSD's Teaching + Learning Commons. (The course is now called ["Introduction to College Teaching"](https://commons.ucsd.edu/educators/future-faculty-programs/introduction-to-college-teaching.html).)
 
 ### Experience
 
