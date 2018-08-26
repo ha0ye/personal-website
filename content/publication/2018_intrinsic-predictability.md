@@ -3,7 +3,7 @@ title = "The intrinsic predictability of ecological time series and its potentia
 date = "2018-06-19"
 
 # Authors.
-authors = ["Frank Pennekamp", "Alison Iles", "Joshua Garland", "Georgina Brennan", "Ulrich Brose", "Ursula Gaedke", "Ute Jacob", "Pavel Kratina", "Blake Matthews", "Stephan Munch", "Mark Novak", "Gian Marco Palamara", "Bjorn Rall", Benjamin Rosenbaum", "Andrea Tabi", "Colette Ward", "Richard Williams", "Hao Ye", "Owen Petchey"]
+authors = ["Frank Pennekamp", "Alison Iles", "Joshua Garland", "Georgina Brennan", "Ulrich Brose", "Ursula Gaedke", "Ute Jacob", "Pavel Kratina", "Blake Matthews", "Stephan Munch", "Mark Novak", "Gian Marco Palamara", "Bjorn Rall", "Benjamin Rosenbaum", "Andrea Tabi", "Colette Ward", "Richard Williams", "Hao Ye", "Owen Petchey"]
 
 # Publication type.
 # Legend:
