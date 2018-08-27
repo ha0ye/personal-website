@@ -34,7 +34,7 @@ filter_default = 0
 
  [[filter]]
    name = "Time Series"
-   tag = ".Time Series"
+   tag = ".Time-series"
 
  [[filter]]
    name = "Stability & Resilience"
