@@ -1,5 +1,5 @@
 +++
-title = "Predicting the Future in a Nonlinear World"
+title = "Predicting the future in a nonlinear world"
 date = "2015-12-01"
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
