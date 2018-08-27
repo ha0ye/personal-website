@@ -13,7 +13,7 @@ publication = "In *Nature*"
 publication_short = "In *Nature*"
 
 # Abstract and optional shortened version.
-abstract = ""
+abstract = "Nested, or hierarchically arranged, mutualisms allow ecosystems to support more species than they otherwise would. But in this and other contexts, the growth of such networks could carry a heavy price."
 
 # Featured image thumbnail (optional)
 image_preview = ""

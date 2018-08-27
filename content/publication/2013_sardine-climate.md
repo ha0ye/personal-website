@@ -21,8 +21,7 @@ publication = "In *Proceedings of the National Academy of Sciences USA*"
 publication_short = "In *PNAS*"
 
 # Abstract and optional shortened version.
-abstract = ""
-# abstract = "For many marine species and habitats, climate change and overfishing present a double threat. To manage marine resources effectively, it is necessary to adapt management to changes in the physical environment. Simple relationships between environmental conditions and fish abundance have long been used in both fisheries and fishery management. In many cases, however, physical, biological, and human variables feed back on each other. For these systems, associations between variables can change as the system evolves in time. This can obscure relationships between population dynamics and environmental variability, undermining our ability to forecast changes in populations tied to physical processes. Here we present a methodology for identifying physical forcing variables based on nonlinear forecasting and show how the method provides a predictive understanding of the influence of physical forcing on Pacific sardine."
+abstract = "For many marine species and habitats, climate change and overfishing present a double threat. To manage marine resources effectively, it is necessary to adapt management to changes in the physical environment. Simple relationships between environmental conditions and fish abundance have long been used in both fisheries and fishery management. In many cases, however, physical, biological, and human variables feed back on each other. For these systems, associations between variables can change as the system evolves in time. This can obscure relationships between population dynamics and environmental variability, undermining our ability to forecast changes in populations tied to physical processes. Here we present a methodology for identifying physical forcing variables based on nonlinear forecasting and show how the method provides a predictive understanding of the influence of physical forcing on Pacific sardine."
 
 # Featured image thumbnail (optional)
 image_preview = ""
@@ -33,11 +32,11 @@ selected = true
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
-# projects = ["example-external-project"]
+projects = ["Causality"]
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Causality", "Climate", "Fisheries", "Time Series"]
+tags = ["Causality", "Climate", "Fisheries", "Time Series", "Nonlinear Dynamics"]
 
 # Links (optional).
 url_pdf = "http://www.pnas.org/content/110/16/6430.full.pdf"

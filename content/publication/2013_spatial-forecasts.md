@@ -21,8 +21,7 @@ publication = "In *Fisheries Oceanography*"
 publication_short = "In *Fish Oceanogr*"
 
 # Abstract and optional shortened version.
-abstract = ""
-# abstract = "Spatial variability can confound accurate estimates of catch per unit effort (CPUE), especially in highly migratory species. The incorporation of spatial structure into fishery stock assessment models should ultimately improve forecasts of stock biomass. Here, we describe a nonlinear time series model for producing spatially explicit forecasts of CPUE that does not require ancillary environmental or demographic data, or specification of a model functional form. We demonstrate this method using spatially resolved (1° × 1° cells) CPUE time series of North Pacific albacore in the California Current System. The spatial model is highly significant (P < 0.00001) and outperforms two spatial null models. We then create a spatial forecast map for years beyond the range of data. Such approaches can guide spatial management of resources and provide a complement to more data‐intensive, highly parameterized population dynamics and ecosystem models currently in use."
+abstract = "Spatial variability can confound accurate estimates of catch per unit effort (CPUE), especially in highly migratory species. The incorporation of spatial structure into fishery stock assessment models should ultimately improve forecasts of stock biomass. Here, we describe a nonlinear time series model for producing spatially explicit forecasts of CPUE that does not require ancillary environmental or demographic data, or specification of a model functional form. We demonstrate this method using spatially resolved (1° × 1° cells) CPUE time series of North Pacific albacore in the California Current System. The spatial model is highly significant (P < 0.00001) and outperforms two spatial null models. We then create a spatial forecast map for years beyond the range of data. Such approaches can guide spatial management of resources and provide a complement to more data‐intensive, highly parameterized population dynamics and ecosystem models currently in use."
 
 # Featured image thumbnail (optional)
 image_preview = ""
@@ -33,7 +32,7 @@ selected = true
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
-# projects = ["example-external-project"]
+# projects = ["Forecasting"]
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.

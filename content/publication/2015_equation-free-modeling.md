@@ -33,11 +33,11 @@ selected = true
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
-# projects = ["example-external-project"]
+projects = ["Forecasting"]
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Fisheries", "Forecasting", "Time Series"]
+tags = ["Fisheries", "Forecasting", "Time Series", "Nonlinear Dynamics"]
 
 # Links (optional).
 url_pdf = "http://www.pnas.org/content/112/13/E1569.full.pdf"

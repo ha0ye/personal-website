@@ -12,8 +12,7 @@ publication_types = ["6"]
 publication = "In *Advances in Nonlinear Geosciences*"
 
 # Abstract and optional shortened version.
-abstract = ""
-# abstract = "In this review paper we present the basic principles behind convergent cross mapping, a new causality detection method, as well as an example to demonstrate it."
+abstract = "In this review paper we present the basic principles behind convergent cross mapping, a new causality detection method, as well as an example to demonstrate it."
 
 # Featured image thumbnail (optional)
 image_preview = ""

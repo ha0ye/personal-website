@@ -36,7 +36,7 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Dynamics", "Forecasting", "Time Series"]
+tags = ["Nonlinear Dynamics", "Forecasting", "Time Series"]
 
 # Links (optional).
 url_pdf = "http://www.calcofi.org/publications/calcofireports/v56/Vol56-Ye.web.88-91.pdf"

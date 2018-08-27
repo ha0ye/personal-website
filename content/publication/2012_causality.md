@@ -13,8 +13,7 @@ publication = "In *Science*"
 publication_short = "In *Science*"
 
 # Abstract and optional shortened version.
-abstract = ""
-# "Identifying causal networks is important for effective policy and management recommendations on climate, epidemiology, financial regulation, and much else. Here, we introduce a method, based on nonlinear state space reconstruction, that can distinguish causality from correlation. It extends to nonseparable weakly connected dynamic systems (cases not covered by the current Granger causality paradigm). The approach is illustrated both by simple models (where, in contrast to the real world, we know the underlying equations/relations and so can check the validity of our method) and by application to real ecological systems, including the controversial sardine-anchovy-temperature problem."
+abstract = "Identifying causal networks is important for effective policy and management recommendations on climate, epidemiology, financial regulation, and much else. Here, we introduce a method, based on nonlinear state space reconstruction, that can distinguish causality from correlation. It extends to nonseparable weakly connected dynamic systems (cases not covered by the current Granger causality paradigm). The approach is illustrated both by simple models (where, in contrast to the real world, we know the underlying equations/relations and so can check the validity of our method) and by application to real ecological systems, including the controversial sardine-anchovy-temperature problem."
 
 # Featured image thumbnail (optional)
 image_preview = ""
@@ -25,7 +24,7 @@ selected = true
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
-# projects = ["example-external-project"]
+projects = ["causality"]
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.

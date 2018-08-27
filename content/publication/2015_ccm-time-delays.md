@@ -21,8 +21,7 @@ publication = "In *Scientific Reports*"
 publication_short = "In *Sci Rep*"
 
 # Abstract and optional shortened version.
-abstract = ""
-# abstract = "An important problem across many scientific fields is the identification of causal effects from observational data alone. Recent methods (convergent cross mapping, CCM) have made substantial progress on this problem by applying the idea of nonlinear attractor reconstruction to time series data. Here, we expand upon the technique of CCM by explicitly considering time lags. Applying this extended method to representative examples (model simulations, a laboratory predator-prey experiment, temperature and greenhouse gas reconstructions from the Vostok ice core, and long-term ecological time series collected in the Southern California Bight), we demonstrate the ability to identify different time-delayed interactions, distinguish between synchrony induced by strong unidirectional-forcing and true bidirectional causality, and resolve transitive causal chains."
+abstract = "An important problem across many scientific fields is the identification of causal effects from observational data alone. Recent methods (convergent cross mapping, CCM) have made substantial progress on this problem by applying the idea of nonlinear attractor reconstruction to time series data. Here, we expand upon the technique of CCM by explicitly considering time lags. Applying this extended method to representative examples (model simulations, a laboratory predator-prey experiment, temperature and greenhouse gas reconstructions from the Vostok ice core, and long-term ecological time series collected in the Southern California Bight), we demonstrate the ability to identify different time-delayed interactions, distinguish between synchrony induced by strong unidirectional-forcing and true bidirectional causality, and resolve transitive causal chains."
 
 # Featured image thumbnail (optional)
 image_preview = ""
@@ -33,7 +32,7 @@ selected = true
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
 #   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
-# projects = ["example-external-project"]
+projects = ["Causality"]
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.

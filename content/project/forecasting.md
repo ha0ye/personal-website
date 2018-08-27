@@ -13,7 +13,7 @@ image_preview = "forecasting-preview.jpg"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`
-tags = ["Forecasting", "Time Series", "Fisheries", "Sunspots"]
+tags = ["Forecasting", "Time Series", "Fisheries", "Sunspots", "Nonlinear Dynamics", "Algal Blooms"]
 
 # Optional external URL for project (replaces project detail page).
 external_link = ""
@@ -37,6 +37,7 @@ Example papers:
 * [Glaser et al. 2013 "A nonlinear, low data requirement model for producing spatially explicit fishery forecasts"](/publication/2013_spatial-forecasts/)
 * [Ye et al. 2015 "Equation-free mechanistic ecosystem forecasting using empirical dynamic modeling"](/publication/2015_equation-free-modeling/)
 * [Ye et al. 2015 "Predicting the future in a bonlinear world"](/publication/2015_nonlinear-prediction/)
+* [Ye & Sugihara 2016 "Information leverage in interconnected ecosystems: Overcoming the curse of dimensionality"](/publication/2016_information-leverage/)
 * [McGowan et al. 2017 "Predicting coastal algal blooms in southern California"](/publication/2017_predicting-algal-blooms/)
 * [Deyle et al. 2018 "Ecosystem‐based forecasts of recruitment in two menhaden species"](/publication/2018_menhaden-forecasts/)
-* [Pennekamp et al. 2018 "The intrinsic predictability of ecological time series and its potential to guide forecasting"](publication/2018_intrinsic-predictability/)
+* [Pennekamp et al. 2018 "The intrinsic predictability of ecological time series and its potential to guide forecasting"](/publication/2018_intrinsic-predictability/)
