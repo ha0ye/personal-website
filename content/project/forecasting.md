@@ -31,6 +31,7 @@ caption = "Example forecasting of the sunspot cycle"
 A number of projects that I've worked on have used forecasting as a guide for model selection - where processes and mechanisms are inferred from the models with better forecast skill. Still other projects have focused solely on forecasting future states of systems as a singular goal.
 
 Example papers:
+
 * [Kilcik et al. 2009 "Nonlinear prediction of solar cycle 24"](/publication/2009_solar-cycle-prediction/)
 * [Glaser et al. 2011 "Detecting and forecasting complex nonlinear dynamics in spatially structured catch-per-unit-effort time series for North Pacific albacore (Thunnus alalunga)"](/publication/2011_spatial-forecasts/)
 * [Glaser et al. 2013 "A nonlinear, low data requirement model for producing spatially explicit fishery forecasts"](/publication/2013_spatial-forecasts/)
