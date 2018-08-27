@@ -37,7 +37,7 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Causality", "Time Series"]
+tags = ["Causality", "Time Series", "Software"]
 
 # Links (optional).
 url_pdf = "https://esajournals.onlinelibrary.wiley.com/doi/epdf/10.1890/14-1479.1"
