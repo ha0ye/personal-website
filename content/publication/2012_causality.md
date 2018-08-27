@@ -1,5 +1,5 @@
 +++
-title = "Detecting Causality in Complex Ecosystems"
+title = "Detecting causality in complex ecosystems"
 date = "2012-09-20"
 
 # Authors.

@@ -37,7 +37,7 @@ weight = 5
 
 # Biography
 
-Hi, I'm currently a Postdoctoral Associate and Moore Data Fellow in the [Weecology Lab](https://weecology.org) at the University of Florida.
+Hi, I'm currently a Postdoctoral Associate and Moore Data Fellow in the [Weecology Lab](https://www.weecology.org) at the University of Florida.
 
 The goal of my research is to understand how complex systems, specifically ecosystems, change over time. I develop new methods for analyzing time series and apply these methods to observational datasets in order to answer questions about what is occurring in the underlying systems.
 
