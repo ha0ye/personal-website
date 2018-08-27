@@ -32,6 +32,9 @@ A number of projects that I've worked on have used forecasting as a guide for mo
 
 Example papers:
 
+* a
+* b
+
 * [Kilcik et al. 2009 "Nonlinear prediction of solar cycle 24"](/publication/2009_solar-cycle-prediction/)
 * [Glaser et al. 2011 "Detecting and forecasting complex nonlinear dynamics in spatially structured catch-per-unit-effort time series for North Pacific albacore (Thunnus alalunga)"](/publication/2011_spatial-forecasts/)
 * [Glaser et al. 2013 "A nonlinear, low data requirement model for producing spatially explicit fishery forecasts"](/publication/2013_spatial-forecasts/)
