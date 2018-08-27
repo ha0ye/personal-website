@@ -28,7 +28,7 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Complexity", "Dynamics", "Networks"]
+tags = ["Complexity", "Networks"]
 
 # Links (optional).
 url_pdf = "https://www.nature.com/articles/458979a.pdf"

@@ -34,8 +34,16 @@ filter_default = 0
 
  [[filter]]
    name = "Time Series"
-   tag = ".Time-Series"
+   tag = ".Time Series"
 
+ [[filter]]
+   name = "Stability & Resilience"
+   tag = ".Stability"
+   
+ [[filter]]
+   name = "Forecasting"
+   tag = ".Forecasting"
+   
  [[filter]]
    name = "Software"
    tag = ".Software"
