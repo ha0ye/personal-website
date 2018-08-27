@@ -9,15 +9,14 @@
       {{ if $.Site.Params.gravatar }}
       <div class="portrait" style="background-image: url('https://s.gravatar.com/avatar/{{ md5 $.Site.Params.email }}?s=200');"></div>
       <meta itemprop="image" content="https://s.gravatar.com/avatar/{{ md5 $.Site.Params.email }}?s=200">
-      {{ else if $.Site.Params.avatar  }}
-      <div class="portrait" style="background-image: url('{{ (printf "/img/%s" $.Site.Params.avatar) | relURL }}');"></div>
+      {{ else if $.Site.Params.avatar }}
+      <div class="portrait" style="background-image: url('{{ (printf "img/%s" $.Site.Params.avatar) | relURL }}');"></div>
       <meta itemprop="image" content="{{ (printf "img/%s" $.Site.Params.avatar) | absURL }}">
       {{ end }}
 
       <div class="portrait-title">
         <h2 itemprop="name">{{ $.Site.Params.name }}</h2>
         {{ with $.Site.Params.role }}<h3 itemprop="jobTitle">{{ . }}</h3>{{ end }}
-        {{ with $.Site.Params.field }}<h3 itemprop="jobTitle">{{ . }}</h3>{{ end }}
 
         {{/* Support legacy `organization` option. */}}
         {{ if $.Site.Params.organization }}
