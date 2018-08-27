@@ -38,6 +38,6 @@ filter_default = 0
 
  [[filter]]
    name = "Software"
-   tag = ".software"
+   tag = ".Software"
 
 +++

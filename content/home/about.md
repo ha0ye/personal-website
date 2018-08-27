@@ -47,4 +47,4 @@ Some typical research questions are:
 * How do different processes interact to produce patterns across temporal, spatial, and taxonomic scales?
 * Can we build causal models of mechanisms to guide forecasting and management?
 
-I also believe that academia needs a cultural shift to be more welcoming, inclusive, and accessible. I aim to do this through changes to institutional policies, better student support and training, and understanding and deconstructing of existing biases and prejudices.
+I also believe that academia needs a cultural shift to be more welcoming, inclusive, and accessible; and that these aims overlap with support for open and reproducible research practices. To achieve these goals, I support changes to institutional policies, better student support and training, and work to better understand and deconstruct existing biases and prejudices.
