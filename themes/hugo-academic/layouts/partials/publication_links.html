@@ -11,6 +11,11 @@
   {{ i18n "btn_pdf" }}
 </a>
 {{ end }}
+{{ with $.Params.url_www }}
+<a class="btn btn-primary btn-outline{{ if $is_list }} btn-xs{{end}}" href="{{ . | absURL }}" target="_blank" rel="noopener">
+  {{ i18n "btn_www" }}
+</a>
+{{ end }}
 {{ $directory := "static/files/citations/" }}
 {{ $filename := printf "%s%s.bib" $directory $.File.TranslationBaseName }}
 {{ if fileExists $filename }}
@@ -31,7 +36,7 @@
 {{ end }}
 {{ if $.Params.projects }}
 {{ range $.Params.projects }}
-  {{ with ($.Site.GetPage (printf "project/%s" .)) }}
+  {{ with ($.Site.GetPage "page" "project" .) }}
   <a class="btn btn-primary btn-outline{{ if $is_list }} btn-xs{{end}}" href="{{ .Permalink }}">
     {{ i18n "btn_project" }}
   </a>
