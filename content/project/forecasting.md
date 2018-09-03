@@ -9,7 +9,7 @@ title = "Forecasting"
 summary = "Predicting the future state of ecosystems."
 
 # Optional image to display on homepage (relative to `static/img/` folder).
-image_preview = "forecasting-preview.jpg"
+image_preview = "forecasting-preview.gif"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`
@@ -23,7 +23,7 @@ math = false
 
 # Optional featured image (relative to `static/img/` folder).
 [header]
-image = "forecasting.jpg"
+image = "forecasting.png"
 caption = "Example forecasting of the sunspot cycle"
 
 +++
