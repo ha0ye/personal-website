@@ -2,7 +2,7 @@ setwd("~/projects/personal-website/figure code/")
 
 p <- two_ev_plot %>% add_regime_shift_highlight() + 
     guides(color = guide_legend("eigenvalue rank"))
-ggsave("../static/img/dynamic-stability.png", p, 
+ggsave(here::here("static/img/dynamic-stability.png"), p, 
        width = 12.8, height = 4, dpi = 100)
 
 p <- results$eigenvectors %>%
@@ -13,7 +13,7 @@ p <- results$eigenvectors %>%
           legend.key = element_rect(fill = "#BBBBCC")) + 
     scale_x_date(limits = as.Date(c("1997-01-01", "2015-05-01")), 
                  expand = c(0.01, 0))
-ggsave("../static/img/dynamic-stability.png", p, 
+ggsave(here::here("static/img/dynamic-stability.png"), p, 
        width = 12.8, height = 4, dpi = 100)
 
 library(gganimate)
@@ -35,3 +35,4 @@ p <- ggplot(df, aes(x = x, y = y)) +
     transition_time(t) + 
     ease_aes("sine-in-out")
 animate(p, nframes = length(b), fps = 2)
+anim_save(here::here("static/img/dynamic-stability-preview.gif"))
