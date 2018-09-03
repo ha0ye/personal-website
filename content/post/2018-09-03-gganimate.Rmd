@@ -1,0 +1,187 @@
+---
+title: "Making gifs in R with `gganimate`"
+author: "Hao Ye"
+date: 2018-09-03
+categories: ["R"]
+tags: ["R Markdown", "ggplot", "gganimate", "forecasting"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+# Introduction
+
+Since I'm writing R code to make certain figures for this website, I thought I could go ahead and annotate some of it in R markdown to serve as blog posts.
+
+# Package Setup
+
+```{r}
+library(tidyverse)
+library(rEDM)
+library(png)
+library(gganimate) # devtools::install_github("thomasp85/gganimate")
+
+# some packages that are installed, but which we'll reference directly
+# library(portalr) # devtools::install_github("weecology/portalr")
+# library(forecast)
+# library(here)
+```
+
+# Data
+
+First, we want to load up the data. Luckily the [portalr](https://github.com/weecology/portalr) package contains all we need to download and load up the rodent abundance time series we want.
+
+```{r}
+raw_dat <- portalr::abundance(shape = "flat", # return data in long-form
+                          time = "all",   # return time in all formats
+                          clean = FALSE)  # include data that hasn't been QC'd
+
+str(raw_dat)
+```
+
+Next, we want to do some initial processing of the data. Here are the steps:
+
+1. filter for just the *Dipodomys merriami* (species code = `"DM"`)
+2. linearly interpolate the dates and abundances for missing censuses (which are nearly-monthly)
+3. re-format the columns correctly
+
+```{r}
+dat <- raw_dat %>%
+    filter(species == "DM") %>%
+    select(-species, -period) %>%
+    complete(newmoonnumber = full_seq(newmoonnumber, 1), fill = list(NA)) %>%
+    mutate_at(vars(-newmoonnumber), forecast::na.interp) %>%
+    mutate(censusdate = as.Date(as.numeric(censusdate), origin = "1970-01-01"), 
+           abundance = as.numeric(abundance))
+
+str(dat)
+```
+
+Here's an initial plot of the abundance:
+
+```{r, fig.cap = "DM abundance through time"}
+ggplot(dat, 
+       aes(x = censusdate, y = abundance)) + 
+    geom_line() + 
+    theme_bw(base_size = 20, base_line_size = 1)
+```
+
+# Forecasting
+
+For our next step, we're going to use the functions in `rEDM` to fit some simple time series models to the abundance of DM through time using simple lags. We'll go through some steps to determine the values for the hyper-parameters, `E`, and `theta`.
+
+First, using `simplex()` and picking the value of `E` based on the best fit.
+```{r}
+dm_count <- dat$abundance # pull out just the numeric vector
+simplex_out <- simplex(dm_count, E = 1:24, silent = TRUE)
+best_E <- simplex_out$E[which.min(simplex_out$rmse)]
+```
+
+Next, using `s_map()` with `E = ` `r best_E` and picking the value of `theta` based on the best fit.
+```{r}
+smap_out <- s_map(dm_count, E = best_E, silent = TRUE)
+best_theta <- smap_out$theta[which.min(smap_out$rmse)]
+```
+
+Finally, re-running the S-map model again with `E = ` `r best_E` and `theta = ` `r best_theta` to get a one-step ahead forecast for the future.
+
+```{r}
+out <- s_map(c(dm_count, NA), E = best_E, theta = best_theta, stats_only = FALSE)
+forecast <- tail(out$model_output[[1]], 2)[1,] # get second-to-last row of model_output
+```
+
+# Generate data to plot
+
+There are a few things we want to eventually plot, so we'll need to construct the data appropriately.
+
+First, get the last values from the original data, and append the forecast. Here, we want to capture the uncertainty, so compute the standard-deviation as the square-root of the estimated variance.
+```{r}
+to_plot <- tail(dat)
+to_plot$sd <- 0
+
+to_plot <- rbind(to_plot, 
+                 data.frame(newmoonnumber = max(to_plot$newmoonnumber) + 1, 
+                            censusdate = max(to_plot$censusdate) + 29, 
+                            abundance = forecast$pred, 
+                            sd = sqrt(forecast$pred_var)))
+
+```
+
+Next, generate a sample of forecasts from the distribution, and create a data.frame that includes each forecast as a line from the last observation to the forecast.
+```{r}
+set.seed(123)
+num_forecasts <- 20
+forecast_dist <- rnorm(num_forecasts, 
+                       mean = forecast$pred, sd = sqrt(forecast$pred_var))
+
+forecast_df <- map_dfr(seq(num_forecasts), function(idx) {
+    temp <- to_plot # copy to_plot
+    temp$abundance[NROW(temp)] <- forecast_dist[idx]
+    temp$idx <- idx
+    return(tail(temp, 2))
+})
+```
+
+Finally, read in a silhouette picture of the rodent in question. We downloaded the appropriate image from the [PortalPredictions repo](https://github.com/weecology/portalPredictions/tree/master/docs/rodent_pictures/Rodent_silhouettes), and added transparency and resized accordingly.
+
+```{r}
+dm_image <- readPNG(here::here("static/img/dipodomys_merriami.png"))
+```
+
+# Figure
+
+Ok, so we can put this all together now into a single figure.
+
+Because of the background image, we'll want to do pre-compute the plot limits and use those to position the image to ensure that it's sized correctly.
+
+```{r}
+xlims <- range(to_plot$censusdate)
+ylims <- c(0, 60)
+```
+
+We'll use ggplot to assemble the figure, with a line for each forecast, adding a `geom_ribbon` for the +/- 2 SD for forecasts, a plain `geom_line` for the observations, and the rodent image as a background.
+
+```{r}
+p <- ggplot(forecast_df, 
+       aes(x = censusdate, y = abundance)) + 
+    
+    # plot boundaries
+    coord_cartesian(xlim = xlims, ylim = ylims) + 
+    
+    # background image
+    annotation_raster(dm_image * 0.3,
+                      xmin = min(xlims),
+                      xmax = max(xlims),
+                      ymin = 9.5,
+                      ymax = 47, interpolate = TRUE) +
+    
+    # forecasts
+    geom_line(size = 2, color = "blue") + 
+    
+    # observations (exclude last point, which is the forecast)
+    geom_line(size = 2, data = to_plot[-NROW(to_plot), ]) + 
+    
+    # uncertainty area
+    geom_ribbon(aes(ymin = abundance - 2 * sd, 
+                    ymax = abundance + 2 * sd), 
+                data = to_plot, fill = "#BBBBFF", alpha = 0.5) + 
+    
+    # theming
+    theme_bw(base_size = 20, base_line_size = 1) + 
+    labs(x = "", y = "DM Abundance")
+```
+
+To animate, we'll use `animate()`, with some arguments for how to change each frame and saving the output as a gif.
+
+```{r}
+animate(p + transition_time(idx))
+anim_save(here::here("static/img/forecasting-preview.gif"))
+
+```
+
+
+
+
+
+
