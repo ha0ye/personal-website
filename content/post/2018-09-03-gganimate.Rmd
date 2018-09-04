@@ -3,7 +3,7 @@ title: "Making gifs in R with `gganimate`"
 author: "Hao Ye"
 date: 2018-09-03
 categories: ["R"]
-tags: ["R Markdown", "ggplot", "gganimate", "forecasting"]
+tags: ["R Markdown", "ggplot", "gganimate", "Forecasting"]
 ---
 
 ```{r setup, include=FALSE}
