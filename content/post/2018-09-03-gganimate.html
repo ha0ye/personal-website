@@ -3,7 +3,7 @@ title: "Making gifs in R with `gganimate`"
 author: "Hao Ye"
 date: 2018-09-03
 categories: ["R"]
-tags: ["R Markdown", "ggplot", "gganimate", "forecasting"]
+tags: ["R Markdown", "ggplot", "gganimate", "Forecasting"]
 ---
 
 
@@ -158,7 +158,7 @@ ylims &lt;- c(0, 60)</code></pre>
     theme_bw(base_size = 20, base_line_size = 1) + 
     labs(x = &quot;&quot;, y = &quot;DM Abundance&quot;)</code></pre>
 <p>To animate, we’ll use <code>animate()</code>, with some arguments for how to change each frame and saving the output as a gif.</p>
-<pre class="r"><code>animate(p + transition_time(idx))</code></pre>
+<pre class="r"><code>animate(p + transition_time(idx), width = 400, height = 400)</code></pre>
 <p><img src="/post/2018-09-03-gganimate_files/figure-html/unnamed-chunk-13-1.gif" /><!-- --></p>
 <pre class="r"><code>anim_save(here::here(&quot;static/img/forecasting-preview.gif&quot;))</code></pre>
 </div>
