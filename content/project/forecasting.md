@@ -28,6 +28,12 @@ caption = "Example forecasting of the sunspot cycle"
 
 +++
 
-Forecasting is, in essence, predicting the future. When developing forecast models in ecology, the models are typically validated by performance on past observations. Sometimes forecasting is the primary goal, and our objective is to come up with the most plausible / reliable model. Othertimes we may be interested in understanding particular aspects of the system (e.g. is temperature a factor for fish populations?), with forecast skill used as a metric to answer the question (e.g. do the models that include temperature produce better forecasts than models that do not?).
+Why is forecasting in ecology of interest? In some cases, advance knowledge about events (e.g. algal blooms) can be useful for responses or interventions, in some cases predicting population changes (e.g. of fish) is a critical component of management for sustainability.
 
-For a list of related papers, click on the ["Forecasting" tag](/tags/forecasting/).
+More broadly, however, forecasting is a way of validating our models by testing predictions against observations. Importantly, while there are many studies about different mechanisms in ecology that may produce stable or unstable systems, much remains unclear about how natural ecosystems operate, especially in response to climate change.
+
+Some related papers:
+
+* How much is the level of predictability of ecological time series attributable to data quality, modeling, and/or the intrinsic stochasticity of the underlying system? [Pennekamp et al. (preprint) "The intrinsic predictability of ecological time series and its potential to guide forecasting"](/publication/2018_intrinsic-predictability/)
+* Predicting algal blooms using models that incorporate biology and stochastic physical drivers. [McGowan et al. 2017 "Predicting coastal algal blooms in southern California"](/publication/2017_predicting-algal-blooms/)
+* How much ecological mechanism needs to be explicitly written out in equations to forecast? (not very much)[Ye et al. 2015 "Equation-free mechanistic ecosystem forecasting using empirical dynamic modeling"](/publication/2015_equation-free-modeling/)
