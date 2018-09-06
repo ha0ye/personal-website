@@ -75,7 +75,7 @@ p <- ggplot(to_plot,
     labs(x = "", y = "DM Abundance") + 
     guides(color = guide_legend(override.aes = list(fill = c(NA, "#BBBBFF"))))
 
-animate(p + transition_reveal(type, frame), 
+animate(p + transition_reveal(type, frame), fps = 20, 
         nframes = max(to_plot$frame), width = 1280, height = 400)
 
 anim_save(here::here("static/img/forecasting.gif"))

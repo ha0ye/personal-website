@@ -9,7 +9,7 @@ title = "rEDM"
 summary = "R package for empirical dynamic modeling"
 
 # Optional image to display on homepage (relative to `static/img/` folder).
-image_preview = "redm-preview.jpg"
+image_preview = "redm-preview.png"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`
