@@ -9,7 +9,7 @@ title = "Empirical Dynamic Modeling"
 summary = "Inferring system dynamics from time series"
 
 # Optional image to display on homepage (relative to `static/img/` folder).
-image_preview = "empirical-dynamic-modeling-preview.jpg"
+image_preview = "edm-preview.gif"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`

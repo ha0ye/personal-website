@@ -174,7 +174,7 @@ p <- ggplot(forecast_df,
 
 To animate, we'll use `animate()`, with some arguments for how to change each frame and saving the output as a gif.
 
-```{r}
+```{r, results = "hold"}
 animate(p + transition_time(idx), width = 400, height = 400)
 anim_save(here::here("static/img/forecasting-preview.gif"))
 

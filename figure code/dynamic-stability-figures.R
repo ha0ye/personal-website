@@ -1,9 +1,15 @@
-setwd("~/projects/personal-website/figure code/")
+library(tidyverse)
+library(lubridate)
+library(rEDM)
+library(parallel)
 
-p <- two_ev_plot %>% add_regime_shift_highlight() + 
-    guides(color = guide_legend("eigenvalue rank"))
-ggsave(here::here("static/img/dynamic-stability.png"), p, 
-       width = 12.8, height = 4, dpi = 100)
+# devtools::install_github("weecology/portalr")
+# devtools::install_github("weecology/LDATS")
+
+source("~/projects/portal-DS/R/dynamic_stability_functions.R")
+source("~/projects/portal-DS/R/plotting_functions.R")
+
+results <- readRDS("~/projects/portal-DS/output/portal_ds_results_50.RDS")
 
 p <- results$eigenvectors %>%
     plot_eigenvectors() %>% 
@@ -20,19 +26,19 @@ library(gganimate)
 
 lambda <- na.omit(map_dbl(results$eigenvalues, function(v) {max(abs(v))}))
 a <- log(lambda)[52:148]
-b <- spline(a)$y[1:10]
+b <- spline(a)$y
 
 x <- seq(from = -1, to = 1, length.out = 400)
 df <- expand.grid(x = x, t = seq(b)) %>%
     mutate(y = x^2 * b[t])
 
 p <- ggplot(df, aes(x = x, y = y)) + 
-    geom_line(size = 1) + 
-    geom_point(data = data.frame(x = 0, y = 0.003), color = "red", size = 5) +
+    geom_line(size = 2) + 
+    geom_point(data = data.frame(x = 0, y = 0.003), color = "red", size = 15) +
     scale_y_continuous(limits = c(-0.05, 0.02)) + 
     labs(x = "", y = "") + 
     theme_nothing() + 
-    transition_time(t) + 
-    ease_aes("sine-in-out")
-animate(p, nframes = length(b), fps = 2)
+    theme(panel.grid.major = element_line(color = "#AAAAAA", size = 1))
+animate(p + transition_time(t), nframes = length(b), fps = 4, 
+        renderer = gifski_renderer(width = 400, height = 400))
 anim_save(here::here("static/img/dynamic-stability-preview.gif"))
