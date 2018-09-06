@@ -24,7 +24,7 @@ math = false
 # Optional featured image (relative to `static/img/` folder).
 [header]
 image = "edm.gif"
-caption = "Projection of the Lorenz Attractor to the z-axis forms a time series"
+caption = "Projection of the Lorenz Attractor to form a time series"
 
 +++
 
@@ -37,4 +37,4 @@ The approach relies on the theory of attractor reconstruction (also referred to 
 For the R package for empirical dynamic modeling, check out [rEDM](https://github.com/ha0ye/rEDM).
 
 For a short video introduction, check out the embedded playlist from youtube (~6 minutes):
-[![EDM example image](https://img.youtube.com/vi/8DikuwwPWsY/0.jpg)](https://www.youtube.com/watch?v=8DikuwwPWsY&list=PL-SSmlAMhY3bnogGTe2tf7hpWpl508pZZ "Empirical Dynamic Modeling")
+{{< youtube 8DikuwwPWsY&list=PL-SSmlAMhY3bnogGTe2tf7hpWpl508pZZ >}}

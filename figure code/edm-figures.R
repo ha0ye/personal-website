@@ -151,7 +151,7 @@ p <- ggplot(att_plot,
                  color = "red", size = 1.5) + 
     geom_segment(aes(x = 1 + margin, xend = 1 + margin + width, y = 0, yend = 0), 
                  color = "red", size = 1.5) + 
-    annotate("text", x = width/2 + 1 + margin, y = -0.05, label = "Time", 
+    annotate("text", x = 1 + 1 + margin, y = -0.05, label = "Time", 
              color = "red", vjust = 1, size = 8) + 
     annotate("text", x = 1 + margin, y = 1.05, label = "Z", 
              color = "red", vjust = 0, size = 8) +
