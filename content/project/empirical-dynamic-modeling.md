@@ -36,5 +36,7 @@ The approach relies on the theory of attractor reconstruction (also referred to 
 
 For the R package for empirical dynamic modeling, check out [rEDM](https://github.com/ha0ye/rEDM).
 
-For a short video introduction, check out the embedded playlist from youtube (~6 minutes):
-{{< youtube PL-SSmlAMhY3bnogGTe2tf7hpWpl508pZZ >}}
+For a short video introduction, check out the following youtube playlist (~6 minutes total):
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/videoseries\?list=PL-SSmlAMhY3bnogGTe2tf7hpWpl508pZZ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
