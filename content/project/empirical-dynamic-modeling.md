@@ -23,13 +23,18 @@ math = false
 
 # Optional featured image (relative to `static/img/` folder).
 [header]
-image = "empirical-dynamic-modeling.jpg"
-caption = ""
+image = "edm.gif"
+caption = "Projection of the Lorenz Attractor to the z-axis forms a time series"
 
 +++
 
 Empirical dynamic modeling (EDM) is an approach for understanding the inherent dynamics (i.e. rules, processes, mechanisms) that underlie time series observations.
 
+For example, in the graphic above, the time series is formed from the observation of variable $z$ of the Lorenz Attractor. More generally, time series can be more complex projections from the underlying dynamic system. EDM describes a way to recover information about the system from the time series.
+
 The approach relies on the theory of attractor reconstruction (also referred to as "state-space reconstruction" or "time-delay embedding") to transform time series into approximations of the original dynamic system that the time series are observations of. This has applications for [forecasting](/project/forecasting/), [causal inference](/project/causality/), and more.
 
-You can check out our R package for empirical dynamic modeling, [rEDM](https://github.com/ha0ye/rEDM), as well any number of papers describing different uses for EDM or applications for specific case studies.
+For the R package for empirical dynamic modeling, check out [rEDM](https://github.com/ha0ye/rEDM).
+
+For a short video introduction, check out the embedded playlist from youtube (~6 minutes):
+[![EDM example image](https://img.youtube.com/vi/8DikuwwPWsY/0.jpg)](https://www.youtube.com/watch?v=8DikuwwPWsY&list=PL-SSmlAMhY3bnogGTe2tf7hpWpl508pZZ "Empirical Dynamic Modeling")
