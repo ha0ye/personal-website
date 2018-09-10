@@ -24,7 +24,7 @@ math = false
 # Optional featured image (relative to `static/img/` folder).
 [header]
 image = "forecasting.gif"
-caption = "Example one-month ahead forecasts of DM abundance at Portal"
+caption = "One-month ahead forecasts of *Dipodomys merriami* abundance at Portal"
 
 +++
 

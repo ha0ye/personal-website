@@ -9,7 +9,7 @@ title = "Causal inference"
 summary = "Identifying causal interactions among time series."
 
 # Optional image to display on homepage (relative to `static/img/` folder).
-image_preview = "causality-preview.jpg"
+image_preview = "causality-preview.gif"
 
 # Tags: can be used for filtering projects.
 # Example: `tags = ["machine-learning", "deep-learning"]`
@@ -23,11 +23,16 @@ math = false
 
 # Optional featured image (relative to `static/img/` folder).
 [header]
-image = "causality.jpg"
+image = "causality.gif"
 caption = ""
 
 +++
 
-Strict identification of causal interactions from observational data alone is impossible. However, it is possible to make inference on potential interactions among time series, using methods that go beyond mere correlation. [Empirical Dynamic Modeling](/project/empirical-dynamic-modeling/) uses the approach of attractor reconstruction to address this problem: time series are re-envisioned as projections of a dynamical system, and causality is inferred when there is evidence that two time series belong to the same dynamical system.
+Under most definitions of "causality", strict identification of causal interactions from observational data alone is impossible. However, it is possible to infer potential interactions among time series. Specifically, in dynamical systems, where time series are observations of the higher-dimensional behavior, methods from [empirical Dynamic Modeling](/project/empirical-dynamic-modeling/) can be adapted to test whether two time series share information.
 
-We presented this idea originally in [Sugihara et al. 2012](/publication/2012_causality/). Later papers looked at the problem of combining data from replicate observations (see [Clark et al. 2015](/publication/2015_spatial-ccm/)) and expanding on the method to quantify time delays in causal effects (see [van Nes et al. 2015](/publication/2015_causality-climate-change/) and [Ye et al. 2015](/publication/2015_ccm-time-delays/)).
+The essential idea is illustrated above. A causal interaction between $x$ and $z$ is inferred if there is shared dynamical information in the two time series. This is tested for by examining whether the attractor reconstructions of $x$ and $z$ are different representations of the same dynamics.
+
+We described this idea initially in [Sugihara et al. 2012](/publication/2012_causality/). Later papers looked at the problem of combining data from replicate observations (see [Clark et al. 2015](/publication/2015_spatial-ccm/)) and expanding on the method to quantify time delays in causal effects (see [van Nes et al. 2015](/publication/2015_causality-climate-change/) and [Ye et al. 2015](/publication/2015_ccm-time-delays/)).
+
+For a short video introduction, check out the following youtube video (part 3 of the longer playlist on EDM):
+{{< youtube iSttQwb-_5Y >}}
