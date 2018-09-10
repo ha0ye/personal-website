@@ -35,7 +35,7 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Complexity", "Nonlinear Dynamics", "Time Series"]
+tags = ["Complexity", "Dynamics", "Time Series"]
 
 # Links (optional).
 url_pdf = "http://science.sciencemag.org/content/353/6302/922.full.pdf"

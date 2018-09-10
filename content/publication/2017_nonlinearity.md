@@ -28,7 +28,7 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Nonlinear Dynamics", "Fisheries", "Time Series"]
+tags = ["Nonlinear Dynamics", "Fisheries", "Time Series", "Dynamics"]
 
 # Links (optional).
 url_pdf = "http://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0171644&type=printable"

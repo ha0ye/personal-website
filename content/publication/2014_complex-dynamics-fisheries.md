@@ -36,7 +36,7 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Complexity", "Nonlinear Dynamics", "Fisheries", "Time Series"]
+tags = ["Complexity", "Nonlinear Dynamics", "Fisheries", "Time Series", "Dynamics"]
 
 # Links (optional).
 url_pdf = "https://onlinelibrary.wiley.com/doi/epdf/10.1111/faf.12037"

@@ -36,7 +36,7 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Nonlinear Dynamics", "Forecasting", "Time Series"]
+tags = ["Nonlinear Dynamics", "Forecasting", "Time Series", "Dynamics"]
 
 # Links (optional).
 url_pdf = "https://www.biorxiv.org/content/early/2018/06/19/350017.full.pdf"

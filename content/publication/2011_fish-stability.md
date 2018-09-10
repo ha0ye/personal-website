@@ -28,7 +28,7 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Fisheries", "Time Series", "Stability", "Nonlinear Dynamics"]
+tags = ["Fisheries", "Time Series", "Stability", "Nonlinear Dynamics", "Dynamics"]
 
 # Links (optional).
 url_pdf = "http://www.pnas.org/content/108/48/E1224.full.pdf"

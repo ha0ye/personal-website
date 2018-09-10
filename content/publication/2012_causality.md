@@ -28,7 +28,7 @@ selected = true
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Causality", "Time Series"]
+tags = ["Causality", "Time Series", "Dynamics"]
 
 # Links (optional).
 url_pdf = "http://science.sciencemag.org/content/early/2012/09/19/science.1227079/tab-pdf"
