@@ -4,6 +4,9 @@ author: "Hao Ye"
 date: 2018-09-03
 categories: ["R"]
 tags: ["R Markdown", "ggplot", "gganimate", "Forecasting"]
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}

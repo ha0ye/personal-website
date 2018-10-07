@@ -37,14 +37,15 @@ weight = 5
 
 # Biography
 
-Hi, I'm currently a Postdoctoral Associate and Moore Data Fellow in the [Weecology Lab](https://www.weecology.org) at the University of Florida.
+I'm a Postdoctoral Associate and Moore Data Fellow in the [Weecology Lab](https://www.weecology.org) at the University of Florida.
 
 The goal of my research is to understand how complex systems, specifically ecosystems, change over time. I develop new methods for analyzing time series and apply these methods to observational datasets in order to answer questions about what is occurring in the underlying systems.
 
 Some typical research questions are:
 
-* What is the speed and form of ecosystem change? How well can we infer it from observations?
+* What components of ecosystems are changing and how fast?
 * How do different processes interact to produce patterns across temporal, spatial, and taxonomic scales?
-* Can we build causal models of mechanisms to guide forecasting and management?
+* What ecological properties are predictable and how well?
+* How do we best build causal models of mechanisms to guide forecasting and management?
 
 I also believe that academia needs a cultural shift to be more welcoming, inclusive, and accessible; and that these aims overlap with support for open and reproducible research practices. To achieve these goals, I support changes to institutional policies, better student support and training, and work to better understand and deconstruct existing biases and prejudices.

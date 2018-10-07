@@ -1,0 +1,202 @@
+---
+title: "Guide for Using an R Package for Reproducible Research"
+author: "Hao Ye"
+date: 2018-10-06
+categories: ["R"]
+tags: ["R Markdown", "usethis", "rrtools", "package", "reproducible research"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+# Motivation
+
+I've been wondering about the best way to organize (reproducible) research projects in R for a while now. I figured this might be a good spot to write up some thoughts.
+
+## What I used to do
+
+Initially my projects would consist of just a few R files that separate out functions from a main script that calls the functions.
+
+```{r, eval = FALSE}
+# main.R
+library(XX)
+
+source("functions.R")
+
+if(FALSE)
+{
+    clean_raw_data()
+    run_analysis()
+    make_figure_1()
+    make_figure_2("figure_2.pdf")
+}
+```
+
+This does a couple of things:
+
+1. I write code to do separate components of the analysis, then once I've tested it to see that it works, I can wrap it up in a function and hide most of the code away.
+2. Wrapping the calls inside an `if(FALSE)` block allows me to step through one function at a time in RStudio, or source the entire script to load dependencies and allow me to write new code with minimal effort.
+3. I wrap a lot of things like filenames and parameter values into the default arguments for functions. This allows me to call them plainly and have them work for the generic case, and also allows me to re-use the code for variations on the analysis or different data. In the case of figures, I usually have a default `filename = NULL`, which switches from plotting to the "Plots" window and plotting to a file.
+
+For the most part this works pretty well, I can organize my data files and figure files into subfolders in an RStudio project, and put the whole thing in GitHub. Then anyone who wants to use any of the functions can source the R scripts pretty easily.
+
+## Why use an R package?
+
+So then, why format a project as an R package? I see a few advantages:
+
+1. It is a consistent way of organizing a project that is also familiar for people used to writing or navigating R packages.
+2. It clearly defines dependencies in one central location, which simplifies the workflow when writing multiple analyses (where one would need to load up all packages and defined functions).
+3. It is easier for anyone else to re-use components of the project. Sharing the project on GitHub, allows anyone to use `devtools::install_github()` to install dependencies, and enable loading of all the functions and datasets using `library()`. This also includes extensions or re-use by oneself.
+4. It lowers the barrier to good practices, like testing using the `testthat` framework.
+5. If the code is methodological, conversion to a more broadly available R package on CRAN is much simpler.
+
+# How-to Guide
+
+## Requirements
+
+First, this assumes you have some familiarity with using R packages, RStudio projects, and so forth. If you're just getting started with R, [https://whattheyforgot.org/](https://whattheyforgot.org/) is a great explanation on how to set up your workflow.
+
+What this assumes:
+1. You have RStudio installed. I strongly recommend checking some options to always [start with an empty workspace](https://whattheyforgot.org/save-source.html#always-start-r-with-a-blank-slate).
+2. You have git installed. Here are some nice installation  [instructions](http://happygitwithr.com/install-git.html).
+
+## Tutorial Setup
+
+1. Install the `devtools` package from CRAN:
+```{r, eval = FALSE}
+install.packages("devtools")
+```
+
+2. Install the `rrtools` package from GitHub:
+```{r, eval = FALSE}
+devtools::install_github("benmarwick/rrtools")
+```
+
+3. Create a new project:
+```{r, eval = FALSE}
+# I have a `projects` folder within my home directory where I store projects.
+# We're going to call this project "demo". Note that there are restrictions on
+# project names (letters, numbers, and periods only), and the folder name is set
+# to match the project name.
+rrtools::use_compendium("~/projects/demo")
+```
+
+This will generate a bunch of files, and then re-open RStudio with the new project. All the subsequent commands are run from within that project.
+
+4. Use the MIT license:
+```{r, eval = FALSE}
+# Use your name or organization name in place of "Hao Ye" (this will be the 
+# entity to which copyright is assigned)
+usethis::use_mit_license(name = "Hao Ye")
+```
+
+5. Modify the `DESCRIPTION` file:
+```
+Package: demo
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "First",
+           family = "Last",
+           role = c("aut", "cre"),
+           email = "first.last@example.com")
+Description: What the package does (one paragraph)
+License: MIT + file LICENSE
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true
+```
+
+6. Enable Git and make a first commit:
+```{r, eval = FALSE}
+usethis::use_git()
+```
+
+This will make an initial git commit, and then restart RStudio with the git pane enabled.
+
+7. Enable `roxygen` for documentation:
+```{r, eval = FALSE}
+usethis::use_roxygen_md()
+```
+
+8. Setup package dependencies:
+
+If you use any other packages, include them as follows:
+```{r, eval = FALSE}
+# to install from CRAN
+usethis::use_package("dplyr")
+
+# to install from GitHub (assuming that's where you've installed them from)
+usethis::use_dev_package("portalr")
+
+# to enable usage of the "pipe" (`%>%`) from `magrittr`:
+usethis::use_pipe()
+```
+
+9. Setup the analysis folder (optional):
+```{r, eval = FALSE}
+rrtools::use_analysis()
+```
+
+This creates several folders to store manuscript outputs, data objects, figures, etc. 
+Note that the R markdown template loads in the package we are currently working on, enabling all the functions and so forth to be used.
+
+## Workflow
+
+1. Write code as functions in R files within the `R` folder:
+```{r, eval = FALSE}
+# R/functions.R
+
+#' @export
+f <- function() {}
+```
+
+At a minimum, you will want to include the special comment syntax as above so that the function is exported as a part of the package (i.e. someone can load the package and use the `f()` function.)
+
+More info on writing documentation with Roxygen is available online in Hadley Wickham's book on [R packages](http://r-pkgs.had.co.nz/man.html#man-functions).
+
+2. Generate documentation and install the package:
+
+To generate the documentation, use the keyboard shortcut in RStudio (**CMD** + **SHIFT** + **D**) or
+```{r, eval = FALSE}
+devtools::document()
+```
+
+To build and install the package and restart R, use the keyboard shortcut in RStudio (**CMD** + **SHIFT** + **B**) or the "Install and Restart" button from the "Build" pane:
+
+![](img/install_and_restart.png)
+
+3. Write and use the functions within R or R markdown files in the analysis folder. Follow your typical workflow for scripting R analyses or composing R markdown files.
+
+## Bonus steps
+
+1. Use tests:
+```{r, eval = FALSE}
+usethis::use_testthat()
+```
+
+2. Use Travis CI:
+```{r, eval = FALSE}
+rrtools::use_travis()
+```
+
+3. Use a Dockerfile:
+```{r, eval = FALSE}
+rrtools::use_dockerfile()
+```
+
+4. Use a R markdown readme:
+```{r, eval = FALSE}
+rrtools::use_readme_rmd()
+```
+
+# Other Readings
+
+1. [rOpenSci's notes](https://github.com/ropensci/rrrpkg) on reproducible research compendiums
+2. The [rrtools](https://github.com/benmarwick/rrtools) package.
+3. The [usethis](https://github.com/r-lib/usethis) package.
+4. The [R packages](http://r-pkgs.had.co.nz/) book.

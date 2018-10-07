@@ -1,0 +1,195 @@
+---
+title: "Guide for Using an R Package for Reproducible Research"
+author: "Hao Ye"
+date: 2018-10-06
+categories: ["R"]
+tags: ["R Markdown", "usethis", "rrtools", "package", "reproducible research"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#motivation">Motivation</a><ul>
+<li><a href="#what-i-used-to-do">What I used to do</a></li>
+<li><a href="#why-use-an-r-package">Why use an R package?</a></li>
+</ul></li>
+<li><a href="#how-to-guide">How-to Guide</a><ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#tutorial-setup">Tutorial Setup</a></li>
+<li><a href="#workflow">Workflow</a></li>
+<li><a href="#bonus-steps">Bonus steps</a></li>
+</ul></li>
+<li><a href="#other-readings">Other Readings</a></li>
+</ul>
+</div>
+
+<div id="motivation" class="section level1">
+<h1>Motivation</h1>
+<p>I’ve been wondering about the best way to organize (reproducible) research projects in R for a while now. I figured this might be a good spot to write up some thoughts.</p>
+<div id="what-i-used-to-do" class="section level2">
+<h2>What I used to do</h2>
+<p>Initially my projects would consist of just a few R files that separate out functions from a main script that calls the functions.</p>
+<pre class="r"><code># main.R
+library(XX)
+
+source(&quot;functions.R&quot;)
+
+if(FALSE)
+{
+    clean_raw_data()
+    run_analysis()
+    make_figure_1()
+    make_figure_2(&quot;figure_2.pdf&quot;)
+}</code></pre>
+<p>This does a couple of things:</p>
+<ol style="list-style-type: decimal">
+<li>I write code to do separate components of the analysis, then once I’ve tested it to see that it works, I can wrap it up in a function and hide most of the code away.</li>
+<li>Wrapping the calls inside an <code>if(FALSE)</code> block allows me to step through one function at a time in RStudio, or source the entire script to load dependencies and allow me to write new code with minimal effort.</li>
+<li>I wrap a lot of things like filenames and parameter values into the default arguments for functions. This allows me to call them plainly and have them work for the generic case, and also allows me to re-use the code for variations on the analysis or different data. In the case of figures, I usually have a default <code>filename = NULL</code>, which switches from plotting to the “Plots” window and plotting to a file.</li>
+</ol>
+<p>For the most part this works pretty well, I can organize my data files and figure files into subfolders in an RStudio project, and put the whole thing in GitHub. Then anyone who wants to use any of the functions can source the R scripts pretty easily.</p>
+</div>
+<div id="why-use-an-r-package" class="section level2">
+<h2>Why use an R package?</h2>
+<p>So then, why format a project as an R package? I see a few advantages:</p>
+<ol style="list-style-type: decimal">
+<li>It is a consistent way of organizing a project that is also familiar for people used to writing or navigating R packages.</li>
+<li>It clearly defines dependencies in one central location, which simplifies the workflow when writing multiple analyses (where one would need to load up all packages and defined functions).</li>
+<li>It is easier for anyone else to re-use components of the project. Sharing the project on GitHub, allows anyone to use <code>devtools::install_github()</code> to install dependencies, and enable loading of all the functions and datasets using <code>library()</code>. This also includes extensions or re-use by oneself.</li>
+<li>It lowers the barrier to good practices, like testing using the <code>testthat</code> framework.</li>
+<li>If the code is methodological, conversion to a more broadly available R package on CRAN is much simpler.</li>
+</ol>
+</div>
+</div>
+<div id="how-to-guide" class="section level1">
+<h1>How-to Guide</h1>
+<div id="requirements" class="section level2">
+<h2>Requirements</h2>
+<p>First, this assumes you have some familiarity with using R packages, RStudio projects, and so forth. If you’re just getting started with R, <a href="https://whattheyforgot.org/" class="uri">https://whattheyforgot.org/</a> is a great explanation on how to set up your workflow.</p>
+<p>What this assumes:
+1. You have RStudio installed. I strongly recommend checking some options to always <a href="https://whattheyforgot.org/save-source.html#always-start-r-with-a-blank-slate">start with an empty workspace</a>.
+2. You have git installed. Here are some nice installation <a href="http://happygitwithr.com/install-git.html">instructions</a>.</p>
+</div>
+<div id="tutorial-setup" class="section level2">
+<h2>Tutorial Setup</h2>
+<ol style="list-style-type: decimal">
+<li>Install the <code>devtools</code> package from CRAN:</li>
+</ol>
+<pre class="r"><code>install.packages(&quot;devtools&quot;)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Install the <code>rrtools</code> package from GitHub:</li>
+</ol>
+<pre class="r"><code>devtools::install_github(&quot;benmarwick/rrtools&quot;)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Create a new project:</li>
+</ol>
+<pre class="r"><code># I have a `projects` folder within my home directory where I store projects.
+# We&#39;re going to call this project &quot;demo&quot;. Note that there are restrictions on
+# project names (letters, numbers, and periods only), and the folder name is set
+# to match the project name.
+rrtools::use_compendium(&quot;~/projects/demo&quot;)</code></pre>
+<p>This will generate a bunch of files, and then re-open RStudio with the new project. All the subsequent commands are run from within that project.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Use the MIT license:</li>
+</ol>
+<pre class="r"><code># Use your name or organization name in place of &quot;Hao Ye&quot; (this will be the 
+# entity to which copyright is assigned)
+usethis::use_mit_license(name = &quot;Hao Ye&quot;)</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Modify the <code>DESCRIPTION</code> file:</li>
+</ol>
+<pre><code>Package: demo
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = &quot;First&quot;,
+           family = &quot;Last&quot;,
+           role = c(&quot;aut&quot;, &quot;cre&quot;),
+           email = &quot;first.last@example.com&quot;)
+Description: What the package does (one paragraph)
+License: MIT + file LICENSE
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Enable Git and make a first commit:</li>
+</ol>
+<pre class="r"><code>usethis::use_git()</code></pre>
+<p>This will make an initial git commit, and then restart RStudio with the git pane enabled.</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Enable <code>roxygen</code> for documentation:</li>
+</ol>
+<pre class="r"><code>usethis::use_roxygen_md()</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>Setup package dependencies:</li>
+</ol>
+<p>If you use any other packages, include them as follows:</p>
+<pre class="r"><code># to install from CRAN
+usethis::use_package(&quot;dplyr&quot;)
+
+# to install from GitHub (assuming that&#39;s where you&#39;ve installed them from)
+usethis::use_dev_package(&quot;portalr&quot;)
+
+# to enable usage of the &quot;pipe&quot; (`%&gt;%`) from `magrittr`:
+usethis::use_pipe()</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>Setup the analysis folder (optional):</li>
+</ol>
+<pre class="r"><code>rrtools::use_analysis()</code></pre>
+<p>This creates several folders to store manuscript outputs, data objects, figures, etc.
+Note that the R markdown template loads in the package we are currently working on, enabling all the functions and so forth to be used.</p>
+</div>
+<div id="workflow" class="section level2">
+<h2>Workflow</h2>
+<ol style="list-style-type: decimal">
+<li>Write code as functions in R files within the <code>R</code> folder:</li>
+</ol>
+<pre class="r"><code># R/functions.R
+
+#&#39; @export
+f &lt;- function() {}</code></pre>
+<p>At a minimum, you will want to include the special comment syntax as above so that the function is exported as a part of the package (i.e. someone can load the package and use the <code>f()</code> function.)</p>
+<p>More info on writing documentation with Roxygen is available online in Hadley Wickham’s book on <a href="http://r-pkgs.had.co.nz/man.html#man-functions">R packages</a>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Generate documentation and install the package:</li>
+</ol>
+<p>To generate the documentation, use the keyboard shortcut in RStudio (<strong>CMD</strong> + <strong>SHIFT</strong> + <strong>D</strong>) or</p>
+<pre class="r"><code>devtools::document()</code></pre>
+<p>To build and install the package and restart R, use the keyboard shortcut in RStudio (<strong>CMD</strong> + <strong>SHIFT</strong> + <strong>B</strong>) or the “Install and Restart” button from the “Build” pane:</p>
+<p><img src="img/install_and_restart.png" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Write and use the functions within R or R markdown files in the analysis folder. Follow your typical workflow for scripting R analyses or composing R markdown files.</li>
+</ol>
+</div>
+<div id="bonus-steps" class="section level2">
+<h2>Bonus steps</h2>
+<ol style="list-style-type: decimal">
+<li>Use tests:</li>
+</ol>
+<pre class="r"><code>usethis::use_testthat()</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Use Travis CI:</li>
+</ol>
+<pre class="r"><code>rrtools::use_travis()</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Use a Dockerfile:</li>
+</ol>
+<pre class="r"><code>rrtools::use_dockerfile()</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Use a R markdown readme:</li>
+</ol>
+<pre class="r"><code>rrtools::use_readme_rmd()</code></pre>
+</div>
+</div>
+<div id="other-readings" class="section level1">
+<h1>Other Readings</h1>
+<ol style="list-style-type: decimal">
+<li><a href="https://github.com/ropensci/rrrpkg">rOpenSci’s notes</a> on reproducible research compendiums</li>
+<li>The <a href="https://github.com/benmarwick/rrtools">rrtools</a> package.</li>
+<li>The <a href="https://github.com/r-lib/usethis">usethis</a> package.</li>
+<li>The <a href="http://r-pkgs.had.co.nz/">R packages</a> book.</li>
+</ol>
+</div>
