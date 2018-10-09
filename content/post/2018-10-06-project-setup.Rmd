@@ -61,6 +61,7 @@ So then, why format a project as an R package? I see a few advantages:
 First, this assumes you have some familiarity with using R packages, RStudio projects, and so forth. If you're just getting started with R, [https://whattheyforgot.org/](https://whattheyforgot.org/) is a great explanation on how to set up your workflow.
 
 What this assumes:
+
 1. You have RStudio installed. I strongly recommend checking some options to always [start with an empty workspace](https://whattheyforgot.org/save-source.html#always-start-r-with-a-blank-slate).
 2. You have git installed. Here are some nice installation  [instructions](http://happygitwithr.com/install-git.html).
 
