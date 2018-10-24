@@ -1,0 +1,28 @@
+---
+title: "Deploying package documentation with pkgdown and Travis CI"
+author: "Hao Ye"
+date: 2018-10-24
+categories: ["R"]
+tags: ["R Markdown", "pkgdown", "continuous integration", "package", "Travis CI"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+
+<p>For my <a href="https://github.com/ha0ye/rEDM">rEDM</a> package, I’ve been using the <code>pkgdown</code> package to build a <a href="https://ha0ye.github.io/rEDM/">website</a> comprising all the documentation and vignettes, for easy reference from a web browser.</p>
+<p>The normal workflow for this is something like:</p>
+<ol style="list-style-type: decimal">
+<li>Make updates to the package.</li>
+<li>Run <code>pkgdown::build_site()</code> to generate the website files into a <code>docs</code> folder.</li>
+<li>Commit changes and upload to GitHub.</li>
+<li>Use <a href="https://pages.github.com/">GitHub Pages</a>, configured to source the files from the <code>docs</code> folder on the master branch.</li>
+</ol>
+<p>But we’re programmers, so why can’t we automate the steps of 2-4? Luckily, there is a <a href="https://www.r-bloggers.com/continuous-deployment-of-package-documentation-with-pkgdown-and-travis-ci/">guide</a> for this already.</p>
+<p>One issue that I ran into is that some of the documentation is built using the current package, which isn’t installed by default in the Travis CI instance. (i.e. when Travis runs through the <code>R CMD CHECK</code>, it installs the package temporarily, but that does not stick around) Thus, I ran into errors when <code>pkgdown</code> tried to compile my <code>README.Rmd</code>, which contained an example of using the package, as well as the vignettes.</p>
+<p>My solution to this was simple, include a line before running <code>pkgdown::build_site()</code> that installs the package. I ended up with this following segment of my <code>.travis.yml</code> file:</p>
+<pre><code>after_success:
+  - R CMD INSTALL .
+  - Rscript -e &#39;pkgdown::build_site()&#39;</code></pre>
+<p>and after changing over my GitHub Pages setting to look in the <code>gh-pages</code> branch, everything was set!</p>

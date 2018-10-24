@@ -1,0 +1,36 @@
+---
+title: "Deploying package documentation with pkgdown and Travis CI"
+author: "Hao Ye"
+date: 2018-10-24
+categories: ["R"]
+tags: ["R Markdown", "pkgdown", "continuous integration", "package", "Travis CI"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+For my [rEDM](https://github.com/ha0ye/rEDM) package, I've been using the `pkgdown` package to build a [website](https://ha0ye.github.io/rEDM/) comprising all the documentation and vignettes, for easy reference from a web browser.
+
+The normal workflow for this is something like:
+
+1. Make updates to the package.
+2. Run `pkgdown::build_site()` to generate the website files into a `docs` folder.
+3. Commit changes and upload to GitHub.
+4. Use [GitHub Pages](https://pages.github.com/), configured to source the files from the `docs` folder on the master branch.
+
+But we're programmers, so why can't we automate the steps of 2-4? Luckily, there is a [guide](https://www.r-bloggers.com/continuous-deployment-of-package-documentation-with-pkgdown-and-travis-ci/) for this already.
+
+One issue that I ran into is that some of the documentation is built using the current package, which isn't installed by default in the Travis CI instance. (i.e. when Travis runs through the `R CMD CHECK`, it installs the package temporarily, but that does not stick around) Thus, I ran into errors when `pkgdown` tried to compile my `README.Rmd`, which contained an example of using the package, as well as the vignettes.
+
+My solution to this was simple, include a line before running `pkgdown::build_site()` that installs the package. I ended up with this following segment of my `.travis.yml` file:
+```
+after_success:
+  - R CMD INSTALL .
+  - Rscript -e 'pkgdown::build_site()'
+```
+
+and after changing over my GitHub Pages setting to look in the `gh-pages` branch, everything was set!
