@@ -1,0 +1,20 @@
+---
+title: "Advice on Data Analysis in R"
+author: "Hao Ye"
+date: 2018-11-05
+categories: ["R"]
+tags: ["usethis", "here", "R markdown", "lintr", "git", "reproducible research"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+While on my visit to the University of Nebraska, Lincoln, I had the pleasure of taking over [Chris Chizinski's](https://chrischizinski.github.io/) R class on Friday (2018-11-02).
+
+I demo'd a few things about setting up RStudio, using RStudio packages and the `here` package, and then walked through a workflow of doing data analysis, converting code into functions, and writing scripts and functions to be more accessible for readers.
+
+For reference, here are [my slides](/slides/2018-11-02_UNLSNR-R-class_slides.html).

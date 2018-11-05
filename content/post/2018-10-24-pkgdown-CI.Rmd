@@ -3,7 +3,7 @@ title: "Deploying package documentation with pkgdown and Travis CI"
 author: "Hao Ye"
 date: 2018-10-24
 categories: ["R"]
-tags: ["R Markdown", "pkgdown", "continuous integration", "package", "Travis CI"]
+tags: ["R markdown", "pkgdown", "continuous integration", "package", "Travis CI"]
 output:
   blogdown::html_page:
     toc: true
