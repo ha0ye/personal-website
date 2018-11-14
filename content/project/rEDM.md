@@ -16,7 +16,7 @@ image_preview = "redm-preview.png"
 tags = ["Software", "R", "Time Series", "Dynamics"]
 
 # Optional external URL for project (replaces project detail page).
-external_link = "https://github.com/ha0ye/rEDM"
+external_link = "https://ha0ye.github.io/rEDM"
 
 # Does the project detail page use math formatting?
 math = false

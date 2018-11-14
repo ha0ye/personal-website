@@ -16,7 +16,7 @@ image_preview = "portalr-preview.jpg"
 tags = ["Software", "Data", "R"]
 
 # Optional external URL for project (replaces project detail page).
-external_link = "https://github.com/weecology/portalr"
+external_link = "https://weecology.github.io/portalr"
 
 # Does the project detail page use math formatting?
 math = false
