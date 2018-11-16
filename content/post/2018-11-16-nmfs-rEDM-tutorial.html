@@ -1,0 +1,314 @@
+---
+title: "rEDM Tutorial"
+subtitle: "NMFS Nonlinear Dynamics and Fisheries Workshop"
+author: "Hao Ye"
+date: 2018-11-16
+categories: ["R"]
+tags: ["rEDM", "forecasting", "fisheries", "time series", "nonlinear dynamics", "causality"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#agenda">Agenda</a></li>
+<li><a href="#resources">Resources</a></li>
+<li><a href="#installation-and-setup">Installation and Setup</a><ul>
+<li><a href="#backup-option">Backup option</a></li>
+</ul></li>
+<li><a href="#data-formats">Data Formats</a></li>
+<li><a href="#determine-embedding-dimension-using-simplex-projection">Determine embedding dimension using Simplex Projection</a><ul>
+<li><a href="#identify-nonlinearity-using-s-map">Identify nonlinearity using S-map</a></li>
+</ul></li>
+<li><a href="#multivariate-models">Multivariate Models</a></li>
+<li><a href="#convergent-cross-mapping">Convergent Cross Mapping</a></li>
+<li><a href="#surrogate-analysis-with-ccm">Surrogate Analysis with CCM</a></li>
+<li><a href="#extra-topics">Extra topics</a></li>
+</ul>
+</div>
+
+<p>These are the notes for the rEDM tutorial I gave at the November 13-15 Nonlinear Dynamics and Fisheries Workshop at the NMFS Southwest Fisheries Science Center in Santa Cruz.</p>
+<div id="agenda" class="section level2">
+<h2>Agenda</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>900-915</td>
+<td>set up computers</td>
+</tr>
+<tr class="even">
+<td>915-930</td>
+<td>data formats</td>
+</tr>
+<tr class="odd">
+<td>930-945</td>
+<td>simplex, plotting rho vs. E</td>
+</tr>
+<tr class="even">
+<td>945-1000</td>
+<td>s-map, plotting rho vs. theta</td>
+</tr>
+<tr class="odd">
+<td>1000-1030</td>
+<td>coffee break</td>
+</tr>
+<tr class="even">
+<td>1030-1100</td>
+<td>multivariate models</td>
+</tr>
+<tr class="odd">
+<td>1100-1130</td>
+<td>convergent cross mapping</td>
+</tr>
+<tr class="even">
+<td>1130-1200</td>
+<td>Q &amp; A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<p>Long-form text for this tutorial can be found at: <a href="https://ha0ye.github.io/rEDM/articles/rEDM.html" class="uri">https://ha0ye.github.io/rEDM/articles/rEDM.html</a></p>
+</div>
+<div id="installation-and-setup" class="section level2">
+<h2>Installation and Setup</h2>
+<p>If you already have R (and RStudio is recommended, as well), you can install from CRAN:</p>
+<pre class="r"><code>install.packages(&quot;rEDM&quot;)</code></pre>
+<div id="backup-option" class="section level3">
+<h3>Backup option</h3>
+<p>If you don’t have R or are unable to install packages, you can try using <a href="https://mybinder.org/v2/gh/ha0ye/rEDM/master?urlpath=rstudio">Binder</a> to run an RStudio session in a web browser. (Note that it may take a while to load).</p>
+</div>
+</div>
+<div id="data-formats" class="section level2">
+<h2>Data Formats</h2>
+<p><code>rEDM</code> uses basic R data structures as input. These include data.frames, 2-D matrices, and 1-D vectors. The latest version of <code>rEDM</code> on GitHub also has support for <code>ts</code> and <code>mts</code> data types (R’s built in time series and multivariate time series data types).</p>
+<p>In general, <code>rEDM</code> tries to figure out what data column you want:
+* For functions that operate on a single time series, <code>rEDM</code> will work on both 1-D vectors or use the 2nd column of a data.frame or matrix.
+* For functions that operate on multiple time series, <code>rEDM</code> expects a data.frame or matrix, and can index by either column name, or by numerical index (starting with 1), with an optional argument to indicate whether the first column is a time index.</p>
+</div>
+<div id="determine-embedding-dimension-using-simplex-projection" class="section level2">
+<h2>Determine embedding dimension using Simplex Projection</h2>
+<p>We begin by loading the rEDM package into R:</p>
+<pre class="r"><code>library(rEDM)</code></pre>
+<p>Then, we can examine the tentmap data:</p>
+<pre class="r"><code>data(tentmap_del)
+str(tentmap_del)
+##  num [1:999] -0.0992 -0.6013 0.7998 -0.7944 0.798 ...</code></pre>
+<p>By default, rEDM functions run using leave-one-out validation on the entire time series. We can change this by specifying the <code>lib</code> and <code>pred</code> arguments:</p>
+<pre class="r"><code>lib &lt;- c(1, 100)
+pred &lt;- c(201, 500)</code></pre>
+<p>Here, the first 100 points (positions 1 to 100) in the time series constitute the “library set”, and the last 300 points (positions 201 to 500) constitute the “prediction set”.</p>
+<p>These separate sections are used to define the time-lagged vectors and one-step-ahead targets for forecasting.</p>
+<pre class="r"><code>simplex_output &lt;- simplex(tentmap_del, lib, pred)
+str(simplex_output)
+## &#39;data.frame&#39;:    10 obs. of  16 variables:
+##  $ E                  : int  1 2 3 4 5 6 7 8 9 10
+##  $ tau                : num  1 1 1 1 1 1 1 1 1 1
+##  $ tp                 : num  1 1 1 1 1 1 1 1 1 1
+##  $ nn                 : num  2 3 4 5 6 7 8 9 10 11
+##  $ num_pred           : num  299 298 297 296 295 294 293 292 291 290
+##  $ rho                : num  0.847 0.962 0.942 0.91 0.874 ...
+##  $ mae                : num  0.207 0.102 0.138 0.19 0.235 ...
+##  $ rmse               : num  0.392 0.187 0.236 0.291 0.334 ...
+##  $ perc               : num  0.853 0.906 0.899 0.885 0.824 ...
+##  $ p_val              : num  2.59e-102 4.99e-253 4.65e-199 1.54e-151 2.59e-118 ...
+##  $ const_pred_num_pred: num  299 298 297 296 295 294 293 292 291 290
+##  $ const_pred_rho     : num  -0.668 -0.671 -0.671 -0.673 -0.671 ...
+##  $ const_pred_mae     : num  1.02 1.02 1.02 1.02 1.01 ...
+##  $ const_pred_rmse    : num  1.25 1.25 1.26 1.26 1.25 ...
+##  $ const_pred_perc    : num  0.341 0.339 0.337 0.338 0.339 ...
+##  $ const_p_val        : num  1 1 1 1 1 1 1 1 1 1</code></pre>
+<p>The output contains summary statistics for each run of the Simplex Projection model. By default, it uses values of 1 through 10 for <code>E</code>, the embedding dimension.</p>
+<p>We can visualize the output by plotting <code>rho</code> vs <code>E</code>:</p>
+<pre class="r"><code>plot(rho ~ E, data = simplex_output, type = &quot;l&quot;, xlab = &quot;Embedding Dimension (E)&quot;, ylab = &quot;Forecast Skill (rho)&quot;)</code></pre>
+<p><img src="/post/2018-11-16-nmfs-rEDM-tutorial_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>With the observation that the best embedding dimension is 2, we can also look for how prediction decays with time to predict:</p>
+<pre class="r"><code>simplex_output &lt;- simplex(tentmap_del, lib, pred, E = 2, tp = 1:10)
+
+plot(rho ~ tp, data = simplex_output, type = &quot;l&quot;, xlab = &quot;Time to Prediction (tp)&quot;, ylab = &quot;Forecast Skill (rho)&quot;)</code></pre>
+<p><img src="/post/2018-11-16-nmfs-rEDM-tutorial_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div id="identify-nonlinearity-using-s-map" class="section level3">
+<h3>Identify nonlinearity using S-map</h3>
+<pre class="r"><code>smap_output &lt;- s_map(tentmap_del, lib, pred, E = 2)
+str(smap_output)
+## &#39;data.frame&#39;:    18 obs. of  17 variables:
+##  $ E                  : num  2 2 2 2 2 2 2 2 2 2 ...
+##  $ tau                : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ tp                 : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ nn                 : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ theta              : num  0e+00 1e-04 3e-04 1e-03 3e-03 1e-02 3e-02 1e-01 3e-01 5e-01 ...
+##  $ num_pred           : num  298 298 298 298 298 298 298 298 298 298 ...
+##  $ rho                : num  0.754 0.754 0.754 0.755 0.755 ...
+##  $ mae                : num  0.363 0.363 0.363 0.363 0.363 ...
+##  $ rmse               : num  0.451 0.451 0.451 0.451 0.451 ...
+##  $ perc               : num  0.671 0.671 0.671 0.671 0.671 ...
+##  $ p_val              : num  2.89e-64 2.86e-64 2.81e-64 2.61e-64 2.12e-64 ...
+##  $ const_pred_num_pred: num  298 298 298 298 298 298 298 298 298 298 ...
+##  $ const_pred_rho     : num  -0.671 -0.671 -0.671 -0.671 -0.671 ...
+##  $ const_pred_mae     : num  1.02 1.02 1.02 1.02 1.02 ...
+##  $ const_pred_rmse    : num  1.25 1.25 1.25 1.25 1.25 ...
+##  $ const_pred_perc    : num  0.339 0.339 0.339 0.339 0.339 ...
+##  $ const_p_val        : num  1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>Here, the relevant parameter is <code>theta</code>, which is the nonlinear tuning parameter: a value of 0 corresponds to a linear AR model, and values greater than 0 cause the length-scale for the S-map to become smaller and smaller (i.e. the fitted function is allowed to be more “wiggly”)</p>
+<pre class="r"><code>plot(rho ~ theta, data = smap_output, type = &quot;l&quot;, xlab = &quot;Nonlinearity (theta)&quot;, ylab = &quot;Forecast Skill (rho)&quot;)</code></pre>
+<p><img src="/post/2018-11-16-nmfs-rEDM-tutorial_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Here, we see that the forecast skill continues to improve with theta. This can be common for simulated data where there is no noise to the observation. In general, however, we would expect there to be tradeoff from allowing the S-map to be more and more wiggly and the number of data points that are used to determine the function.</p>
+<p>We can test this by adding a bit of observational error to the time series and trying again:</p>
+<pre class="r"><code>tentmap_noisy &lt;- tentmap_del + rnorm(length(tentmap_del), sd = sd(tentmap_del) * 0.2)
+
+smap_output &lt;- s_map(tentmap_noisy, lib, pred, E = 2)
+
+plot(rho ~ theta, data = smap_output, type = &quot;l&quot;, xlab = &quot;Nonlinearity (theta)&quot;, ylab = &quot;Forecast Skill (rho)&quot;)</code></pre>
+<p><img src="/post/2018-11-16-nmfs-rEDM-tutorial_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+</div>
+<div id="multivariate-models" class="section level2">
+<h2>Multivariate Models</h2>
+<p>Although Takens’ theorem supports using lags of only 1 time series, including explicit coordinates from other time series in the system can produce better models, and maybe necessary if there are stochastic drivers.</p>
+<p>For the data, we use a 3-species simulated Lotka-Volterra, that already has columns for lagged copies of the variables:</p>
+<pre class="r"><code>data(block_3sp)
+str(block_3sp)
+## &#39;data.frame&#39;:    200 obs. of  10 variables:
+##  $ time : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ x_t  : num  -0.742 1.245 -1.918 -0.962 1.332 ...
+##  $ x_t-1: num  NA -0.742 1.245 -1.918 -0.962 ...
+##  $ x_t-2: num  NA NA -0.742 1.245 -1.918 ...
+##  $ y_t  : num  -1.268 1.489 -0.113 -1.107 2.385 ...
+##  $ y_t-1: num  NA -1.268 1.489 -0.113 -1.107 ...
+##  $ y_t-2: num  NA NA -1.268 1.489 -0.113 ...
+##  $ z_t  : num  -1.864 -0.482 1.535 -1.493 -1.119 ...
+##  $ z_t-1: num  NA -1.864 -0.482 1.535 -1.493 ...
+##  $ z_t-2: num  NA NA -1.864 -0.482 1.535 ...</code></pre>
+<p>Next, we define our various input parameters. Because we explicitly set the coordinates for the embedding, we don’t specify the embedding dimension.</p>
+<pre class="r"><code>lib &lt;- c(1, 100)
+pred &lt;- c(101, 200)
+
+cols &lt;- c(1, 2, 4)
+target &lt;- 1</code></pre>
+<p>When using the <code>block_lnlp</code> function, we want to be careful to indicate whether the first column in the data is a time index:</p>
+<pre class="r"><code>block_lnlp_output &lt;- block_lnlp(block_3sp, lib = lib, pred = pred, columns = cols,  target_column = target, first_column_time = TRUE)</code></pre>
+<p>If we refer to columns by names instead of numerical index, we don’t need to specify <code>first_column_time</code>:</p>
+<pre class="r"><code>block_lnlp_output &lt;- block_lnlp(block_3sp, lib = lib, pred = pred, columns = c(&quot;x_t&quot;, &quot;x_t-1&quot;, &quot;y_t&quot;), target_column = &quot;x_t&quot;)</code></pre>
+<p>To retrieve the raw predictions, we need to tell rEDM functions to return more than just the statistical summaries:</p>
+<pre class="r"><code>block_lnlp_output &lt;- block_lnlp(block_3sp, lib = lib, pred = pred, columns = c(&quot;x_t&quot;, &quot;x_t-1&quot;, &quot;y_t&quot;), target_column = &quot;x_t&quot;, stats_only = FALSE)</code></pre>
+<p>This then allows us to pull out the observed and predicted values to plot. Note that we use the <code>[[1]]</code> indexing to pull out just the output from the first (and only) model that was run when calling <code>block_lnlp()</code>.</p>
+<pre class="r"><code>model_output &lt;- block_lnlp_output$model_output[[1]]
+
+observed &lt;- model_output$obs
+predicted &lt;- model_output$pred</code></pre>
+<pre class="r"><code>plot_range &lt;- range(c(observed, predicted), na.rm = TRUE)
+plot(observed, predicted, xlim = plot_range, ylim = plot_range, xlab = &quot;Observed&quot;, 
+    ylab = &quot;Predicted&quot;, asp = 1)
+abline(a = 0, b = 1, lty = 2, col = &quot;blue&quot;)</code></pre>
+<p><img src="/post/2018-11-16-nmfs-rEDM-tutorial_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+<div id="convergent-cross-mapping" class="section level2">
+<h2>Convergent Cross Mapping</h2>
+<p>Convergent cross mapping is a way to determine if two time series variables interact in a dynamic system. The procedure works by embedding the <em>affected</em> variable and trying to map back to the <em>causal</em> variable.</p>
+<p>Here, we’ll explore the example of sardine, anchovy, and sea-surface temperature from Deyle et al. (2013).</p>
+<pre class="r"><code>data(sardine_anchovy_sst)
+str(sardine_anchovy_sst)
+## &#39;data.frame&#39;:    78 obs. of  5 variables:
+##  $ year   : num  1929 1930 1931 1932 1933 ...
+##  $ anchovy: num  -0.0076 -0.0096 -0.00844 -0.00835 -0.00775 ...
+##  $ sardine: num  1.77 -1.152 -1.421 0.112 1.516 ...
+##  $ sio_sst: num  -0.35239 0.00115 1.06822 0.53186 -0.55206 ...
+##  $ np_sst : num  -0.348 0.329 1.61 1.265 0.04 ...</code></pre>
+<p>The convergence criterion of CCM means that the mapping relationship should get better with longer time series. We test that by taking subsamples of the data (randomly, with replacement):</p>
+<pre class="r"><code>anchovy_xmap_sst &lt;- ccm(sardine_anchovy_sst, E = 3, lib_column = &quot;anchovy&quot;, target_column = &quot;np_sst&quot;, lib_sizes = seq(10, 80, by = 10), num_samples = 100, random_libs = TRUE, replace = TRUE, silent = TRUE)
+
+sst_xmap_anchovy &lt;- ccm(sardine_anchovy_sst, E = 3, lib_column = &quot;np_sst&quot;, target_column = &quot;anchovy&quot;, lib_sizes = seq(10, 80, by = 10), num_samples = 100, random_libs = TRUE, replace = TRUE, silent = TRUE)</code></pre>
+<p>Just as with the previous functions, the output is one row for each model run (in this case, for each subsampling). To visualize the output, we want to compute the average effect at each subsample size:</p>
+<pre class="r"><code>a_xmap_t_means &lt;- ccm_means(anchovy_xmap_sst)
+t_xmap_a_means &lt;- ccm_means(sst_xmap_anchovy)
+
+plot(a_xmap_t_means$lib_size, pmax(0, a_xmap_t_means$rho), type = &quot;l&quot;, col = &quot;red&quot;, xlab = &quot;Library Size&quot;, ylab = &quot;Cross Map Skill (rho)&quot;, ylim = c(0, 0.25))
+lines(t_xmap_a_means$lib_size, pmax(0, t_xmap_a_means$rho), col = &quot;blue&quot;)
+legend(x = &quot;topleft&quot;, legend = c(&quot;anchovy xmap SST&quot;, &quot;SST xmap anchovy&quot;), col = c(&quot;red&quot;, &quot;blue&quot;), lwd = 1, bty = &quot;n&quot;, inset = 0.02, cex = 0.8)</code></pre>
+<p><img src="/post/2018-11-16-nmfs-rEDM-tutorial_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</div>
+<div id="surrogate-analysis-with-ccm" class="section level2">
+<h2>Surrogate Analysis with CCM</h2>
+<p>To test for the significance of cross map effects, we use randomization tests with surrogate time series. The idea behind this is that the computed test statistic out of the CCM analysis is rho vs. lib_size for the actual time series, and we want to compare that with the rho vs. lib_size for a null model. <code>rEDM</code> has a built-in function, <code>make_surrogate_data()</code> to generate surrogate time series under different null models.</p>
+<p>The procedure then, is as follows:
+* for the effect of X on Y, cross mapping is from Y to X
+* we want to know whether the recovered information about X is unique to the real data rather than just a statistical property of Y, so we generate surrogates of Y
+* compute cross mapping from surrogates of Y to the actual X
+* from the null distribution of multiple surrogates, we can pull out a 95% quantile for a significance test at alpha = 0.05</p>
+<p>Here is an example using the paramecium-didinium time series:</p>
+<pre class="r"><code>data(&quot;paramecium_didinium&quot;)
+str(paramecium_didinium)
+## &#39;data.frame&#39;:    71 obs. of  3 variables:
+##  $ time      : num  0 0.52 1.01 1.54 2.04 2.51 3 3.46 3.97 4.5 ...
+##  $ paramecium: num  15.7 53.6 73.3 93.9 115.4 ...
+##  $ didinium  : num  5.76 9.05 17.26 41.97 55.97 ...
+
+## Define a ccm function to use for the actual time series and surrogates
+ccm_func &lt;- function(data, E = 3, 
+                     lib_column = &quot;paramecium&quot;, 
+                     target_column = &quot;didinium&quot;)
+{
+  ccm(data, E = E, 
+      lib_column = lib_column, 
+      target_column = target_column, 
+      lib_sizes = seq(10, 71, by = 10), 
+      num_samples = 100, random_libs = TRUE, 
+      replace = FALSE, silent = TRUE)
+}
+
+## CCM on actual time series ----
+
+paramecium_xmap_didinium &lt;- ccm_func(paramecium_didinium)
+para_xmap_didi_means &lt;- ccm_means(paramecium_xmap_didinium)
+
+## CCM on surrogate time series ----
+
+# make surrogates
+para_surrogates &lt;- make_surrogate_data(paramecium_didinium$paramecium)
+
+# for each surrogate time series
+#   run CCM with the same parameters from that surrogate to SST
+#   compute the mean rho in the same way
+# output is the null distribution for the cross map effect
+
+surrogate_output &lt;- lapply(seq_len(NCOL(para_surrogates)), 
+                           function(i) {
+                             surrogate_ts &lt;- para_surrogates[, i]
+                             xmap_output &lt;- ccm_func(cbind(surrogate_ts, paramecium_didinium$didinium), 
+                                                     lib_column = 1, target_column = 2)
+                             xmap_means &lt;- ccm_means(xmap_output)
+                           })
+
+surrogate_means &lt;- do.call(rbind, surrogate_output)
+surrogate_upper_95 &lt;- ccm_means(surrogate_means, 
+                                FUN = quantile, probs = 0.95)
+
+## plot the output ----
+
+plot(rho ~ lib_size, data = para_xmap_didi_means, type = &quot;l&quot;, 
+     col = &quot;red&quot;, ylim = c(0, 1), xlab = &quot;Library Size&quot;, 
+     ylab = &quot;Cross Map Skill (rho)&quot;)
+lines(surrogate_upper_95$lib_size, surrogate_upper_95$rho, 
+      lty = 2, col = &quot;red&quot;)
+legend(x = &quot;topleft&quot;, legend = c(&quot;paramecium xmap didinium (actual)&quot;, 
+                                 &quot;paramecium xmap didinium (null 95%)&quot;), 
+       col = &quot;red&quot;, lty = c(1, 2), bty = &quot;n&quot;, inset = 0.02, cex = 0.8)</code></pre>
+<p><img src="/post/2018-11-16-nmfs-rEDM-tutorial_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+</div>
+<div id="extra-topics" class="section level2">
+<h2>Extra topics</h2>
+<p>For examples related to:
+* examining S-map coefficients
+* time delay of causal effects in CCM
+* Gaussian Process implementation</p>
+<p>refer to the <a href="https://ha0ye.github.io/rEDM/articles/rEDM.html">online tutorial</a></p>
+</div>

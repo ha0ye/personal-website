@@ -1,0 +1,287 @@
+---
+title: "rEDM Tutorial"
+subtitle: "NMFS Nonlinear Dynamics and Fisheries Workshop"
+author: "Hao Ye"
+date: 2018-11-16
+categories: ["R"]
+tags: ["rEDM", "forecasting", "fisheries", "time series", "nonlinear dynamics", "causality"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+    
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+These are the notes for the rEDM tutorial I gave at the November 13-15 Nonlinear Dynamics and Fisheries Workshop at the NMFS Southwest Fisheries Science Center in Santa Cruz.
+
+## Agenda
+
+| Time | |
+| -------- | -------- |
+| 900-915  | set up computers |
+| 915-930 | data formats |
+| 930-945 | simplex, plotting rho vs. E |
+| 945-1000 | s-map, plotting rho vs. theta |
+| 1000-1030 | coffee break |
+| 1030-1100 | multivariate models |
+| 1100-1130 | convergent cross mapping |
+| 1130-1200 | Q & A |
+    
+## Resources
+
+Long-form text for this tutorial can be found at: https://ha0ye.github.io/rEDM/articles/rEDM.html
+
+## Installation and Setup
+
+If you already have R (and RStudio is recommended, as well), you can install from CRAN:
+```{r, eval = FALSE}
+install.packages("rEDM")
+```
+
+### Backup option
+
+If you don't have R or are unable to install packages, you can try using [Binder](https://mybinder.org/v2/gh/ha0ye/rEDM/master?urlpath=rstudio) to run an RStudio session in a web browser. (Note that it may take a while to load).
+
+## Data Formats
+
+`rEDM` uses basic R data structures as input. These include data.frames, 2-D matrices, and 1-D vectors. The latest version of `rEDM` on GitHub also has support for `ts` and `mts` data types (R's built in time series and multivariate time series data types).
+
+In general, `rEDM` tries to figure out what data column you want:
+* For functions that operate on a single time series, `rEDM` will work on both 1-D vectors or use the 2nd column of a data.frame or matrix.
+* For functions that operate on multiple time series, `rEDM` expects a data.frame or matrix, and can index by either column name, or by numerical index (starting with 1), with an optional argument to indicate whether the first column is a time index.
+
+## Determine embedding dimension using Simplex Projection
+
+We begin by loading the rEDM package into R:
+
+```{r}
+library(rEDM)
+```
+
+Then, we can examine the tentmap data:
+
+```{r}
+data(tentmap_del)
+str(tentmap_del)
+```
+
+By default, rEDM functions run using leave-one-out validation on the entire time series. We can change this by specifying the `lib` and `pred` arguments:
+
+```{r}
+lib <- c(1, 100)
+pred <- c(201, 500)
+```
+
+Here, the first 100 points (positions 1 to 100) in the time series constitute the "library set", and the last 300 points (positions 201 to 500) constitute the "prediction set". 
+
+These separate sections are used to define the time-lagged vectors and one-step-ahead targets for forecasting.
+
+```{r}
+simplex_output <- simplex(tentmap_del, lib, pred)
+str(simplex_output)
+```
+
+The output contains summary statistics for each run of the Simplex Projection model. By default, it uses values of 1 through 10 for `E`, the embedding dimension.
+
+We can visualize the output by plotting `rho` vs `E`:
+
+```{r}
+plot(rho ~ E, data = simplex_output, type = "l", xlab = "Embedding Dimension (E)", ylab = "Forecast Skill (rho)")
+```
+
+With the observation that the best embedding dimension is 2, we can also look for how prediction decays with time to predict:
+
+```{r}
+simplex_output <- simplex(tentmap_del, lib, pred, E = 2, tp = 1:10)
+
+plot(rho ~ tp, data = simplex_output, type = "l", xlab = "Time to Prediction (tp)", ylab = "Forecast Skill (rho)")
+```
+
+### Identify nonlinearity using S-map
+
+```{r}
+smap_output <- s_map(tentmap_del, lib, pred, E = 2)
+str(smap_output)
+```
+
+Here, the relevant parameter is `theta`, which is the nonlinear tuning parameter: a value of 0 corresponds to a linear AR model, and values greater than 0 cause the length-scale for the S-map to become smaller and smaller (i.e. the fitted function is allowed to be more "wiggly")
+
+```{r}
+plot(rho ~ theta, data = smap_output, type = "l", xlab = "Nonlinearity (theta)", ylab = "Forecast Skill (rho)")
+```
+
+Here, we see that the forecast skill continues to improve with theta. This can be common for simulated data where there is no noise to the observation. In general, however, we would expect there to be tradeoff from allowing the S-map to be more and more wiggly and the number of data points that are used to determine the function.
+
+We can test this by adding a bit of observational error to the time series and trying again:
+
+```{r}
+tentmap_noisy <- tentmap_del + rnorm(length(tentmap_del), sd = sd(tentmap_del) * 0.2)
+
+smap_output <- s_map(tentmap_noisy, lib, pred, E = 2)
+
+plot(rho ~ theta, data = smap_output, type = "l", xlab = "Nonlinearity (theta)", ylab = "Forecast Skill (rho)")
+```
+
+## Multivariate Models
+
+Although Takens' theorem supports using lags of only 1 time series, including explicit coordinates from other time series in the system can produce better models, and maybe necessary if there are stochastic drivers.
+
+For the data, we use a 3-species simulated Lotka-Volterra, that already has columns for lagged copies of the variables:
+
+```{r}
+data(block_3sp)
+str(block_3sp)
+```
+
+Next, we define our various input parameters. Because we explicitly set the coordinates for the embedding, we don't specify the embedding dimension.
+
+```{r}
+lib <- c(1, 100)
+pred <- c(101, 200)
+
+cols <- c(1, 2, 4)
+target <- 1
+```
+
+When using the `block_lnlp` function, we want to be careful to indicate whether the first column in the data is a time index:
+
+```{r}
+block_lnlp_output <- block_lnlp(block_3sp, lib = lib, pred = pred, columns = cols,  target_column = target, first_column_time = TRUE)
+```
+
+If we refer to columns by names instead of numerical index, we don't need to specify `first_column_time`:
+
+```{r}
+block_lnlp_output <- block_lnlp(block_3sp, lib = lib, pred = pred, columns = c("x_t", "x_t-1", "y_t"), target_column = "x_t")
+```
+
+To retrieve the raw predictions, we need to tell rEDM functions to return more than just the statistical summaries:
+
+```{r}
+block_lnlp_output <- block_lnlp(block_3sp, lib = lib, pred = pred, columns = c("x_t", "x_t-1", "y_t"), target_column = "x_t", stats_only = FALSE)
+```
+
+This then allows us to pull out the observed and predicted values to plot. Note that we use the `[[1]]` indexing to pull out just the output from the first (and only) model that was run when calling `block_lnlp()`.
+
+```{r}
+model_output <- block_lnlp_output$model_output[[1]]
+
+observed <- model_output$obs
+predicted <- model_output$pred
+```
+
+```{r}
+plot_range <- range(c(observed, predicted), na.rm = TRUE)
+plot(observed, predicted, xlim = plot_range, ylim = plot_range, xlab = "Observed", 
+    ylab = "Predicted", asp = 1)
+abline(a = 0, b = 1, lty = 2, col = "blue")
+```
+
+## Convergent Cross Mapping
+
+Convergent cross mapping is a way to determine if two time series variables interact in a dynamic system. The procedure works by embedding the *affected* variable and trying to map back to the *causal* variable.
+
+Here, we'll explore the example of sardine, anchovy, and sea-surface temperature from Deyle et al. (2013).
+
+```{r}
+data(sardine_anchovy_sst)
+str(sardine_anchovy_sst)
+```
+
+The convergence criterion of CCM means that the mapping relationship should get better with longer time series. We test that by taking subsamples of the data (randomly, with replacement):
+
+```{r}
+anchovy_xmap_sst <- ccm(sardine_anchovy_sst, E = 3, lib_column = "anchovy", target_column = "np_sst", lib_sizes = seq(10, 80, by = 10), num_samples = 100, random_libs = TRUE, replace = TRUE, silent = TRUE)
+
+sst_xmap_anchovy <- ccm(sardine_anchovy_sst, E = 3, lib_column = "np_sst", target_column = "anchovy", lib_sizes = seq(10, 80, by = 10), num_samples = 100, random_libs = TRUE, replace = TRUE, silent = TRUE)
+```
+
+Just as with the previous functions, the output is one row for each model run (in this case, for each subsampling). To visualize the output, we want to compute the average effect at each subsample size:
+
+```{r}
+a_xmap_t_means <- ccm_means(anchovy_xmap_sst)
+t_xmap_a_means <- ccm_means(sst_xmap_anchovy)
+
+plot(a_xmap_t_means$lib_size, pmax(0, a_xmap_t_means$rho), type = "l", col = "red", xlab = "Library Size", ylab = "Cross Map Skill (rho)", ylim = c(0, 0.25))
+lines(t_xmap_a_means$lib_size, pmax(0, t_xmap_a_means$rho), col = "blue")
+legend(x = "topleft", legend = c("anchovy xmap SST", "SST xmap anchovy"), col = c("red", "blue"), lwd = 1, bty = "n", inset = 0.02, cex = 0.8)
+```
+
+## Surrogate Analysis with CCM
+
+To test for the significance of cross map effects, we use randomization tests with surrogate time series. The idea behind this is that the computed test statistic out of the CCM analysis is rho vs. lib_size for the actual time series, and we want to compare that with the rho vs. lib_size for a null model. `rEDM` has a built-in function, `make_surrogate_data()` to generate surrogate time series under different null models.
+
+The procedure then, is as follows:
+* for the effect of X on Y, cross mapping is from Y to X
+* we want to know whether the recovered information about X is unique to the real data rather than just a statistical property of Y, so we generate surrogates of Y
+* compute cross mapping from surrogates of Y to the actual X
+* from the null distribution of multiple surrogates, we can pull out a 95% quantile for a significance test at alpha = 0.05
+
+Here is an example using the paramecium-didinium time series:
+```{r}
+data("paramecium_didinium")
+str(paramecium_didinium)
+
+## Define a ccm function to use for the actual time series and surrogates
+ccm_func <- function(data, E = 3, 
+                     lib_column = "paramecium", 
+                     target_column = "didinium")
+{
+  ccm(data, E = E, 
+      lib_column = lib_column, 
+      target_column = target_column, 
+      lib_sizes = seq(10, 71, by = 10), 
+      num_samples = 100, random_libs = TRUE, 
+      replace = FALSE, silent = TRUE)
+}
+
+## CCM on actual time series ----
+
+paramecium_xmap_didinium <- ccm_func(paramecium_didinium)
+para_xmap_didi_means <- ccm_means(paramecium_xmap_didinium)
+
+## CCM on surrogate time series ----
+
+# make surrogates
+para_surrogates <- make_surrogate_data(paramecium_didinium$paramecium)
+
+# for each surrogate time series
+#   run CCM with the same parameters from that surrogate to SST
+#   compute the mean rho in the same way
+# output is the null distribution for the cross map effect
+
+surrogate_output <- lapply(seq_len(NCOL(para_surrogates)), 
+                           function(i) {
+                             surrogate_ts <- para_surrogates[, i]
+                             xmap_output <- ccm_func(cbind(surrogate_ts, paramecium_didinium$didinium), 
+                                                     lib_column = 1, target_column = 2)
+                             xmap_means <- ccm_means(xmap_output)
+                           })
+
+surrogate_means <- do.call(rbind, surrogate_output)
+surrogate_upper_95 <- ccm_means(surrogate_means, 
+                                FUN = quantile, probs = 0.95)
+
+## plot the output ----
+
+plot(rho ~ lib_size, data = para_xmap_didi_means, type = "l", 
+     col = "red", ylim = c(0, 1), xlab = "Library Size", 
+     ylab = "Cross Map Skill (rho)")
+lines(surrogate_upper_95$lib_size, surrogate_upper_95$rho, 
+      lty = 2, col = "red")
+legend(x = "topleft", legend = c("paramecium xmap didinium (actual)", 
+                                 "paramecium xmap didinium (null 95%)"), 
+       col = "red", lty = c(1, 2), bty = "n", inset = 0.02, cex = 0.8)
+```
+
+
+## Extra topics
+
+For examples related to:
+* examining S-map coefficients
+* time delay of causal effects in CCM
+* Gaussian Process implementation
+
+refer to the [online tutorial](https://ha0ye.github.io/rEDM/articles/rEDM.html)
