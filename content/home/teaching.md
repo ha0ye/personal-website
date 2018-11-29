@@ -19,7 +19,7 @@ weight = 60
 
 I am a certified instructor for [The Carpentries](https://carpentries.org/) and have taught at and assisted with several workshops at both the University of Florida and the University of California San Diego.
 
-In addition to teaching, I am also a board member for the [UF Carpentry Club](https://uf-carpentry.org/), which organizes workshops and other events at UF. In August 2018, we organized a series of talks, career panel, and mini-tutorials as part of [Research Bazaar at UF](https://uf-carpentry.github.io/resbaz2018/gainesville/).
+In addition to teaching, I am also a board member for the [UF Carpentryies Club](https://uf-carpentries.org/), which organizes workshops and other events at UF. In August 2018, we organized a series of talks, career panel, and mini-tutorials as part of [Research Bazaar at UF](https://uf-carpentry.github.io/resbaz2018/gainesville/).
 
 ### Training
 
