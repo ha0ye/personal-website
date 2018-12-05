@@ -3,7 +3,7 @@ title = "Comprehensive incentives for reducing Chinook salmon bycatch in the Ber
 date = "2018-06-15"
 
 # Authors.
-authors = ["George Sugihara", "Keith R. Criddle", "Hao Ye", "Adrienne Lee", "Gerald Pao", "Chase James", "Erik Saberski", "Alfredo Giron-Nava"]
+authors = ["George Sugihara", "Keith R. Criddle", "Mac McQuown", "Alfredo Giron-Nava", "Ethan Deyle", "Adrienne Lee", "Gerald Pao", "Chase James", "Erik Saberski", "Hao Ye"]
 
 # Publication type.
 # Legend:
