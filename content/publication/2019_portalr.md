@@ -1,6 +1,5 @@
 +++
-title = "portalr: an R package for summarizing and using the
-Portal Project Data"
+title = "portalr: an R package for summarizing and using the Portal Project Data"
 date = "2019-01-24"
 
 # Authors.
