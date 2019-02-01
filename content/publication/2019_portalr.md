@@ -21,19 +21,7 @@ publication = "In *The Journal of Open Source Software*"
 publication_short = "In *JOSS*"
 
 # Abstract and optional shortened version.
-abstract = "Data sharing, the practice of making data widely available for use by others, benefits
-the ecological research community in ensuring study reproducibility and enabling many
-data sets to be combined to address broad-scale questions (e.g. meta-analyses). However,
-there are few standards or rules about how ecological data are collected and stored, and
-so it can be difficult and/or time-consuming to understand how to use unfamiliar data
-appropriately. `portalr` is an R package (R Core Team, 2018) to facilitate working with
-the data collected from a long-term ecological study called The Portal Project. All data is
-freely available in a GitHub repository (https://github.com/weecology/PortalData) and
-archived on Zenodo (Ernest et al., 2018a). The purpose of `portalr` is to allow new users
-to quickly and easily gain access to the data and start to use it, and to allow experienced
-users to produce analyses more efficiently and consistently. The functions contained in this
-package were developed by the researchers most familiar with the data and are designed
-to reflect best use practices."
+abstract = "Data sharing, the practice of making data widely available for use by others, benefits the ecological research community in ensuring study reproducibility and enabling many data sets to be combined to address broad-scale questions (e.g. meta-analyses). However, there are few standards or rules about how ecological data are collected and stored, and so it can be difficult and/or time-consuming to understand how to use unfamiliar data appropriately. `portalr` is an R package (R Core Team, 2018) to facilitate working with the data collected from a long-term ecological study called The Portal Project. All data is freely available in a GitHub repository (https://github.com/weecology/PortalData) and archived on Zenodo (Ernest et al., 2018a). The purpose of `portalr` is to allow new users to quickly and easily gain access to the data and start to use it, and to allow experienced users to produce analyses more efficiently and consistently. The functions contained in this package were developed by the researchers most familiar with the data and are designed to reflect best use practices."
 
 # Featured image thumbnail (optional)
 image_preview = ""
