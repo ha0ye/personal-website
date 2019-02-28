@@ -6,7 +6,7 @@ date = 2019-02-27T00:00:00
 title = "MATSS"
 
 # Project summary to display on homepage.
-summary = "R package for Macroecological Analysis of Time Series Structure
+summary = "R package for Macroecological Analysis of Time Series Structure"
 
 # Optional image to display on homepage (relative to `static/img/` folder).
 image_preview = "matss-preview.jpg"
