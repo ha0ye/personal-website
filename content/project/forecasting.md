@@ -28,7 +28,7 @@ caption = "One-month ahead forecasts of *Dipodomys merriami* abundance at Portal
 
 +++
 
-Why is forecasting in ecology of interest? In some cases, advance knowledge about events (e.g. algal blooms) can be useful for responses or interventions, in some cases predicting population changes (e.g. of fish) is a critical component of management for sustainability.
+Why is ecological forecasting a topic of interest? In some cases, advance knowledge about events (e.g. algal blooms) can be useful for responses or interventions, in some cases predicting population changes (e.g. of fish) is a critical component of management for sustainability.
 
 More broadly, however, forecasting is a way of validating our models by testing predictions against observations. Importantly, while there are many studies about different mechanisms in ecology that may produce stable or unstable systems, much remains unclear about how natural ecosystems operate, especially in response to climate change.
 

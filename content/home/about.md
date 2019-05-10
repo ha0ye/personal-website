@@ -39,13 +39,13 @@ weight = 5
 
 I'm a Postdoctoral Associate and Moore Data Fellow in the [Weecology Lab](https://www.weecology.org) at the University of Florida.
 
-The goal of my research is to understand how complex systems, specifically ecosystems, change over time. I develop new methods for analyzing time series and apply these methods to observational datasets in order to answer questions about what is occurring in the underlying systems.
+The goal of my research is to understand the ways in which complex systems change over time, and the processes that drive these changes. I approach this broad topic by developing new methods for analyzing time series data and then applying these methods to observational datasets.
 
 Some typical research questions are:
 
 * What components of ecosystems are changing and how fast?
 * How do different processes interact to produce patterns across temporal, spatial, and taxonomic scales?
-* What ecological properties are predictable and how well?
-* How do we best build causal models of mechanisms to guide forecasting and management?
+* Which ecological properties are predictable, how well can we predict them, and what properties determine predictability?
+* How can we best build causal models of complex systems, e.g. to guide forecasting and management?
 
-I also believe that academia needs a cultural shift to be more welcoming, inclusive, and accessible; and that these aims overlap with support for open and reproducible research practices. To achieve these goals, I support changes to institutional policies, better student support and training, and work to better understand and deconstruct existing biases and prejudices.
+I also believe that academia and higher education (in the US) needs cultural change to be more welcoming, inclusive, and accessible. Existing practices and power dynamics that support the status quo reinforce or amplify societal biases and inequities, causing harm to both the practice of science, and more importantly to the people who are or would be practitioners of science. In addition to embracing open and reproducible research practices, I support changing institutional policies, improving student support and training, and continual work in understanding and deconstructing biases and prejudices.

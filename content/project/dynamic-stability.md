@@ -32,4 +32,4 @@ One classical approach for stability involves studying the species interaction m
 
 [Ushio et al. 2018](/publication/2018_maizuru-dynamic-stability/) describes and demonstrates the approach for a fish community in Maizuru Bay. Currently, I am investigating whether dynamic stability can be a useful guide for identifying abrupt shifts in ecological communities. Specifically, whether the approach can give insight into change in the rodent community at the Portal experimental site, and validating the method against the known shifts identified in [Christensen et al. 2018](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/ecy.2373).
 
-Code and data for this project are available in the [GitHub repo](https://github.com/ha0ye/portal-DS) and initial results were presented at the 2018 ESA meeting in New Orleans.
+Code and data for this project are available on [GitHub](https://ha0ye.github.io/portalDS/) and initial results were presented at the 2018 ESA meeting in New Orleans.
