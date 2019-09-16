@@ -34,6 +34,6 @@ More broadly, however, forecasting is a way of validating our models by testing 
 
 Some related papers:
 
-* How much is the level of predictability of ecological time series attributable to data quality, modeling, and/or the intrinsic stochasticity of the underlying system? [Pennekamp et al. (preprint) "The intrinsic predictability of ecological time series and its potential to guide forecasting"](/publication/2018_intrinsic-predictability/)
+* How much is the level of predictability of ecological time series attributable to data quality, modeling, and/or the intrinsic stochasticity of the underlying system? [Pennekamp et al. 2019 "The intrinsic predictability of ecological time series and its potential to guide forecasting"](/publication/2019_intrinsic-predictability/)
 * Predicting algal blooms using models that incorporate biology and stochastic physical drivers. [McGowan et al. 2017 "Predicting coastal algal blooms in southern California"](/publication/2017_predicting-algal-blooms/)
 * How much ecological mechanism needs to be explicitly written out in equations to forecast? (not very much) [Ye et al. 2015 "Equation-free mechanistic ecosystem forecasting using empirical dynamic modeling"](/publication/2015_equation-free-modeling/)

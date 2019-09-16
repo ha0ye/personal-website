@@ -1,0 +1,530 @@
+---
+title: "Amusement Park Injuries #TidyTuesday"
+author: "Hao Ye"
+date: 2019-09-11
+categories: ["R"]
+tags: ["TidyTuesday", "ResBazGNV"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#initial-data-examination">Initial data examination</a></li>
+<li><a href="#injuries-by-date">Injuries by date</a></li>
+<li><a href="#injuries-by-cause">Injuries by cause</a></li>
+</ul>
+</div>
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>This is an exploration of the <a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday</a> dataset on <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-09-10">“Amusement Park Injuries”</a>, done as part of the Wednesday coding clinic for <a href="https://resbaz.github.io/resbaz2019/gainesville/">Research Bazaar Gainesville</a>.</p>
+</div>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<pre class="r"><code>## load packages
+library(tidyverse)
+## ── Attaching packages ──────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+## ✔ ggplot2 3.2.1     ✔ purrr   0.3.2
+## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
+## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0
+## ── Conflicts ─────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+library(lubridate)
+## 
+## Attaching package: &#39;lubridate&#39;
+## The following object is masked from &#39;package:base&#39;:
+## 
+##     date
+
+## get the raw data
+tx_injuries &lt;- readr::read_csv(&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-09-10/tx_injuries.csv&quot;)
+## Parsed with column specification:
+## cols(
+##   injury_report_rec = col_double(),
+##   name_of_operation = col_character(),
+##   city = col_character(),
+##   st = col_character(),
+##   injury_date = col_character(),
+##   ride_name = col_character(),
+##   serial_no = col_character(),
+##   gender = col_character(),
+##   age = col_character(),
+##   body_part = col_character(),
+##   alleged_injury = col_character(),
+##   cause_of_injury = col_character(),
+##   other = col_character()
+## )
+
+safer_parks &lt;- readr::read_csv(&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-09-10/saferparks.csv&quot;)
+## Parsed with column specification:
+## cols(
+##   .default = col_character(),
+##   acc_id = col_double(),
+##   num_injured = col_double(),
+##   age_youngest = col_double(),
+##   mechanical = col_double(),
+##   op_error = col_double(),
+##   employee = col_double()
+## )
+## See spec(...) for full column specifications.</code></pre>
+</div>
+<div id="initial-data-examination" class="section level2">
+<h2>Initial data examination</h2>
+<p>We compute some basic summaries on the data, to see what analyses might be supported. For instance, if the record keeping does discretization on the body part injured, that would facilitate analyses that look into relative injuries to different body parts.</p>
+<pre class="r"><code>length(unique(tx_injuries$body_part))
+## [1] 189
+head(tx_injuries$body_part, n = 20)
+##  [1] &quot;Mouth&quot;                      &quot;Knee&quot;                      
+##  [3] &quot;Right Shoulder&quot;             &quot;Lower Leg&quot;                 
+##  [5] &quot;Head&quot;                       &quot;Bottom of foot&quot;            
+##  [7] &quot;Right shoulder, right knee&quot; &quot;Back&quot;                      
+##  [9] &quot;Neck and back&quot;              &quot;Left leg&quot;                  
+## [11] &quot;Shoulder&quot;                   &quot;Back &amp; leg&quot;                
+## [13] &quot;Tail bone&quot;                  &quot;Ankle&quot;                     
+## [15] &quot;Foot &amp; leg&quot;                 &quot;Shoulder&quot;                  
+## [17] &quot;Ankle&quot;                      &quot;Tooth&quot;                     
+## [19] &quot;Neck&quot;                       &quot;Lower back&quot;</code></pre>
+<p>There is some discretization, but depending on whether multiple body parts are injured, or whether the record indicated details (such as [right or left] “ankle” injury), it would be a hassle to try and convert this data column into a usable categorical variable.</p>
+<pre class="r"><code>length(unique(tx_injuries$ride_name))
+## [1] 252
+head(tx_injuries$ride_name, n = 20)
+##  [1] &quot;I Fly&quot;                     &quot;Gulf Glider&quot;              
+##  [3] &quot;Howlin Tornado&quot;            &quot;Scooby Doo Ghost Blasters&quot;
+##  [5] &quot;Alien Abduction&quot;           &quot;Go Karts&quot;                 
+##  [7] &quot;Gold River Adventure&quot;      &quot;Titan&quot;                    
+##  [9] &quot;Wild River&quot;                &quot;Sky Ride 2&quot;               
+## [11] &quot;iFly Austin&quot;               &quot;Go Karts&quot;                 
+## [13] &quot;LaVibra&quot;                   &quot;Go Kart Track&quot;            
+## [15] &quot;Rock 2 Drop 2 Rockwall&quot;    &quot;I Fly&quot;                    
+## [17] &quot;Zipline # 6&quot;               &quot;Batman&quot;                   
+## [19] &quot;New York Adventure&quot;        &quot;Texas Tumble&quot;</code></pre>
+<p>The <code>ride_name</code> column seems to be abotu the same, with some record having generic names for rides, and some having a unique commerical name.</p>
+</div>
+<div id="injuries-by-date" class="section level2">
+<h2>Injuries by date</h2>
+<p>First, let’s select just a few columns of interest, rename them to be more convenient for us, and then plot injuries by date.</p>
+<pre class="r"><code># wrangle the first dataset of amusement park injuries
+df_1 &lt;- tx_injuries %&gt;%
+    select(park = name_of_operation, 
+           city, 
+           state = st, 
+           ride = ride_name, 
+           body_part, 
+           injury_type = alleged_injury, 
+           date = injury_date) %&gt;%
+    mutate(date_mdy = mdy(date), 
+           date_serial = as.Date(as.numeric(date), origin = &quot;1899-12-30&quot;), 
+           date = if_else(is.na(date_mdy), date_serial, date_mdy))
+## Warning: 349 failed to parse.
+## Warning in as.Date(as.numeric(date), origin = &quot;1899-12-30&quot;): NAs introduced
+## by coercion
+
+# sum up injuries by date
+
+df_1 %&gt;%
+    count(date) %&gt;%
+    {.} -&gt; to_plot
+
+# plot injuries by date
+to_plot %&gt;%
+    ggplot(aes(x = date, y = n)) + 
+    geom_line() + 
+    theme_bw() + 
+    labs(y = &quot;Number of Injuries&quot;) + 
+    guides(color = &quot;none&quot;)
+## Warning: Removed 1 rows containing missing values (geom_path).</code></pre>
+<p><img src="/post/2019-09-11-amusement-park-injuries_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Besides the expected peak during the summer, we can also see hints of an earlier bump in injuries earlier in the year, perhaps corresponding to spring break.</p>
+</div>
+<div id="injuries-by-cause" class="section level2">
+<h2>Injuries by cause</h2>
+<p>Next, we wanted to look at potential sources of injuries:</p>
+<pre class="r"><code>length(unique(tx_injuries$cause_of_injury))
+## [1] 368
+head(tx_injuries$cause_of_injury)
+## [1] &quot;Student attempted unfamiliar manuever&quot;                            
+## [2] &quot;Hit her knee on a chair on the ride&quot;                              
+## [3] &quot;Injured person fell out of raft and hit her shoulder on the slide&quot;
+## [4] &quot;Guest backed into advancing car&quot;                                  
+## [5] &quot;unknown guest did not report to operator or attendant&quot;            
+## [6] &quot;had taken her shoes off and was driving barefoot - hit railing&quot;</code></pre>
+<p>The description of injury causes in the first dataset would require lots of work, so let’s move on.</p>
+<p>The <code>safer_parks</code> dataset has columns for whether the source of the injury/report was mechanical failure, operator error, employee error, or <code>NA</code> for all three. (I think <code>operator error</code> and <code>employee error</code> are distinct, because of cases like go karts, where the operator is a customer as opposed to an employee of the park in charge of running the ride, as for a roller-coaster.)</p>
+<p>First, let’s verify that there are no data points in more than one category:</p>
+<pre class="r"><code>safer_parks %&gt;%
+    filter((!is.na(mechanical) + 
+                !is.na(op_error) + 
+                !is.na(employee)) &gt; 1) %&gt;%
+    dim()
+## [1]  0 23</code></pre>
+<p>No rows here means that in each data point, at most one of the values in those 3 columns is <em>not</em> an NA.</p>
+<p>Now let’s organize the data and see how the rates of causes differ, sorted by descending number of total accidents per state.</p>
+<pre class="r"><code># there&#39;s almost certainly a better way than nested ifelse statements, but this 
+# example only has a few and is faster than trying to look up the right way of 
+# re-coding the data
+safer_parks %&gt;% 
+    mutate(state = acc_state, 
+           cause = ifelse(!is.na(mechanical), &quot;mechanical&quot;, 
+                          ifelse(!is.na(op_error), &quot;operator error&quot;, 
+                                 ifelse(!is.na(employee), &quot;employee error&quot;, 
+                                        &quot;other&quot;)))) %&gt;% 
+    {.} -&gt; df_2
+
+df_2 %&gt;%
+    count(state, cause) %&gt;%
+    spread(cause, n, fill = 0) %&gt;%
+    mutate(total = `employee error` + 
+               mechanical + 
+               `operator error` + 
+               other) %&gt;%
+    arrange(desc(total)) %&gt;%
+    knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">state</th>
+<th align="right">employee error</th>
+<th align="right">mechanical</th>
+<th align="right">operator error</th>
+<th align="right">other</th>
+<th align="right">total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CA</td>
+<td align="right">1</td>
+<td align="right">131</td>
+<td align="right">25</td>
+<td align="right">2840</td>
+<td align="right">2997</td>
+</tr>
+<tr class="even">
+<td align="left">PA</td>
+<td align="right">9</td>
+<td align="right">31</td>
+<td align="right">20</td>
+<td align="right">1823</td>
+<td align="right">1883</td>
+</tr>
+<tr class="odd">
+<td align="left">FL</td>
+<td align="right">0</td>
+<td align="right">32</td>
+<td align="right">6</td>
+<td align="right">936</td>
+<td align="right">974</td>
+</tr>
+<tr class="even">
+<td align="left">TX</td>
+<td align="right">0</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">543</td>
+<td align="right">551</td>
+</tr>
+<tr class="odd">
+<td align="left">NJ</td>
+<td align="right">3</td>
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">506</td>
+<td align="right">520</td>
+</tr>
+<tr class="even">
+<td align="left">OK</td>
+<td align="right">3</td>
+<td align="right">31</td>
+<td align="right">18</td>
+<td align="right">352</td>
+<td align="right">404</td>
+</tr>
+<tr class="odd">
+<td align="left">NH</td>
+<td align="right">0</td>
+<td align="right">13</td>
+<td align="right">2</td>
+<td align="right">196</td>
+<td align="right">211</td>
+</tr>
+<tr class="even">
+<td align="left">KY</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">113</td>
+<td align="right">118</td>
+</tr>
+<tr class="odd">
+<td align="left">NC</td>
+<td align="right">1</td>
+<td align="right">12</td>
+<td align="right">7</td>
+<td align="right">78</td>
+<td align="right">98</td>
+</tr>
+<tr class="even">
+<td align="left">MI</td>
+<td align="right">0</td>
+<td align="right">8</td>
+<td align="right">5</td>
+<td align="right">84</td>
+<td align="right">97</td>
+</tr>
+<tr class="odd">
+<td align="left">IL</td>
+<td align="right">0</td>
+<td align="right">16</td>
+<td align="right">6</td>
+<td align="right">68</td>
+<td align="right">90</td>
+</tr>
+<tr class="even">
+<td align="left">AZ</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">84</td>
+<td align="right">88</td>
+</tr>
+<tr class="odd">
+<td align="left">WI</td>
+<td align="right">0</td>
+<td align="right">7</td>
+<td align="right">6</td>
+<td align="right">47</td>
+<td align="right">60</td>
+</tr>
+<tr class="even">
+<td align="left">OH</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">8</td>
+<td align="right">35</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">IA</td>
+<td align="right">3</td>
+<td align="right">8</td>
+<td align="right">2</td>
+<td align="right">19</td>
+<td align="right">32</td>
+</tr>
+<tr class="even">
+<td align="left">ME</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">23</td>
+<td align="right">32</td>
+</tr>
+<tr class="odd">
+<td align="left">MD</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">20</td>
+<td align="right">25</td>
+</tr>
+<tr class="even">
+<td align="left">TN</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">18</td>
+<td align="right">23</td>
+</tr>
+<tr class="odd">
+<td align="left">MA</td>
+<td align="right">0</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">8</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="left">WA</td>
+<td align="right">0</td>
+<td align="right">9</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="left">CO</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">6</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="left">CT</td>
+<td align="right">0</td>
+<td align="right">5</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="left">WV</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">AR</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">MO</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">NY</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">SC</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">MN</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">MT</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">NM</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">AK</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">GA</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">ID</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">KS</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">NE</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">NV</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">OR</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">UT</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">VA</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">WY</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Hmm, it’s curious why PA is so high up on the list, given that it isn’t either a really large state or one known for many parks. Some possible hypotheses:</p>
+<ul>
+<li>different reporting means PA has more reports</li>
+<li>different types of parks means PA parks have higher injury rates</li>
+<li>different parks (maybe one or a few parks in PA are particularly injury-prone)</li>
+<li>different date range (the dataset may capture a total period of time different for PA relative to other states)</li>
+</ul>
+</div>

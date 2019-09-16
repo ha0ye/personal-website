@@ -1,0 +1,141 @@
+---
+title: "Amusement Park Injuries #TidyTuesday"
+author: "Hao Ye"
+date: 2019-09-11
+categories: ["R"]
+tags: ["TidyTuesday", "ResBazGNV"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+## Overview
+
+This is an exploration of the [TidyTuesday](https://github.com/rfordatascience/tidytuesday) dataset on ["Amusement Park Injuries"](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-09-10), done as part of the Wednesday coding clinic for [Research Bazaar Gainesville](https://resbaz.github.io/resbaz2019/gainesville/).
+
+## Setup
+
+```{r}
+## load packages
+library(tidyverse)
+library(lubridate)
+
+## get the raw data
+tx_injuries <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-09-10/tx_injuries.csv")
+
+safer_parks <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-09-10/saferparks.csv")
+```
+
+## Initial data examination
+
+We compute some basic summaries on the data, to see what analyses might be supported. For instance, if the record keeping does discretization on the body part injured, that would facilitate analyses that look into relative injuries to different body parts.
+
+```{r}
+length(unique(tx_injuries$body_part))
+head(tx_injuries$body_part, n = 20)
+```
+
+There is some discretization, but depending on whether multiple body parts are injured, or whether the record indicated details (such as [right or left] "ankle" injury), it would be a hassle to try and convert this data column into a usable categorical variable.
+
+```{r}
+length(unique(tx_injuries$ride_name))
+head(tx_injuries$ride_name, n = 20)
+```
+
+The `ride_name` column seems to be abotu the same, with some record having generic names for rides, and some having a unique commerical name.
+
+## Injuries by date
+
+First, let's select just a few columns of interest, rename them to be more convenient for us, and then plot injuries by date.
+
+```{r}
+# wrangle the first dataset of amusement park injuries
+df_1 <- tx_injuries %>%
+    select(park = name_of_operation, 
+           city, 
+           state = st, 
+           ride = ride_name, 
+           body_part, 
+           injury_type = alleged_injury, 
+           date = injury_date) %>%
+    mutate(date_mdy = mdy(date), 
+           date_serial = as.Date(as.numeric(date), origin = "1899-12-30"), 
+           date = if_else(is.na(date_mdy), date_serial, date_mdy))
+
+# sum up injuries by date
+
+df_1 %>%
+    count(date) %>%
+    {.} -> to_plot
+
+# plot injuries by date
+to_plot %>%
+    ggplot(aes(x = date, y = n)) + 
+    geom_line() + 
+    theme_bw() + 
+    labs(y = "Number of Injuries") + 
+    guides(color = "none")
+```
+
+Besides the expected peak during the summer, we can also see hints of an earlier bump in injuries earlier in the year, perhaps corresponding to spring break.
+
+## Injuries by cause
+
+Next, we wanted to look at potential sources of injuries:
+
+```{r}
+length(unique(tx_injuries$cause_of_injury))
+head(tx_injuries$cause_of_injury)
+```
+
+The description of injury causes in the first dataset would require lots of work, so let's move on.
+
+The `safer_parks` dataset has columns for whether the source of the injury/report was mechanical failure, operator error, employee error, or `NA` for all three. (I think `operator error` and `employee error` are distinct, because of cases like go karts, where the operator is a customer as opposed to an employee of the park in charge of running the ride, as for a roller-coaster.)
+
+First, let's verify that there are no data points in more than one category:
+
+```{r}
+safer_parks %>%
+    filter((!is.na(mechanical) + 
+                !is.na(op_error) + 
+                !is.na(employee)) > 1) %>%
+    dim()
+```
+
+No rows here means that in each data point, at most one of the values in those 3 columns is *not* an NA.
+
+Now let's organize the data and see how the rates of causes differ, sorted by descending number of total accidents per state.
+
+```{r}
+# there's almost certainly a better way than nested ifelse statements, but this 
+# example only has a few and is faster than trying to look up the right way of 
+# re-coding the data
+safer_parks %>% 
+    mutate(state = acc_state, 
+           cause = ifelse(!is.na(mechanical), "mechanical", 
+                          ifelse(!is.na(op_error), "operator error", 
+                                 ifelse(!is.na(employee), "employee error", 
+                                        "other")))) %>% 
+    {.} -> df_2
+
+df_2 %>%
+    count(state, cause) %>%
+    spread(cause, n, fill = 0) %>%
+    mutate(total = `employee error` + 
+               mechanical + 
+               `operator error` + 
+               other) %>%
+    arrange(desc(total)) %>%
+    knitr::kable()
+```
+
+Hmm, it's curious why PA is so high up on the list, given that it isn't either a really large state or one known for many parks. Some possible hypotheses:
+
+* different reporting means PA has more reports
+* different types of parks means PA parks have higher injury rates
+* different parks (maybe one or a few parks in PA are particularly injury-prone)
+* different date range (the dataset may capture a total period of time different for PA relative to other states)
