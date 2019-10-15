@@ -1,0 +1,147 @@
+---
+title: "Docker Setup for R package Development"
+author: "Hao Ye"
+date: 2019-09-11
+categories: ["R"]
+tags: ["Docker", "Travis CI", "package"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+## Introduction
+
+The below summarize the workflow I've converged on, after reading through various tutorials on Docker, examples, etc.
+
+If you're here, I presume you have some interest in R package development and/or using Docker, which is a tool for containerizing an environment for running software.
+
+So why another blogpost about it? Well, a lot of the information I found seems to focus on specific use cases of Docker, that is NOT what I want to do. Sometimes there is additional fluff that is unexplained and/or unnecessary for my use case.
+
+## My Use Case
+
+Here's what I want to do:
+
+* develop an R package, assume it's past minimum prototype stage, and so dependencies are mostly fixed
+* create a Docker image capturing everything needed to build/run/test the R package
+* set up Continuous Integration to use the Docker image for automated testing
+
+The last is especially important for some of my projects, because the set of dependencies can be large enough, that installing all of them takes a bit of time. Although Travis CI can cache dependencies, it has to fully complete its script without errors in order to cache, but will also time out with an error at 50 minutes.
+
+In the past, I used incremental builds -- only include some of the dependencies, bypass tests and checks, to get Travis to cache some subset of the dependencies. Then, repeat with more and more, until they're all cached. This is fine, up until something changes (like an R version), and the process has to be repeated.
+
+Hence, the goal of moving dependencies into a Docker image.
+
+## Workflow
+
+### Building the Docker image
+
+First, we need to create a docker image that has everything needed to build and test the R package. The Rocker Project has many pre-build images for R, which can be seen at [https://www.rocker-project.org/images/](https://www.rocker-project.org/). I used `rocker/verse` as a base, because both `devtools` and the "publishing-related packages" are relevant for my package development needs.
+
+Within my R package, I add a `Dockerfile` file that contains instructions for building a custom image on top of `rocker/verse`:
+
+```
+# base image: rocker/verse (with a specific version of R)
+#   has R, RStudio, tidyverse, devtools, tex, and publishing-related packages
+FROM rocker/verse:3.6.0
+
+# required
+MAINTAINER Hao Ye <lhopitalified@gmail.com>
+
+# copy the repo contents into the docker image at `/portalDS`
+COPY . /portalDS
+
+# install the dependencies of the R package located at `/portalDS`
+RUN apt-get -y update -qq \ 
+  && apt-get install -y --no-install-recommends \
+    libgsl0-dev \ 
+  && R -e "devtools::install_dev_deps('/portalDS', dep = TRUE)" \ 
+  && R -e "install.packages('tidyr', repos='http://cran.rstudio.com/')" \ 
+  && R -e "install.packages('testthat', repos='http://cran.rstudio.com/')"
+```
+
+Note that we had to include instructions for an additional system dependency required for one of the R package dependencies. It can be tedious to figure this out, because of what things are named, and how long it takes to build the Docker image, so details on testing this out are going to be in a later post.
+
+In the command line, I then use:
+
+```
+docker build -t haoye/portal_ds .
+```
+
+to build the docker image.
+
+### Uploading the docker image to Docker Hub
+
+Because we want Travis CI to grab our pre-built Docker image, we need to put the image someplace. Luckily, [Docker Hub](http://hub.docker.com) is set up to accomodate this. Once we have setup our account and configured our machine to be able to [communicate with docker hub](https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html), I can use:
+
+```
+docker push haoye/portal_ds
+```
+
+to send the built image to docker hub.
+
+### Setting up Travis to use the Docker image
+
+Our Travis script is then going to include instructiors to retrieve the Docker image, update the R package files inside it, and do whatever tests and checks we would typically do in Travis.
+
+Note a few extra items. We use a `env_copy.sh` script to copy over environmental variables from Travis into the running docker container. Specifically, we want the variables that are used to detect that tests are being run on Travis, and the authentication to push a code coverage report.
+
+Finally, at the end, we copy the generated `pkgdown` docs back to Travis, and use the `deploy:` scripting to build a new website for the docs, if everything checked out on `master` branch.
+
+```
+env:
+  global:
+  - REPO=haoye/portal_ds
+
+sudo: required
+warnings_are_errors: false
+language: generic
+
+services:
+  - docker
+
+before_install:
+  # copy environmental variables to a file
+  - bash env_copy.sh
+
+  # retrieve the docker container from docker hub
+  - docker pull $REPO
+
+  # run the docker container and copy over the files into the container
+  - docker run --env-file env_file --name portalds -t -d $REPO /bin/bash
+  - docker exec -i portalds bash -c "rm -fr /portalDS"
+  - rm env_file
+  - docker cp ../portalDS portalds:/
+
+script:
+  # navigate into the directory and run devtools::check on the package
+  - docker exec -i portalds bash -c "cd portalDS && Rscript -e 'devtools::check()'"
+
+after_success:
+  # run code coverage, pkgdown, deploy new pkgdown docs
+  - docker exec -i portalds bash -c "R CMD INSTALL portalDS"
+  - docker exec -i portalds bash -c "cd portalDS && Rscript -e 'covr::codecov()'"
+  - docker exec -i portalds bash -c "cd portalDS && Rscript -e 'pkgdown::build_site()'"
+  - docker cp portalds:/portalDS/docs docs
+  
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_PAT
+  keep-history: true
+  local-dir: docs
+  on:
+    branch: master
+```
+
+## References
+
+Various places I consulted for similar instructions, help with Docker, etc.
+
+1. https://alexandereckert.com/post/testing-r-packages-with-latest-r-devel/
+2. https://github.com/grunwaldlab/poppr/wiki/R-CMD-check-with-docker-rocker
+3. https://lecardozo.github.io/2018/03/01/automated-docker-build.html
+4. [this twitter thread](https://twitter.com/Hao_and_Y/status/1183856123515768832?s=20)
