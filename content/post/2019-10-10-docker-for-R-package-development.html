@@ -65,6 +65,7 @@ RUN apt-get -y update -qq \
   &amp;&amp; R -e &quot;install.packages(&#39;tidyr&#39;, repos=&#39;http://cran.rstudio.com/&#39;)&quot; \ 
   &amp;&amp; R -e &quot;install.packages(&#39;testthat&#39;, repos=&#39;http://cran.rstudio.com/&#39;)&quot;</code></pre>
 <p>Note that we had to include instructions for an additional system dependency required for one of the R package dependencies. It can be tedious to figure this out, because of what things are named, and how long it takes to build the Docker image, so details on testing this out are going to be in a later post.</p>
+<p>An additional note: I noticed my unit tests depended on new versions of <code>tidyr</code> and <code>testthat</code> that, for some reason, weren’t getting included in the docker image. I ended up using manual install commands, and specifying the RStudio CRAN mirror to get this to work.</p>
 <p>In the command line, I then use:</p>
 <pre><code>docker build -t haoye/portal_ds .</code></pre>
 <p>to build the docker image.</p>
