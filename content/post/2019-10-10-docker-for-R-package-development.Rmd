@@ -1,7 +1,7 @@
 ---
 title: "Docker Setup for R package Development"
 author: "Hao Ye"
-date: 2019-09-11
+date: 2019-10-10
 categories: ["R"]
 tags: ["Docker", "Travis CI", "package"]
 output:
