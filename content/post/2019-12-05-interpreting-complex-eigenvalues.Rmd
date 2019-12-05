@@ -1,0 +1,161 @@
+---
+title: "Interpreting Complex Eigenvalues of Real Matrices"
+author: "Hao Ye"
+date: 2019-12-05
+categories: ["R"]
+tags: ["linear algebra"]
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+## Introduction
+
+Lately, I've been stuck in getting an intuition for exactly what is going on when a real matrix has complex eigenvalues (and complex eigenvectors) accordingly. After consulting various sources, and playing around with some examples, I think I have a grasp on what's going on, and translating the math into an interpretation in the original space.
+
+## Setup
+
+Suppose we have a real, square matrix $\mathbf{A}$ of dimensions $n \times n$. One standard interpretation of $\mathbf{A}$ is that it operates on vectors $\mathbf{x} \in \mathbb{R}^n$ via multiplication: $\mathbf{A} \mathbf{x}$ is the result of "applying" $\mathbf{A}$ to $\mathbf{x}$.
+
+If $\mathbf{A}$ is diagonalizable, then $\mathbf{A}$ has $n$ eigenvalues and $n$ eigenvectors.
+
+## The easy case (all eigenvalues are real)
+
+When the eigenvalues are all real numbers, there is a straightforward interpretation that results from the definition of eigenvalues and eigenvectors. For an eigenvalue, $\lambda$ and corresponding eigenvector $\mathbf{v}$:
+$$\mathbf{A} \mathbf{v} = \lambda \mathbf{v}$$.
+
+So the transformation that results from multiplying by $\mathbf{A}$ can be viewed as stretching, by a factor of $\lambda$, along the $n$ axes defined by the eigenvectors, $\mathbf{v}$. Thus, the result of $\mathbf{A} \mathbf{x}$ is equivalent to: decomposing $\mathbf{x}$ into the basis (defined by the eigenvectors) and stretching along each of the basis vectors (according to the eigenvalues). 
+
+*Note: The eigenvectors are not necessarily orthogonal, but will nevertheless still span the space of $\mathbf{x}$ as a group.*
+
+So far, so good, right? But even when $\mathbf{A}$ contains only real numbers, it can still have complex eigenvalues and eigenvectors.
+
+This makes interpretation a bit more difficult: if $\mathbf{x}$ is some actual thing (e.g. species abundances) and $\mathbf{A}$ is some actual transformation, what does it mean for the component of $\mathbf{x}$ along $\mathbf{v}$ to be stretched by a factor of $\lambda$; if $\mathbf{v}$ and $\lambda$ are complex numbers?
+
+
+## The hard case (complex eigenvalues)
+
+Nearly every resource I could find about interpreting complex eigenvalues and eigenvectors mentioned that in addition to a stretching, the transformation imposed by $\mathbf{A}$ involved rotation. So ideally, we should be able to identify the axis of rotation and the angle of rotation from the eigenvalue and eigenvector. (Here's where I got a bit stuck with resources, since all the detailed notes involved 2D matrices, and there is no need to specify an axis of rotation.)
+
+First, note that the complex eigenvalues and eigenvectors have to occur in complex-conjugate pairs; because $\mathbf{A}$ is all reals. So, for one such pair of eigenvalues, $\lambda_1$ and $\lambda_2$, $\lambda_1 = \overline{\lambda_2}$, and for the corresponding eigenvectors, $\mathbf{v}_1$ and $\mathbf{v}_2$, $\mathbf{v}_1 = \overline{\mathbf{v}_2}$.
+
+In other words, we have to consider the pair of eigenvalues and eigenvectors together. Luckily, the interpretation makes things work out well so that it's still just one rotation, just split in two halves:
+
+* the angle of rotation is given by $\mathrm{Arg}(\lambda)$, so $\lambda_1$ and $\lambda_2$ are the same rotation angle, just in opposite directions
+* the plane of rotation is defined by the vectors $\mathrm{Re}(\mathbf{v})$ and $\mathrm{Im}(\mathbf{v})$, so $\mathbf{v}_1$ and $\mathbf{v}_2$ define the same plane, but with normal vectors in opposite directions
+* thust the resulting operation defined by $\lambda_1$ and $\mathbf{v}_1$ is the same as that defined by $\lambda_2$ and $\mathbf{v}_2$
+
+To figure out what components of $\mathbf{x}$ undergo this rotation, we turn to the eigendecomposition definition:
+$$\mathbf{A} = \mathbf{Q} \mathbf{\Lambda} \mathbf{Q}^{-1}$$
+
+where $\mathbf{Q}$ is the matrix with the eigenvectors as columns and $\mathbf{\Lambda}$ is the diagonal matrix whose values are the eigenvalues.
+
+Thus, the component of $\mathbf{x}$ that undergoes the rotation specified by $\lambda_1$ and $\mathbf{v}_1$ is given by multiplying row $1$ of $\mathbf{Q}^{-1}$ by $\mathbf{x}$ (which gives us the 2d coordinates of $\mathbf{x}$ in the plane of rotation, specified as a complex number).
+
+## Demonstration
+
+Ok, let's demonstrate this with a 4-dimensional matrix, starting with its eigendecomposition.
+
+```{r}
+A <- matrix(c(3, -2, 0, 1, 
+              4, -1, 1, -1, 
+              2, 1, 0, 2, 
+              1, 0, -2, 0), byrow = TRUE, nrow = 4)
+
+Q <- eigen(A)$vectors
+L <- eigen(A)$values
+Q_inv <- solve(Q)
+```
+
+Next, we'll choose a random vector and compute its coordinates in the 2D rotational subspace:
+(I'm a bit unsure about the minus sign on the imaginary component, but maybe I got mixed up about whether the rotation should be clockwise or counter-clockwise.)
+
+```{r}
+# choose a random vector
+set.seed(42)
+x <- matrix(rnorm(4), nrow = 4)
+
+# coordinates in Re(v1), Im(v1) basis space
+pp1 <- Q_inv[1, ] %*% x
+XX1 <- matrix(c(Re(pp1), -Im(pp1)), nrow = 2)
+```
+
+Define the transformations that will occur: the rotation and scaling, and the projection back into the full 4D space:
+
+```{r}
+# back-transformation matrix
+VV1 <- matrix(c(Re(Q[, 1]), Im(Q[, 1])), ncol = 2)
+
+# rotation by Arg(l1), scaling by Mod(l1)
+LL1 <- matrix(c(Re(L[1]), Im(L[1]), 
+               -Im(L[1]), Re(L[1])), nrow = 2, byrow = TRUE)
+
+# check this definition
+theta <- Arg(L[1])
+all.equal(LL1, 
+          Mod(L[1]) * matrix(c(cos(theta), sin(theta), 
+                               -sin(theta), cos(theta)), byrow = TRUE, nrow = 2))
+```
+
+Now compute the result of this transformation of this component of $x$:
+
+```{r}
+zz1 <- VV1 %*% LL1 %*% XX1
+```
+
+Now, because we also have a 2nd pair of complex eigenvalues and eigenvectors, repeat with the 3rd eigenvalue:
+
+```{r}
+# coordinates in basis Re(v3), Im(v3)
+pp3 <- Q_inv[3, ] %*% x
+XX3 <- matrix(c(Re(pp3), -Im(pp3)), nrow = 2)
+
+# back-transformation matrix
+VV3 <- matrix(c(Re(Q[, 3]), Im(Q[, 3])), ncol = 2)
+
+# rotation by Arg(l3), scaling by Mod(l3)
+LL3 <- matrix(c(Re(L[3]), Im(L[3]), 
+                -Im(L[3]), Re(L[3])), nrow = 2, byrow = TRUE)
+
+zz3 <- VV3 %*% LL3 %*% XX3
+```
+
+We can check whether these outputs are the equivalent to applying $\mathbf{A}$ to the components of $\mathbf{x}$:
+
+```{r}
+# decompose x into xx1, xx2, xx3, xx4
+xx <- Q_inv %*% x
+xx1 <- t(xx[1, 1] %*% Q[, 1])
+xx2 <- t(xx[2, 1] %*% Q[, 2])
+xx3 <- t(xx[3, 1] %*% Q[, 3])
+xx4 <- t(xx[4, 1] %*% Q[, 4])
+
+# check that xx1, xx2, xx3, xx4 add up to x
+all.equal(Re(xx1 + xx2 + xx3 + xx4), x)
+
+# check that A (xx1 + xx2) is what we computed previously, 2 * zz1
+all.equal(2 * zz1, 
+          Re(A %*% (xx1 + xx2)))
+# check that A (xx3 + xx4) is what we computed previously, 2 * zz3
+all.equal(2 * zz3, 
+          Re(A %*% (xx3 + xx4)))
+
+# check that A x = 2 * zz1 + 2 * zz3
+all.equal(2 * zz1 + 2 * zz3, 
+          A %*% x)
+```
+
+## Conclusions
+
+So, armed with this knowledge, I can now describe the transformation that corresponds to a specific complex-conjugate pair of eigenvalues and eigenvectors. Alas, specifying the angle and axis of rotation is quite a bit harder than saying which relative proportions in a real eigenvector are getting scaled, but the above demonstration provides tools for decomposing $\mathbf{x}$ into the components that are getting transformed, as well as the result. (both of which exist as vectors in the original state space of $\mathbb{R}^n$)
+
+## References
+
+Various notes that I consulted:
+
+1. http://www.math.utk.edu/~freire/complex-eig2005.pdf
+2. https://math.stackexchange.com/questions/1546104/complex-eigenvalues-of-a-rotation-matrix
