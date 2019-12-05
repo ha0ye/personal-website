@@ -3,7 +3,7 @@ title: "Guide for Using an R Package for Reproducible Research"
 author: "Hao Ye"
 date: 2018-10-06
 categories: ["R"]
-tags: ["R Markdown", "usethis", "rrtools", "package", "reproducible research"]
+tags: ["R markdown", "usethis", "rrtools", "package", "reproducible research"]
 output:
   blogdown::html_page:
     toc: true
