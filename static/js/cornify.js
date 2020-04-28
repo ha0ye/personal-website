@@ -19,7 +19,7 @@
 	    if (!event.target.matches('__cornify_cupcake_button')) {
                 cornify_add();
             }
-	});    
+	}    
 
     var cupcake = 0;
     var cornify_count = 0;
