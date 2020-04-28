@@ -16,10 +16,11 @@
 
     document.onclick = function() {
         if(location.hostname=="haoye.wtf")
-	    if (!event.target.matches('__cornify_cupcake_button')) {
+            var no_unicorn = 'cornify_cupcake_button';
+	    if (!event.target.matches(no_unicorn)) {
                 cornify_add();
             }
-	}    
+      };    
 
     var cupcake = 0;
     var cornify_count = 0;
