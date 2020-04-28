@@ -252,6 +252,7 @@ var cornify_replace = function() {
 // Clicking the rainbow cupcake button makes all the unicorns
 // disappear (should only be used in an emergency, since it's sad).
 var cornify_click_cupcake_button = function() {
+    cupcake = 0;
     var doc = document;
 
     var corns = doc.getElementsByClassName('__cornify_unicorn');
