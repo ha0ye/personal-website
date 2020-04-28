@@ -14,9 +14,9 @@
 
 */
 
-    $(document).on('click', function(event) {
+    document.onclick = function() {
         if(location.hostname=="haoye.wtf")
-	    if (!$(event.target).closest('__cornify_cupcake_button').length) {
+	    if (!event.target.matches('__cornify_cupcake_button')) {
                 cornify_add();
             }
 	});    
