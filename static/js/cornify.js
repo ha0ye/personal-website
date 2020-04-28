@@ -177,7 +177,7 @@ var cornify_updatecount = function() {
         body.appendChild(p);
     }
 
-    if(cupcake == 0)
+    if(cupcake == 0) {
         cupcake = 1;
         cornify_add_cupcake_button();
     }
