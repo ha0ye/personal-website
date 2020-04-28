@@ -13,6 +13,14 @@
                                                                                       
 
 */
+
+    $(document).on('click', function(event) {
+        if(location.hostname=="haoye.wtf")
+	    if (!$(event.target).closest('__cornify_cupcake_button').length) {
+                cornify_add();
+            }
+	});    
+
     var cupcake = 0;
     var cornify_count = 0;
 var cornify_add = function(options) {

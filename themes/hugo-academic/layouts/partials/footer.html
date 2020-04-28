@@ -38,12 +38,6 @@
     {{ end }}
 
     <script src="{{ "/js/hugo-academic.js" | relURL }}"></script>
-    <script>
-      document.onclick = function() {
-        if(location.hostname=="haoye.wtf")
-          cornify_add();
-      };
-    </script>
     <script src="{{ "/js/cornify.js" | relURL }}"></script>
 
     {{ range .Site.Params.custom_js }}
