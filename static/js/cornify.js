@@ -15,11 +15,12 @@
 */
 
     document.onclick = function() {
-        if(location.hostname=="haoye.wtf")
+      if(location.hostname=="haoye.wtf") {
             var no_unicorn = 'cornify_cupcake_button';
 	    if (!event.target.matches(no_unicorn)) {
                 cornify_add();
             }
+      }
       };    
 
     var cupcake = 0;
