@@ -1,0 +1,214 @@
+---
+title: "Recommendations for Data Analysis in R"
+subtitle: "Stuff I Learned the Hard Way After Shooting Myself in the Foot (in 3 hours or less)"
+author:
+- "Hao Ye"
+- "for Chris Chizinski's R class @ UNL"
+date: "2018-11-02"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+    lib_dir: libs
+    nature:
+      beforeInit: "macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+# Goals for Data Analysis in R
+
+Code that is:
+* computationally reproducible (it gives the same answers each time you run it)
+
+* easily runnable (it gives the same answers each time anyone else runs it)
+
+* organized and documented so that *you* understand it
+
+* easy to make (or *revert*) changes that your boss or reviewers request
+
+* documented and reusable for someone else who wants to do something similar
+
+---
+# Set Up and Use RStudio
+
+Make RStudio start R with an empty environment:
+* `Tools -> Global Options`
+  - [ ] Restore .Rdata into workspace at startup
+  - Save workspace to .RData on exit: *Never*
+
+We set up RStudio this way in order to avoid issues with *hidden state*.
+
+Briefly, *hidden state* are all the variables in the R environment that can affect calculations. Ideally, our code should produce the same output for the same input. For this reason, we want to reduce dependence on the *hidden state* and instead include that into our inputs.
+
+---
+# Use RStudio Projects and `here`
+
+### RStudio projects:
+* are equivalent to folders for code, data, documentation, etc.
+* remember what files are open
+* default to setting the working directory to the project folder (no need to set absolute paths)
+
+### The `here` package:
+* enables paths relative to the project folder regardless of what the working directory is (this is tricky because of how Rmarkdown and R can have different working directories)
+* `here::here("data", "my_records.csv")` -> `<project folder>/data/my_records.csv` 
+
+---
+# Setup and use `usethis`
+
+`usethis` is an R package to assist with workflows for project setup and development. It has a lot of useful features if you're writing R packages, and even if you're not.
+
+Set up your user profile:
+`usethis::edit_r_profile()`
+
+```
+options(
+  usethis.name = "Jane Doe",
+  usethis.description = list(
+    `Authors@R` = 'person("Jane", "Doe", 
+                          email = "jane@example.com", 
+                          role = c("aut", "cre"), 
+                          comment = c(ORCID = "####-####-####-####"))',
+    License = "MIT + file LICENSE",
+    Version = "0.0.0.9000"
+  )
+)
+```
+
+(If you don't have an ORCID yet, create [one](https://add_your_orcid_id)!)
+
+---
+# File and Folder Organization
+
+Commonly used layouts help other people navigate your files. If you are consistent in using the same scheme, it also helps you navigate your files.
+
+```
+.
+|--DESCRIPTION
+|--README.md
+|--LICENSE
+|--data
+| |--my_data.csv
+|--analysis
+| |--my_script.R
+```
+
+We can create a new package with `usethis::create_package("path/to/packageName")`.
+
+See more examples in Wilson et al. 2017 and Marwick et al. 2018.
+
+---
+# Naming
+
+Principles for naming files:
+* machine readable
+* human interpretable
+* plays well with default ordering
+
+Examples:
+* `YYYY-MM-DD_bird-counts_site-A.csv`
+* `YYYY-MM-DD_temperature-readings_site-B.csv`
+* `<category>_<sub-category>_<sub-sub-category>`
+
+See Jenny Bryan's [slides](https://speakerdeck.com/jennybc/how-to-name-files)
+
+---
+# Version Control
+
+*Back up your files in some way!*
+Even storing your project folders in Google Drive or Dropbox is pretty good.
+
+If you have the time and inclination, try Git (the software) and GitHub (the cloud platform).
+Reasons:
+* *de facto* standard for open source
+* promotes collaboration
+* it integrates into RStudio
+* R markdown can render to `github_document`, which displays in a browser, e.g. https://github.com/ha0ye/R-demos/blob/master/rphylopic_plot.md
+
+Where to learn Git and Github?
+* the [software carpentry lessons](https://swcarpentry.github.io/git-novice/)
+* the [Happy Git and GitHub for the useR book](http://happygitwithr.com/)
+
+---
+# Coding Tips
+
+1. list package dependencies in a central location `usethis::use_package("<package>")`
+2. use indentation, consistent variable names to format code
+3. consider following a [style guide](http://adv-r.had.co.nz/Style.html) and/or using a linter. (There is a linter built-into RStudio, but also the `lintr` package.)
+
+---
+# Workflow
+
+After getting your code working, refactor it into a function:
+* this avoids hidden state
+* test and make sure it still works
+* easy to call the function for yourself and others
+* if desired, generalize the arguments (allows you to make changes easily)
+* follows the DRY "Don't Repeat Yourself" principle
+
+---
+# Building Your Analysis
+
+You might go through multiple steps in your analysis, which can result in multiple different functions.
+
+It can be convenient to save intermediate output, perhaps in an `output` or `results` folder. Then, you can load these objects instead of running long analyses each time.
+
+R markdown can be a great way to format your results. Using intermediate objects can help avoid having to rerun everything whenever you re-knit the Rmarkdown. If you're using github, I recommend looking into `github_document` as an output type that renders easily within the web brwoser.
+
+---
+# Writing Functions to use Tidyverse
+
+Suppose you want to write code to generalize operations that use tidyverse functions. The "typical" way of specifying function arguments doesn't work:
+```
+make_mtcars_plot <- function(var1, var2)
+{
+    ggplot(mtcars, aes(x = var1, y = var2)) +
+        geom_point()
+}
+make_mtcars_plot(cyl, disp) # gives me an error
+make_mtcars_plot("cyl", "disp") # doesn't select the right columns to plot
+```
+
+The solution is to use special syntax to designate variables:
+```
+make_mtcars_plot_fixed <- function(var1, var2)
+{
+    var1 <- enquo(var1)
+    var2 <- enquo(var2)
+    ggplot(mtcars, aes(x = !! var1, y = !! var2)) +
+        geom_point()
+}
+
+make_mtcars_plot_fixed(cyl, disp)
+```
+
+For more info, see the [programming with dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/programming.html) vignette.
+
+---
+# Documentation
+
+Some general tips for documenting your code:
+
+1. The code is already a representation of what it does, so it can be more useful to write comments for *why* you wrote the code - "what is it going to be used for?"
+
+2. Adding a bit of documentation at the top of each function and/or loop can help with navigating and finding your code - "what does this function do again?"
+
+---
+class: inverse
+
+# References
+
+* [What They Forgot to Teach You About R](https://whattheyforgot.org), Jenny Bryan & Jim Hester
+* [Good enough practices in scientific computing](https://doi.org/10.1371/journal.pcbi.1005510), Greg Wilson, Jenny Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, & Tracy Teal
+* [Packaging Data Analytical Work Reproducibly Using R (and Friends)](https://doi.org/10.1080/00031305.2017.1375986), Ben Marwick, Carl Boettiger, & Lincoln Mullen
+
+---
+class: center, middle
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).

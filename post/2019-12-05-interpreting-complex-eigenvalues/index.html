@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 2.4.0">
+  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="author" content="Hao Ye">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction Setup The easy case (all eigenvalues are real) The hard case (complex eigenvalues) Demonstration Conclusions References   Introduction Lately, I’ve been stuck in getting an intuition for exactly what is going on when a real matrix has complex eigenvalues (and complex eigenvectors) accordingly. After consulting various sources, and playing around with some examples, I think I have a grasp on what’s going on, and translating the math into an interpretation in the original space.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://ha0ye.github.io/personal-website/post/2019-12-05-interpreting-complex-eigenvalues/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#4D9999">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+
+  <link rel="stylesheet" href="/personal-website/styles.css">
+  
+
+  
+  
+  
+
+  
+  <link rel="alternate" href="https://ha0ye.github.io/personal-website/index.xml" type="application/rss+xml" title="Hao Ye">
+  <link rel="feed" href="https://ha0ye.github.io/personal-website/index.xml" type="application/rss+xml" title="Hao Ye">
+  
+
+  <link rel="manifest" href="/personal-website/site.webmanifest">
+  <link rel="icon" type="image/png" href="/personal-website/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/personal-website/img/icon-192.png">
+
+  <link rel="canonical" href="https://ha0ye.github.io/personal-website/post/2019-12-05-interpreting-complex-eigenvalues/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@Hao_and_Y">
+  <meta property="twitter:creator" content="@Hao_and_Y">
+  
+  <meta property="og:site_name" content="Hao Ye">
+  <meta property="og:url" content="https://ha0ye.github.io/personal-website/post/2019-12-05-interpreting-complex-eigenvalues/">
+  <meta property="og:title" content="Interpreting Complex Eigenvalues of Real Matrices | Hao Ye">
+  <meta property="og:description" content="Introduction Setup The easy case (all eigenvalues are real) The hard case (complex eigenvalues) Demonstration Conclusions References   Introduction Lately, I’ve been stuck in getting an intuition for exactly what is going on when a real matrix has complex eigenvalues (and complex eigenvectors) accordingly. After consulting various sources, and playing around with some examples, I think I have a grasp on what’s going on, and translating the math into an interpretation in the original space.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-12-05T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2023-01-08T14:32:32-05:00">
+  
+
+  
+
+  
+
+  <title>Interpreting Complex Eigenvalues of Real Matrices | Hao Ye</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/personal-website/">Hao Ye</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/personal-website/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/personal-website/#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/personal-website/#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/personal-website/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/personal-website/#teaching">
+            
+            <span>Teaching</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/personal-website/#inclusion">
+            
+            <span>Inclusion</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/personal-website/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Interpreting Complex Eigenvalues of Real Matrices</h1>
+
+    
+
+<div class="article-metadata">
+
+  
+  
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hao Ye">
+  </span>
+  
+
+  <span class="article-date">
+    
+        Last updated on
+    
+    <meta content="2019-12-05 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2023-01-08 14:32:32 -0500 -0500" itemprop="dateModified">
+      2023-01-08
+    </time>
+  </span>
+  <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Hao Ye">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="https://ha0ye.github.io/personal-website/categories/r/">R</a>
+    
+  </span>
+  
+  
+
+  
+  
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#the-easy-case-all-eigenvalues-are-real">The easy case (all eigenvalues are real)</a></li>
+<li><a href="#the-hard-case-complex-eigenvalues">The hard case (complex eigenvalues)</a></li>
+<li><a href="#demonstration">Demonstration</a></li>
+<li><a href="#conclusions">Conclusions</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Lately, I’ve been stuck in getting an intuition for exactly what is going on when a real matrix has complex eigenvalues (and complex eigenvectors) accordingly. After consulting various sources, and playing around with some examples, I think I have a grasp on what’s going on, and translating the math into an interpretation in the original space.</p>
+</div>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<p>Suppose we have a real, square matrix <span class="math inline">\(\mathbf{A}\)</span> of dimensions <span class="math inline">\(n \times n\)</span>. One standard interpretation of <span class="math inline">\(\mathbf{A}\)</span> is that it operates on vectors <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span> via multiplication: <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> is the result of “applying” <span class="math inline">\(\mathbf{A}\)</span> to <span class="math inline">\(\mathbf{x}\)</span>.</p>
+<p>If <span class="math inline">\(\mathbf{A}\)</span> is diagonalizable, then <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> eigenvalues and <span class="math inline">\(n\)</span> eigenvectors.</p>
+</div>
+<div id="the-easy-case-all-eigenvalues-are-real" class="section level2">
+<h2>The easy case (all eigenvalues are real)</h2>
+<p>When the eigenvalues are all real numbers, there is a straightforward interpretation that results from the definition of eigenvalues and eigenvectors. For an eigenvalue, <span class="math inline">\(\lambda\)</span> and corresponding eigenvector <span class="math inline">\(\mathbf{v}\)</span>:
+<span class="math display">\[\mathbf{A} \mathbf{v} = \lambda \mathbf{v}\]</span>.</p>
+<p>So the transformation that results from multiplying by <span class="math inline">\(\mathbf{A}\)</span> can be viewed as stretching, by a factor of <span class="math inline">\(\lambda\)</span>, along the <span class="math inline">\(n\)</span> axes defined by the eigenvectors, <span class="math inline">\(\mathbf{v}\)</span>. Thus, the result of <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> is equivalent to: decomposing <span class="math inline">\(\mathbf{x}\)</span> into the basis (defined by the eigenvectors) and stretching along each of the basis vectors (according to the eigenvalues).</p>
+<p><em>Note: The eigenvectors are not necessarily orthogonal, but will nevertheless still span the space of <span class="math inline">\(\mathbf{x}\)</span> as a group.</em></p>
+<p>So far, so good, right? But even when <span class="math inline">\(\mathbf{A}\)</span> contains only real numbers, it can still have complex eigenvalues and eigenvectors.</p>
+<p>This makes interpretation a bit more difficult: if <span class="math inline">\(\mathbf{x}\)</span> is some actual thing (e.g. species abundances) and <span class="math inline">\(\mathbf{A}\)</span> is some actual transformation, what does it mean for the component of <span class="math inline">\(\mathbf{x}\)</span> along <span class="math inline">\(\mathbf{v}\)</span> to be stretched by a factor of <span class="math inline">\(\lambda\)</span>; if <span class="math inline">\(\mathbf{v}\)</span> and <span class="math inline">\(\lambda\)</span> are complex numbers?</p>
+</div>
+<div id="the-hard-case-complex-eigenvalues" class="section level2">
+<h2>The hard case (complex eigenvalues)</h2>
+<p>Nearly every resource I could find about interpreting complex eigenvalues and eigenvectors mentioned that in addition to a stretching, the transformation imposed by <span class="math inline">\(\mathbf{A}\)</span> involved rotation. So ideally, we should be able to identify the axis of rotation and the angle of rotation from the eigenvalue and eigenvector. (Here’s where I got a bit stuck with resources, since all the detailed notes involved 2D matrices, and there is no need to specify an axis of rotation.)</p>
+<p>First, note that the complex eigenvalues and eigenvectors have to occur in complex-conjugate pairs; because <span class="math inline">\(\mathbf{A}\)</span> is all reals. So, for one such pair of eigenvalues, <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>, <span class="math inline">\(\lambda_1 = \overline{\lambda_2}\)</span>, and for the corresponding eigenvectors, <span class="math inline">\(\mathbf{v}_1\)</span> and <span class="math inline">\(\mathbf{v}_2\)</span>, <span class="math inline">\(\mathbf{v}_1 = \overline{\mathbf{v}_2}\)</span>.</p>
+<p>In other words, we have to consider the pair of eigenvalues and eigenvectors together. Luckily, the interpretation makes things work out well so that it’s still just one rotation, just split in two halves:</p>
+<ul>
+<li>the angle of rotation is given by <span class="math inline">\(\mathrm{Arg}(\lambda)\)</span>, so <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> are the same rotation angle, just in opposite directions</li>
+<li>the plane of rotation is defined by the vectors <span class="math inline">\(\mathrm{Re}(\mathbf{v})\)</span> and <span class="math inline">\(\mathrm{Im}(\mathbf{v})\)</span>, so <span class="math inline">\(\mathbf{v}_1\)</span> and <span class="math inline">\(\mathbf{v}_2\)</span> define the same plane, but with normal vectors in opposite directions</li>
+<li>thust the resulting operation defined by <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\mathbf{v}_1\)</span> is the same as that defined by <span class="math inline">\(\lambda_2\)</span> and <span class="math inline">\(\mathbf{v}_2\)</span></li>
+</ul>
+<p>To figure out what components of <span class="math inline">\(\mathbf{x}\)</span> undergo this rotation, we turn to the eigendecomposition definition:
+<span class="math display">\[\mathbf{A} = \mathbf{Q} \mathbf{\Lambda} \mathbf{Q}^{-1}\]</span></p>
+<p>where <span class="math inline">\(\mathbf{Q}\)</span> is the matrix with the eigenvectors as columns and <span class="math inline">\(\mathbf{\Lambda}\)</span> is the diagonal matrix whose values are the eigenvalues.</p>
+<p>Thus, the component of <span class="math inline">\(\mathbf{x}\)</span> that undergoes the rotation specified by <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\mathbf{v}_1\)</span> is given by multiplying row <span class="math inline">\(1\)</span> of <span class="math inline">\(\mathbf{Q}^{-1}\)</span> by <span class="math inline">\(\mathbf{x}\)</span> (which gives us the 2d coordinates of <span class="math inline">\(\mathbf{x}\)</span> in the plane of rotation, specified as a complex number).</p>
+</div>
+<div id="demonstration" class="section level2">
+<h2>Demonstration</h2>
+<p>Ok, let’s demonstrate this with a 4-dimensional matrix, starting with its eigendecomposition.</p>
+<pre class="r"><code>A &lt;- matrix(c(3, -2, 0, 1, 
+              4, -1, 1, -1, 
+              2, 1, 0, 2, 
+              1, 0, -2, 0), byrow = TRUE, nrow = 4)
+
+Q &lt;- eigen(A)$vectors
+L &lt;- eigen(A)$values
+Q_inv &lt;- solve(Q)</code></pre>
+<p>Next, we’ll choose a random vector and compute its coordinates in the 2D rotational subspace:
+(I’m a bit unsure about the minus sign on the imaginary component, but maybe I got mixed up about whether the rotation should be clockwise or counter-clockwise.)</p>
+<pre class="r"><code># choose a random vector
+set.seed(42)
+x &lt;- matrix(rnorm(4), nrow = 4)
+
+# coordinates in Re(v1), Im(v1) basis space
+pp1 &lt;- Q_inv[1, ] %*% x
+XX1 &lt;- matrix(c(Re(pp1), -Im(pp1)), nrow = 2)</code></pre>
+<p>Define the transformations that will occur: the rotation and scaling, and the projection back into the full 4D space:</p>
+<pre class="r"><code># back-transformation matrix
+VV1 &lt;- matrix(c(Re(Q[, 1]), Im(Q[, 1])), ncol = 2)
+
+# rotation by Arg(l1), scaling by Mod(l1)
+LL1 &lt;- matrix(c(Re(L[1]), Im(L[1]), 
+               -Im(L[1]), Re(L[1])), nrow = 2, byrow = TRUE)
+
+# check this definition
+theta &lt;- Arg(L[1])
+all.equal(LL1, 
+          Mod(L[1]) * matrix(c(cos(theta), sin(theta), 
+                               -sin(theta), cos(theta)), byrow = TRUE, nrow = 2))
+## [1] TRUE</code></pre>
+<p>Now compute the result of this transformation of this component of <span class="math inline">\(x\)</span>:</p>
+<pre class="r"><code>zz1 &lt;- VV1 %*% LL1 %*% XX1</code></pre>
+<p>Now, because we also have a 2nd pair of complex eigenvalues and eigenvectors, repeat with the 3rd eigenvalue:</p>
+<pre class="r"><code># coordinates in basis Re(v3), Im(v3)
+pp3 &lt;- Q_inv[3, ] %*% x
+XX3 &lt;- matrix(c(Re(pp3), -Im(pp3)), nrow = 2)
+
+# back-transformation matrix
+VV3 &lt;- matrix(c(Re(Q[, 3]), Im(Q[, 3])), ncol = 2)
+
+# rotation by Arg(l3), scaling by Mod(l3)
+LL3 &lt;- matrix(c(Re(L[3]), Im(L[3]), 
+                -Im(L[3]), Re(L[3])), nrow = 2, byrow = TRUE)
+
+zz3 &lt;- VV3 %*% LL3 %*% XX3</code></pre>
+<p>We can check whether these outputs are the equivalent to applying <span class="math inline">\(\mathbf{A}\)</span> to the components of <span class="math inline">\(\mathbf{x}\)</span>:</p>
+<pre class="r"><code># decompose x into xx1, xx2, xx3, xx4
+xx &lt;- Q_inv %*% x
+xx1 &lt;- t(xx[1, 1] %*% Q[, 1])
+xx2 &lt;- t(xx[2, 1] %*% Q[, 2])
+xx3 &lt;- t(xx[3, 1] %*% Q[, 3])
+xx4 &lt;- t(xx[4, 1] %*% Q[, 4])
+
+# check that xx1, xx2, xx3, xx4 add up to x
+all.equal(Re(xx1 + xx2 + xx3 + xx4), x)
+## [1] TRUE
+
+# check that A (xx1 + xx2) is what we computed previously, 2 * zz1
+all.equal(2 * zz1, 
+          Re(A %*% (xx1 + xx2)))
+## [1] TRUE
+# check that A (xx3 + xx4) is what we computed previously, 2 * zz3
+all.equal(2 * zz3, 
+          Re(A %*% (xx3 + xx4)))
+## [1] TRUE
+
+# check that A x = 2 * zz1 + 2 * zz3
+all.equal(2 * zz1 + 2 * zz3, 
+          A %*% x)
+## [1] TRUE</code></pre>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<p>So, armed with this knowledge, I can now describe the transformation that corresponds to a specific complex-conjugate pair of eigenvalues and eigenvectors. Alas, specifying the angle and axis of rotation is quite a bit harder than saying which relative proportions in a real eigenvector are getting scaled, but the above demonstration provides tools for decomposing <span class="math inline">\(\mathbf{x}\)</span> into the components that are getting transformed, as well as the result. (both of which exist as vectors in the original state space of <span class="math inline">\(\mathbb{R}^n\)</span>)</p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>Various notes that I consulted:</p>
+<ol style="list-style-type: decimal">
+<li><a href="http://www.math.utk.edu/~freire/complex-eig2005.pdf" class="uri">http://www.math.utk.edu/~freire/complex-eig2005.pdf</a></li>
+<li><a href="https://math.stackexchange.com/questions/1546104/complex-eigenvalues-of-a-rotation-matrix" class="uri">https://math.stackexchange.com/questions/1546104/complex-eigenvalues-of-a-rotation-matrix</a></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="label label-default" href="">linear algebra</a>
+  
+</div>
+
+
+
+
+    
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+
+    
+
+    <p class="powered-by">
+
+      © 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: { linebreaks: { automatic: true } },
+        tex2jax: { inlineMath: [ ['$', '$'], ['\\(','\\)'] ], displayMath: [ ['$$','$$'], ['\\[', '\\]'] ], processEscapes: false },
+        TeX: { noUndefined: { attributes: { mathcolor: 'red', mathbackground: '#FFEEEE', mathsize: '90%' } } },
+        messageStyle: 'none'
+      });
+    </script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    <script src="/personal-website/js/hugo-academic.js"></script>
+    <script src="/personal-website/js/cornify.js"></script>
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/personal-website/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="/personal-website/js/search.js"></script>
+    
+
+    
+    
+
+  </body>
+</html>
+
