@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homes on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/home/</link>
+    <description>Recent content in Homes on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 20 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/home/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://ha0ye.github.io/personal-website/home/about/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/home/about/</guid>
+      <description>Biography I&amp;rsquo;m a Postdoctoral Associate and Moore Data Fellow in the Weecology Lab at the University of Florida.
+The goal of my research is to advance our understanding of how complex systems change over time, and the ways in which the driving processes manifest as changes. Although we have many hypotheses &amp;amp; models for ecosystem changes, as well as increasingly numerous and accessible data, bridging theory and observations remains challenging and elusive.</description>
+    </item>
+    
+    <item>
+      <title>Tags</title>
+      <link>https://ha0ye.github.io/personal-website/home/tags/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/home/tags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Posts</title>
+      <link>https://ha0ye.github.io/personal-website/home/posts/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/home/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Publications</title>
+      <link>https://ha0ye.github.io/personal-website/home/publications/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/home/publications/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://ha0ye.github.io/personal-website/home/projects/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/home/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Teaching</title>
+      <link>https://ha0ye.github.io/personal-website/home/teaching/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/home/teaching/</guid>
+      <description>Computational Training I have taught or assisted with The Carpentries workshops at the University of Minnesota, the University of Florida, and the University of California San Diego.
+In addition to teaching, I was a board member for the UF Carpentries Club from 2017-2019, which organizes computational workshops and related events at the University of Florida. I have also led the organization of two Research Bazaar events at UF that include: talks, panel discussions, tutorials, and more: ResBaz2018 ResBaz2019.</description>
+    </item>
+    
+    <item>
+      <title>Inclusion &amp; Accessibility</title>
+      <link>https://ha0ye.github.io/personal-website/home/inclusion/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/home/inclusion/</guid>
+      <description>Training I have received training in leading Ally Skills workshops, via a &amp;ldquo;Train-the-trainers&amp;rdquo; workshop, led by Dr. Sheila Addison of Frame Shift Consulting at the University of Florida.
+In addition, I have attended several workshops including ally skills and bystander intervention.
+Activities As part of the informal leadership of the Gainesville Ally Skills Network, we have been educating others on the need for individuals to use their priviledge to help dismantle systems of oppression that limit inclusion and accessibility in (primarily) academic spaces.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://ha0ye.github.io/personal-website/home/contact/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/home/contact/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

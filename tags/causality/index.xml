@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>causality on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/causality/</link>
+    <description>Recent content in causality on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Fri, 16 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/causality/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rEDM Tutorial</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-11-16-nmfs-redm-tutorial/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-11-16-nmfs-redm-tutorial/</guid>
+      <description>Agenda Resources Installation and Setup Backup option  Data Formats Determine embedding dimension using Simplex Projection Identify nonlinearity using S-map  Multivariate Models Convergent Cross Mapping Surrogate Analysis with CCM Extra topics   These are the notes for the rEDM tutorial I gave at the November 13-15 Nonlinear Dynamics and Fisheries Workshop at the NMFS Southwest Fisheries Science Center in Santa Cruz.
+Agenda   Time     900-915 set up computers  915-930 data formats  930-945 simplex, plotting rho vs.</description>
+    </item>
+    
+    <item>
+      <title>Causal inference</title>
+      <link>https://ha0ye.github.io/personal-website/project/causality/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/causality/</guid>
+      <description>Identifying causal interactions among time series.</description>
+    </item>
+    
+    <item>
+      <title>Empirical Dynamic Modeling</title>
+      <link>https://ha0ye.github.io/personal-website/project/empirical-dynamic-modeling/</link>
+      <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/empirical-dynamic-modeling/</guid>
+      <description>Inferring system dynamics from time series</description>
+    </item>
+    
+    <item>
+      <title>Convergent Cross Mapping: Theory and an Example</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2018_ccm-chapter/</link>
+      <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2018_ccm-chapter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reply to Baskerville and Cobey: Misconceptions about causation with synchrony and seasonal drivers</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2017_reply-baskerville-cobey/</link>
+      <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2017_reply-baskerville-cobey/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Distinguishing time-delayed causal interactions using convergent cross mapping</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2015_ccm-time-delays/</link>
+      <pubDate>Mon, 05 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2015_ccm-time-delays/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reply to Luo et al.: Robustness of causal effects of galactic cosmic rays on interannual variation in global temperature</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2015_reply-luo/</link>
+      <pubDate>Tue, 25 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2015_reply-luo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spatial convergent cross mapping to detect causal relationships from short time series</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2015_spatial-ccm/</link>
+      <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2015_spatial-ccm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Causal feedbacks in climate change</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2015_causality-climate-change/</link>
+      <pubDate>Mon, 30 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2015_causality-climate-change/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Predicting climate effects on Pacific sardine</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2013_sardine-climate/</link>
+      <pubDate>Tue, 16 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2013_sardine-climate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Detecting causality in complex ecosystems</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2012_causality/</link>
+      <pubDate>Thu, 20 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2012_causality/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

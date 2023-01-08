@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stability on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/stability/</link>
+    <description>Recent content in Stability on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 06 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/stability/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Empirical Dynamic Modeling</title>
+      <link>https://ha0ye.github.io/personal-website/project/empirical-dynamic-modeling/</link>
+      <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/empirical-dynamic-modeling/</guid>
+      <description>Inferring system dynamics from time series</description>
+    </item>
+    
+    <item>
+      <title>Dynamic stability</title>
+      <link>https://ha0ye.github.io/personal-website/project/dynamic-stability/</link>
+      <pubDate>Sun, 02 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/dynamic-stability/</guid>
+      <description>Dynamic quantification of stability in ecosystems.</description>
+    </item>
+    
+    <item>
+      <title>Fluctuating interaction network and time-varying stability of a natural fish community</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2018_maizuru-dynamic-stability/</link>
+      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2018_maizuru-dynamic-stability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Are exploited fish populations stable?</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2011_fish-stability/</link>
+      <pubDate>Tue, 29 Nov 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2011_fish-stability/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

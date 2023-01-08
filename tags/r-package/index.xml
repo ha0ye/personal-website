@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R package on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/r-package/</link>
+    <description>Recent content in R package on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 24 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/r-package/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>portalr: an R package for summarizing and using the Portal Project Data</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2019_portalr/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2019_portalr/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

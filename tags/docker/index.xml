@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/docker/</link>
+    <description>Recent content in Docker on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Setup for R package Development</title>
+      <link>https://ha0ye.github.io/personal-website/post/2019-10-10-docker-for-r-package-development/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2019-10-10-docker-for-r-package-development/</guid>
+      <description>Introduction My Use Case Workflow Building the Docker image Uploading the docker image to Docker Hub Setting up Travis to use the Docker image  References   Introduction The below summarize the workflow I’ve converged on, after reading through various tutorials on Docker, examples, etc.
+If you’re here, I presume you have some interest in R package development and/or using Docker, which is a tool for containerizing an environment for running software.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Travis CI on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/travis-ci/</link>
+    <description>Recent content in Travis CI on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/travis-ci/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Setup for R package Development</title>
+      <link>https://ha0ye.github.io/personal-website/post/2019-10-10-docker-for-r-package-development/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2019-10-10-docker-for-r-package-development/</guid>
+      <description>Introduction My Use Case Workflow Building the Docker image Uploading the docker image to Docker Hub Setting up Travis to use the Docker image  References   Introduction The below summarize the workflow I’ve converged on, after reading through various tutorials on Docker, examples, etc.
+If you’re here, I presume you have some interest in R package development and/or using Docker, which is a tool for containerizing an environment for running software.</description>
+    </item>
+    
+    <item>
+      <title>Deploying package documentation with pkgdown and Travis CI</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-10-24-pkgdown-ci/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-10-24-pkgdown-ci/</guid>
+      <description>For my rEDM package, I’ve been using the pkgdown package to build a website comprising all the documentation and vignettes, for easy reference from a web browser.
+The normal workflow for this is something like:
+Make updates to the package. Run pkgdown::build_site() to generate the website files into a docs folder. Commit changes and upload to GitHub. Use GitHub Pages, configured to source the files from the docs folder on the master branch.</description>
+    </item>
+    
+  </channel>
+</rss>

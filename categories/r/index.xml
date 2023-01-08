@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/categories/r/</link>
+    <description>Recent content in R on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 05 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Interpreting Complex Eigenvalues of Real Matrices</title>
+      <link>https://ha0ye.github.io/personal-website/post/2019-12-05-interpreting-complex-eigenvalues/</link>
+      <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2019-12-05-interpreting-complex-eigenvalues/</guid>
+      <description>Introduction Setup The easy case (all eigenvalues are real) The hard case (complex eigenvalues) Demonstration Conclusions References   Introduction Lately, I’ve been stuck in getting an intuition for exactly what is going on when a real matrix has complex eigenvalues (and complex eigenvectors) accordingly. After consulting various sources, and playing around with some examples, I think I have a grasp on what’s going on, and translating the math into an interpretation in the original space.</description>
+    </item>
+    
+    <item>
+      <title>Docker Setup for R package Development</title>
+      <link>https://ha0ye.github.io/personal-website/post/2019-10-10-docker-for-r-package-development/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2019-10-10-docker-for-r-package-development/</guid>
+      <description>Introduction My Use Case Workflow Building the Docker image Uploading the docker image to Docker Hub Setting up Travis to use the Docker image  References   Introduction The below summarize the workflow I’ve converged on, after reading through various tutorials on Docker, examples, etc.
+If you’re here, I presume you have some interest in R package development and/or using Docker, which is a tool for containerizing an environment for running software.</description>
+    </item>
+    
+    <item>
+      <title>Amusement Park Injuries #TidyTuesday</title>
+      <link>https://ha0ye.github.io/personal-website/post/2019-09-11-amusement-park-injuries/</link>
+      <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2019-09-11-amusement-park-injuries/</guid>
+      <description>Overview Setup Initial data examination Injuries by date Injuries by cause   Overview This is an exploration of the TidyTuesday dataset on “Amusement Park Injuries”, done as part of the Wednesday coding clinic for Research Bazaar Gainesville.
+ Setup ## load packages library(tidyverse) ## ── Attaching packages ─────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 3.2.1 ✔ purrr 0.3.2 ## ✔ tibble 2.1.3 ✔ dplyr 0.8.3 ## ✔ tidyr 1.</description>
+    </item>
+    
+    <item>
+      <title>rEDM Tutorial</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-11-16-nmfs-redm-tutorial/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-11-16-nmfs-redm-tutorial/</guid>
+      <description>Agenda Resources Installation and Setup Backup option  Data Formats Determine embedding dimension using Simplex Projection Identify nonlinearity using S-map  Multivariate Models Convergent Cross Mapping Surrogate Analysis with CCM Extra topics   These are the notes for the rEDM tutorial I gave at the November 13-15 Nonlinear Dynamics and Fisheries Workshop at the NMFS Southwest Fisheries Science Center in Santa Cruz.
+Agenda   Time     900-915 set up computers  915-930 data formats  930-945 simplex, plotting rho vs.</description>
+    </item>
+    
+    <item>
+      <title>Advice on Data Analysis in R</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-11-05-advice-on-data-analysis-in-r/</link>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-11-05-advice-on-data-analysis-in-r/</guid>
+      <description>While on my visit to the University of Nebraska, Lincoln, I had the pleasure of taking over Chris Chizinski’s R class on Friday (2018-11-02).
+I demo’d a few things about setting up RStudio, using RStudio packages and the here package, and then walked through a workflow of doing data analysis, converting code into functions, and writing scripts and functions to be more accessible for readers.
+For reference, here are my slides.</description>
+    </item>
+    
+    <item>
+      <title>Deploying package documentation with pkgdown and Travis CI</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-10-24-pkgdown-ci/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-10-24-pkgdown-ci/</guid>
+      <description>For my rEDM package, I’ve been using the pkgdown package to build a website comprising all the documentation and vignettes, for easy reference from a web browser.
+The normal workflow for this is something like:
+Make updates to the package. Run pkgdown::build_site() to generate the website files into a docs folder. Commit changes and upload to GitHub. Use GitHub Pages, configured to source the files from the docs folder on the master branch.</description>
+    </item>
+    
+    <item>
+      <title>Guide for Using an R Package for Reproducible Research</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-10-06-project-setup/</link>
+      <pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-10-06-project-setup/</guid>
+      <description>Motivation What I used to do Why use an R package?  How-to Guide Requirements Tutorial Setup Workflow Bonus steps  Other Readings   Motivation I’ve been wondering about the best way to organize (reproducible) research projects in R for a while now. I figured this might be a good spot to write up some thoughts.
+What I used to do Initially my projects would consist of just a few R files that separate out functions from a main script that calls the functions.</description>
+    </item>
+    
+    <item>
+      <title>Making gifs in R with `gganimate`</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-09-03-gganimate/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-09-03-gganimate/</guid>
+      <description>Introduction Package Setup Data Forecasting Generate data to plot Figure   Introduction Since I’m writing R code to make certain figures for this website, I thought I could go ahead and annotate some of it in R markdown to serve as blog posts.
+ Package Setup library(tidyverse) ## ── Attaching packages ─────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 3.2.1 ✔ purrr 0.3.2 ## ✔ tibble 2.1.3 ✔ dplyr 0.</description>
+    </item>
+    
+  </channel>
+</rss>

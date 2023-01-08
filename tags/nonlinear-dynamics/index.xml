@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nonlinear dynamics on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/nonlinear-dynamics/</link>
+    <description>Recent content in nonlinear dynamics on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 23 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/nonlinear-dynamics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The intrinsic predictability of ecological time series and its potential to guide forecasting</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2019_intrinsic-predictability/</link>
+      <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2019_intrinsic-predictability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rEDM Tutorial</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-11-16-nmfs-redm-tutorial/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-11-16-nmfs-redm-tutorial/</guid>
+      <description>Agenda Resources Installation and Setup Backup option  Data Formats Determine embedding dimension using Simplex Projection Identify nonlinearity using S-map  Multivariate Models Convergent Cross Mapping Surrogate Analysis with CCM Extra topics   These are the notes for the rEDM tutorial I gave at the November 13-15 Nonlinear Dynamics and Fisheries Workshop at the NMFS Southwest Fisheries Science Center in Santa Cruz.
+Agenda   Time     900-915 set up computers  915-930 data formats  930-945 simplex, plotting rho vs.</description>
+    </item>
+    
+    <item>
+      <title>Forecasting</title>
+      <link>https://ha0ye.github.io/personal-website/project/forecasting/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/forecasting/</guid>
+      <description>Predicting the future state of ecosystems.</description>
+    </item>
+    
+    <item>
+      <title>Empirical Dynamic Modeling</title>
+      <link>https://ha0ye.github.io/personal-website/project/empirical-dynamic-modeling/</link>
+      <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/empirical-dynamic-modeling/</guid>
+      <description>Inferring system dynamics from time series</description>
+    </item>
+    
+    <item>
+      <title>Quantitative argument for long-term ecological monitoring</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2017_long-term-monitoring/</link>
+      <pubDate>Wed, 31 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2017_long-term-monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Predicting coastal algal blooms in southern California</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2017_predicting-algal-blooms/</link>
+      <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2017_predicting-algal-blooms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stock assessment and end-to-end ecosystem models alter dynamics of fisheries data</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2017_nonlinearity/</link>
+      <pubDate>Wed, 15 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2017_nonlinearity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Predicting the future in a nonlinear world</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2015_nonlinear-prediction/</link>
+      <pubDate>Tue, 01 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2015_nonlinear-prediction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Equation-free mechanistic ecosystem forecasting using empirical dynamic modeling</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2015_equation-free-modeling/</link>
+      <pubDate>Tue, 31 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2015_equation-free-modeling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Causal feedbacks in climate change</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2015_causality-climate-change/</link>
+      <pubDate>Mon, 30 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2015_causality-climate-change/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Complex dynamics may limit prediction in marine fisheries</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2014_complex-dynamics-fisheries/</link>
+      <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2014_complex-dynamics-fisheries/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Modeling dynamic interactions and coherence between marine zooplankton and fishes linked to environmental variability</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2014_zooplankton-fish-environment/</link>
+      <pubDate>Sat, 01 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2014_zooplankton-fish-environment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Predicting climate effects on Pacific sardine</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2013_sardine-climate/</link>
+      <pubDate>Tue, 16 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2013_sardine-climate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Are exploited fish populations stable?</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2011_fish-stability/</link>
+      <pubDate>Tue, 29 Nov 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2011_fish-stability/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

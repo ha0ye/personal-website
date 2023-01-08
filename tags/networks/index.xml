@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Networks on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/networks/</link>
+    <description>Recent content in Networks on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 15 Feb 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/networks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fluctuating interaction network and time-varying stability of a natural fish community</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2018_maizuru-dynamic-stability/</link>
+      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2018_maizuru-dynamic-stability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Complex systems: Cooperative network dynamics</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2009_cooperative-dynamics/</link>
+      <pubDate>Thu, 23 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2009_cooperative-dynamics/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

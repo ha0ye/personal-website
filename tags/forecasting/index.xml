@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Forecasting on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/forecasting/</link>
+    <description>Recent content in Forecasting on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 23 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/forecasting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The intrinsic predictability of ecological time series and its potential to guide forecasting</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2019_intrinsic-predictability/</link>
+      <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2019_intrinsic-predictability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rEDM Tutorial</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-11-16-nmfs-redm-tutorial/</link>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-11-16-nmfs-redm-tutorial/</guid>
+      <description>Agenda Resources Installation and Setup Backup option  Data Formats Determine embedding dimension using Simplex Projection Identify nonlinearity using S-map  Multivariate Models Convergent Cross Mapping Surrogate Analysis with CCM Extra topics   These are the notes for the rEDM tutorial I gave at the November 13-15 Nonlinear Dynamics and Fisheries Workshop at the NMFS Southwest Fisheries Science Center in Santa Cruz.
+Agenda   Time     900-915 set up computers  915-930 data formats  930-945 simplex, plotting rho vs.</description>
+    </item>
+    
+    <item>
+      <title>Forecasting</title>
+      <link>https://ha0ye.github.io/personal-website/project/forecasting/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/forecasting/</guid>
+      <description>Predicting the future state of ecosystems.</description>
+    </item>
+    
+    <item>
+      <title>Empirical Dynamic Modeling</title>
+      <link>https://ha0ye.github.io/personal-website/project/empirical-dynamic-modeling/</link>
+      <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/empirical-dynamic-modeling/</guid>
+      <description>Inferring system dynamics from time series</description>
+    </item>
+    
+    <item>
+      <title>Making gifs in R with `gganimate`</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-09-03-gganimate/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-09-03-gganimate/</guid>
+      <description>Introduction Package Setup Data Forecasting Generate data to plot Figure   Introduction Since I’m writing R code to make certain figures for this website, I thought I could go ahead and annotate some of it in R markdown to serve as blog posts.
+ Package Setup library(tidyverse) ## ── Attaching packages ─────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 3.2.1 ✔ purrr 0.3.2 ## ✔ tibble 2.1.3 ✔ dplyr 0.</description>
+    </item>
+    
+    <item>
+      <title>Ecosystem‐based forecasts of recruitment in two menhaden species</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2018_menhaden-forecasts/</link>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2018_menhaden-forecasts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Predicting coastal algal blooms in southern California</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2017_predicting-algal-blooms/</link>
+      <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2017_predicting-algal-blooms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Predicting the future in a nonlinear world</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2015_nonlinear-prediction/</link>
+      <pubDate>Tue, 01 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2015_nonlinear-prediction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Equation-free mechanistic ecosystem forecasting using empirical dynamic modeling</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2015_equation-free-modeling/</link>
+      <pubDate>Tue, 31 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2015_equation-free-modeling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A nonlinear, low data requirement model for producing spatially explicit fishery forecasts</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2013_spatial-forecasts/</link>
+      <pubDate>Wed, 17 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2013_spatial-forecasts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Detecting and forecasting complex nonlinear dynamics in spatially structured catch-per-unit-effort time series for North Pacific albacore (Thunnus alalunga)</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2011_spatial-forecasts/</link>
+      <pubDate>Thu, 10 Feb 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2011_spatial-forecasts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nonlinear prediction of solar cycle 24</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2009_solar-cycle-prediction/</link>
+      <pubDate>Thu, 05 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2009_solar-cycle-prediction/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

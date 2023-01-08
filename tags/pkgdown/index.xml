@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pkgdown on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/pkgdown/</link>
+    <description>Recent content in pkgdown on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 24 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/pkgdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploying package documentation with pkgdown and Travis CI</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-10-24-pkgdown-ci/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-10-24-pkgdown-ci/</guid>
+      <description>For my rEDM package, I’ve been using the pkgdown package to build a website comprising all the documentation and vignettes, for easy reference from a web browser.
+The normal workflow for this is something like:
+Make updates to the package. Run pkgdown::build_site() to generate the website files into a docs folder. Commit changes and upload to GitHub. Use GitHub Pages, configured to source the files from the docs folder on the master branch.</description>
+    </item>
+    
+  </channel>
+</rss>

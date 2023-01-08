@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sunspots on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/sunspots/</link>
+    <description>Recent content in Sunspots on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Mon, 10 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/sunspots/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Forecasting</title>
+      <link>https://ha0ye.github.io/personal-website/project/forecasting/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/forecasting/</guid>
+      <description>Predicting the future state of ecosystems.</description>
+    </item>
+    
+    <item>
+      <title>Nonlinear prediction of solar cycle 24</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2009_solar-cycle-prediction/</link>
+      <pubDate>Thu, 05 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2009_solar-cycle-prediction/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

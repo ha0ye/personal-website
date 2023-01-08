@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rrtools on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/rrtools/</link>
+    <description>Recent content in rrtools on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sat, 06 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/rrtools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guide for Using an R Package for Reproducible Research</title>
+      <link>https://ha0ye.github.io/personal-website/post/2018-10-06-project-setup/</link>
+      <pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2018-10-06-project-setup/</guid>
+      <description>Motivation What I used to do Why use an R package?  How-to Guide Requirements Tutorial Setup Workflow Bonus steps  Other Readings   Motivation I’ve been wondering about the best way to organize (reproducible) research projects in R for a while now. I figured this might be a good spot to write up some thoughts.
+What I used to do Initially my projects would consist of just a few R files that separate out functions from a main script that calls the functions.</description>
+    </item>
+    
+  </channel>
+</rss>

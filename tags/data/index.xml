@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/data/</link>
+    <description>Recent content in Data on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 27 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MATSS</title>
+      <link>https://ha0ye.github.io/personal-website/project/matss/</link>
+      <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/matss/</guid>
+      <description>R package for Macroecological Analysis of Time Series Structure</description>
+    </item>
+    
+    <item>
+      <title>MATSS-forecasting</title>
+      <link>https://ha0ye.github.io/personal-website/project/matss-forecasting/</link>
+      <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/matss-forecasting/</guid>
+      <description>Analyzing Ecological Predictability using MATSS</description>
+    </item>
+    
+    <item>
+      <title>portalr: an R package for summarizing and using the Portal Project Data</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2019_portalr/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2019_portalr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>portalR</title>
+      <link>https://ha0ye.github.io/personal-website/project/portalr/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/portalr/</guid>
+      <description>R package for downloading and summarizing the Portal data</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/project/</link>
+    <description>Recent content in Projects on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sat, 21 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPEDM</title>
+      <link>https://ha0ye.github.io/personal-website/project/gpedm/</link>
+      <pubDate>Sat, 21 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/gpedm/</guid>
+      <description>Gaussian Process Regression for Empirical Dynamic Modeling</description>
+    </item>
+    
+    <item>
+      <title>MATSS</title>
+      <link>https://ha0ye.github.io/personal-website/project/matss/</link>
+      <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/matss/</guid>
+      <description>R package for Macroecological Analysis of Time Series Structure</description>
+    </item>
+    
+    <item>
+      <title>MATSS-forecasting</title>
+      <link>https://ha0ye.github.io/personal-website/project/matss-forecasting/</link>
+      <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/matss-forecasting/</guid>
+      <description>Analyzing Ecological Predictability using MATSS</description>
+    </item>
+    
+    <item>
+      <title>portalR</title>
+      <link>https://ha0ye.github.io/personal-website/project/portalr/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/portalr/</guid>
+      <description>R package for downloading and summarizing the Portal data</description>
+    </item>
+    
+    <item>
+      <title>rEDM</title>
+      <link>https://ha0ye.github.io/personal-website/project/redm/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/redm/</guid>
+      <description>R package for empirical dynamic modeling</description>
+    </item>
+    
+    <item>
+      <title>Causal inference</title>
+      <link>https://ha0ye.github.io/personal-website/project/causality/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/causality/</guid>
+      <description>Identifying causal interactions among time series.</description>
+    </item>
+    
+    <item>
+      <title>Forecasting</title>
+      <link>https://ha0ye.github.io/personal-website/project/forecasting/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/forecasting/</guid>
+      <description>Predicting the future state of ecosystems.</description>
+    </item>
+    
+    <item>
+      <title>Empirical Dynamic Modeling</title>
+      <link>https://ha0ye.github.io/personal-website/project/empirical-dynamic-modeling/</link>
+      <pubDate>Thu, 06 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/empirical-dynamic-modeling/</guid>
+      <description>Inferring system dynamics from time series</description>
+    </item>
+    
+    <item>
+      <title>Dynamic stability</title>
+      <link>https://ha0ye.github.io/personal-website/project/dynamic-stability/</link>
+      <pubDate>Sun, 02 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/dynamic-stability/</guid>
+      <description>Dynamic quantification of stability in ecosystems.</description>
+    </item>
+    
+  </channel>
+</rss>

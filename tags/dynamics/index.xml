@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dynamics on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/dynamics/</link>
+    <description>Recent content in Dynamics on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sat, 21 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/dynamics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPEDM</title>
+      <link>https://ha0ye.github.io/personal-website/project/gpedm/</link>
+      <pubDate>Sat, 21 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/gpedm/</guid>
+      <description>Gaussian Process Regression for Empirical Dynamic Modeling</description>
+    </item>
+    
+    <item>
+      <title>The intrinsic predictability of ecological time series and its potential to guide forecasting</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2019_intrinsic-predictability/</link>
+      <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2019_intrinsic-predictability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rEDM</title>
+      <link>https://ha0ye.github.io/personal-website/project/redm/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/redm/</guid>
+      <description>R package for empirical dynamic modeling</description>
+    </item>
+    
+    <item>
+      <title>Causal inference</title>
+      <link>https://ha0ye.github.io/personal-website/project/causality/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/project/causality/</guid>
+      <description>Identifying causal interactions among time series.</description>
+    </item>
+    
+    <item>
+      <title>Fluctuating interaction network and time-varying stability of a natural fish community</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2018_maizuru-dynamic-stability/</link>
+      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2018_maizuru-dynamic-stability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stock assessment and end-to-end ecosystem models alter dynamics of fisheries data</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2017_nonlinearity/</link>
+      <pubDate>Wed, 15 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2017_nonlinearity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Information leverage in interconnected ecosystems: Overcoming the curse of dimensionality</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2016_information-leverage/</link>
+      <pubDate>Fri, 26 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2016_information-leverage/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Complex dynamics may limit prediction in marine fisheries</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2014_complex-dynamics-fisheries/</link>
+      <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2014_complex-dynamics-fisheries/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Detecting causality in complex ecosystems</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2012_causality/</link>
+      <pubDate>Thu, 20 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2012_causality/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Are exploited fish populations stable?</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2011_fish-stability/</link>
+      <pubDate>Tue, 29 Nov 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2011_fish-stability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Complex systems: Cooperative network dynamics</title>
+      <link>https://ha0ye.github.io/personal-website/publication/2009_cooperative-dynamics/</link>
+      <pubDate>Thu, 23 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/publication/2009_cooperative-dynamics/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

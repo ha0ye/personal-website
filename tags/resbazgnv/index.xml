@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ResBazGNV on Hao Ye</title>
+    <link>https://ha0ye.github.io/personal-website/tags/resbazgnv/</link>
+    <description>Recent content in ResBazGNV on Hao Ye</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 11 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ha0ye.github.io/personal-website/tags/resbazgnv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amusement Park Injuries #TidyTuesday</title>
+      <link>https://ha0ye.github.io/personal-website/post/2019-09-11-amusement-park-injuries/</link>
+      <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ha0ye.github.io/personal-website/post/2019-09-11-amusement-park-injuries/</guid>
+      <description>Overview Setup Initial data examination Injuries by date Injuries by cause   Overview This is an exploration of the TidyTuesday dataset on “Amusement Park Injuries”, done as part of the Wednesday coding clinic for Research Bazaar Gainesville.
+ Setup ## load packages library(tidyverse) ## ── Attaching packages ─────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 3.2.1 ✔ purrr 0.3.2 ## ✔ tibble 2.1.3 ✔ dplyr 0.8.3 ## ✔ tidyr 1.</description>
+    </item>
+    
+  </channel>
+</rss>
